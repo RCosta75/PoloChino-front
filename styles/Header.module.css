@@ -1,14 +1,16 @@
 .header{
     height: 5vh;
-    background-color: rgb(232, 88, 88);
     display: flex;
     justify-content: space-between;
   
 
 }
 .left{
+    display: flex;
+    justify-content: space-around;
  
 }
 .right{
-    
+    display: flex;
+    justify-content: space-around;
 }
