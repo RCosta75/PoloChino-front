@@ -33,4 +33,24 @@
     border-radius: 50px;
     padding: 1vh;
   }
+  .btn{
+  position: absolute;
+  top: 6%; 
+  right: 0%;
+  width: 10%;
+ 
 
+
+    
+   
+  }
+.log{
+  background-color: rgb(41, 41, 62);
+  width: 100%;
+  padding: 1vh;
+  margin: 1vh;
+  color: white;
+}
+.log:hover{
+  color: red;
+}
