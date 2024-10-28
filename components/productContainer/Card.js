@@ -1,8 +1,11 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { addToCart } from "../../reducers/cart";
+
 
 export default function Card({ polo }) {
 
+  const dispatch = useDispatch()
   const user = useSelector((state) => state.user.value);
 
     // fonction pour gerer les likes dans User.[likes]
@@ -16,6 +19,11 @@ export default function Card({ polo }) {
         }),
       }).then();
     };
+
+    // Envoi les donnée du polo dans reducer + {quantity : 1}
+    const handleCart = () => {
+      dispatch(addToCart({...polo, quantity : 1}))
+    }
 
   return (
     <a href="#" class="group relative block overflow-hidden">
@@ -54,7 +62,8 @@ export default function Card({ polo }) {
         <p class="mt-1.5 line-clamp-3 text-gray-700">{polo.description}</p>
 
         <form class="mt-4 flex gap-4">
-          <button class="block w-full rounded bg-gray-100 px-4 py-3 text-sm font-medium text-gray-900 transition hover:scale-105">
+          <button class="block w-full rounded bg-gray-100 px-4 py-3 text-sm font-medium text-gray-900 transition hover:scale-105"
+          onClick={() => handleCart()}>
             Add to Cart
           </button>
 
