@@ -6,6 +6,7 @@ import ProductHeader from './ProductHeader';
 
 
 
+
 function Home() {
   
   return (
@@ -14,9 +15,9 @@ function Home() {
         <title>POL-HO - Home</title>
       </Head>
       <Header />
-      <ProductHeader/>
-      <ProductContainer/>
-    </div>
+     
+      </div>
+  
   );
 }
 
