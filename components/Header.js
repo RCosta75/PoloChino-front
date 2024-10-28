@@ -37,7 +37,7 @@ function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.left}>
-        <img src='pol-ho-high-resolution-logo-transparent(2).png' alt='logo' />
+        <img src='poloLogo.png' alt='logo' />
         <span>Shop</span>
         <span>About</span>
       </div>
