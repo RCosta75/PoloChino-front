@@ -2,17 +2,12 @@
 import styles from '../styles/Header.module.css';
 
 
-
-
-
-
-
 function Header() {
     return (
         <header className={styles.header}>
             <div className={styles.left}>
               <img src='hfb'/>
-              <span>Shop</span>
+              <span >Shop</span>
               <span>About</span>
             </div>
             <div className={styles.right}>

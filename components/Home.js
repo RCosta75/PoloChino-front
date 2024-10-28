@@ -1,6 +1,8 @@
-import styles from '../styles/Home.module.css';
+
 import Header from './Header';
 import Head from 'next/head';
+import ProductContainer from './productContainer/ProductContainer';
+import ProductHeader from './ProductHeader';
 
 
 
@@ -12,13 +14,8 @@ function Home() {
         <title>POL-HO - Home</title>
       </Head>
       <Header />
-      <div className={styles.poloContainer}>
-        {/* Nos articles polo */}
-        <h1>polo</h1>
-        <h1>polo</h1>
-        <h1>polo</h1>
-        <h1>polo</h1>
-      </div>
+      <ProductHeader/>
+      <ProductContainer/>
     </div>
   );
 }
