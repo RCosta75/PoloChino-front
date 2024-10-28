@@ -1,9 +1,26 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 export default function Card({ polo }) {
+
+  const user = useSelector((state) => state.user.value);
+
+    // fonction pour gerer les likes dans User.[likes]
+    const handleLikes = () => {
+      fetch(`http://localhost:3000/likes/update`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          id: polo._id,
+          token: user.token,
+        }),
+      }).then();
+    };
+
   return (
     <a href="#" class="group relative block overflow-hidden">
-      <button class="absolute end-4 top-4 z-10 rounded-full bg-white p-1.5 text-gray-900 transition hover:text-gray-900/75">
+      <button class="absolute end-4 top-4 z-10 rounded-full bg-white p-1.5 text-gray-900 transition hover:text-gray-900/75"
+      onClick={() => handleLikes()}>
         <span class="sr-only">Wishlist</span>
 
         <svg
