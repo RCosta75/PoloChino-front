@@ -16,7 +16,7 @@ function Home() {
       </Head>
       <Header />
       <ProductHeader/>
-      <ProductContainer />
+      <ProductContainer/>
      
       </div>
   
