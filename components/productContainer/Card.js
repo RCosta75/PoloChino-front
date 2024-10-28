@@ -1,8 +1,11 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { addToCart } from "../../reducers/cart";
+
 
 export default function Card({ polo }) {
 
+  const dispatch = useDispatch()
   const user = useSelector((state) => state.user.value);
 
     // fonction pour gerer les likes dans User.[likes]
@@ -17,8 +20,13 @@ export default function Card({ polo }) {
       }).then();
     };
 
+    // Envoi les donnée du polo dans reducer + {quantity : 1}
+    const handleCart = () => {
+      dispatch(addToCart({...polo, quantity : 1}))
+    }
+
   return (
-    <a href="#" class="group relative block overflow-hidden">
+    <a href="#" class="group relative block overflow-hidden ">
       <button class="absolute end-4 top-4 z-10 rounded-full bg-white p-1.5 text-gray-900 transition hover:text-gray-900/75"
       onClick={() => handleLikes()}>
         <span class="sr-only">Wishlist</span>
@@ -39,22 +47,23 @@ export default function Card({ polo }) {
         </svg>
       </button>
       <img
-        src={polo.image}
-        alt={polo.description}
-        class="w-full h-[500px] object-cover transition duration-500 group-hover:scale-105 "
-      />
+  src={polo.image}
+  alt={polo.description}
+  class="w-full h-[500px] object-cover transition duration-500 group-hover:scale-105"
+/>
 
-      <div class="relative border border-gray-100 bg-white p-6">
-        <p class="text-gray-700">${polo.price}</p>
+      <div class="relative border border-gray-100 bg-white   p-6">
+        <p class="text-gray-700">{polo.price} €</p>
 
         <h3 class="mt-1.5 text-lg font-medium text-gray-900">
           {polo.name}
         </h3>
 
-        <p class="mt-1.5 line-clamp-3 text-gray-700">{polo.description}</p>
+        <p class="mt-1.5 h-20 line-clamp-3 text-gray-700">{polo.description}</p>
 
         <form class="mt-4 flex gap-4">
-          <button class="block w-full rounded bg-gray-100 px-4 py-3 text-sm font-medium text-gray-900 transition hover:scale-105">
+          <button class="block w-full rounded bg-gray-100 px-4 py-3 text-sm font-medium text-gray-900 transition hover:scale-105"
+          onClick={() => handleCart()}>
             Add to Cart
           </button>
 

@@ -12,6 +12,7 @@ export const trendSlice = createSlice({
   reducers: {
     addToCart: (state, action) => {
       state.value.push(action.payload);
+      console.log(action.payload)
     },
     removeCart: (state, action) => {
       state.value.filter((e) => e === action.payload);

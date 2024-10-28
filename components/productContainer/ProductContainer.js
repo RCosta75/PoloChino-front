@@ -20,13 +20,11 @@ export default function ProductContainer() {
 
   const poloProduct = poloData?.map((polo, i) => {
     return (
-      <div className="w-full h-full">
-        <div className=" pt-20 px-11 grid grid-cols-4 gap-8">
+      <div >
           <Card key={i} polo={polo} />
-        </div>
       </div>
     );
   });
 
-  return <>{poloProduct}</>;
+  return <div className=" pt-20 px-11 grid grid-cols-4 gap-8">{poloProduct}</div>;
 }
