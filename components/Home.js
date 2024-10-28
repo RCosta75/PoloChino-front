@@ -16,6 +16,7 @@ function Home() {
       </Head>
       <Header />
       <ProductHeader/>
+      <h1 className="text-3xl pt-10 text-center">ALL PRODUCTS</h1>
       <ProductContainer/>
      
       </div>

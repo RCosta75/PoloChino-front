@@ -11,7 +11,7 @@ function Login() {
   const [email, setemail] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [signState, setsignState] = useState('SignIn') //Pour modifier les titres selon l'inscription/connexion
+  const [signState, setsignState] = useState('Sign In') //Pour modifier les titres selon l'inscription/connexion
   const dispatch = useDispatch();
   const router = useRouter();
 
@@ -59,21 +59,21 @@ function Login() {
     <div className={styles.left}>
       <h3>{signState}</h3> {/*  Par default SignIn */}
       {/* Si SignUp on rajoute l'input username en plus sinon null*/}
-      {signState === 'SignUp' ? 
+      {signState === 'Sign Up' ? 
         <input type="text" onChange={(e) => setUsername(e.target.value)} value={username} placeholder="Username" />
         : null 
       }
       <input type="text" onChange={(e) => setemail(e.target.value)} value={email} placeholder="Email" />
       <input type="password" onChange={(e) => setPassword(e.target.value)} value={password} placeholder="Password" />
       {/* Le bouton call par defaut la fonction handleSignIn mais si SignUp call la fonction handleSignUp*/}
-      <button  onClick={signState === 'SignIn' ? handleSignIn : handleSignUp}>
+      <button  onClick={signState === 'Sign In' ? handleSignIn : handleSignUp}>
         {signState}
       </button>
        {/*Par defaut on  a le bouton pour afficher SignUp et si on est dans SignIn on le bouton pour afficher SignIn*/}
-      {signState === 'SignIn' ? 
-        <p>New member? <span onClick={() => setsignState('SignUp')}>Sign Up now</span></p> 
+      {signState === 'Sign In' ? 
+        <p>New member? <span onClick={() => setsignState('Sign Up')}>Sign Up now</span></p> 
         : 
-        <p>Already have an account? <span onClick={() => setsignState('SignIn')}>Sign In now</span></p>
+        <p>Already have an account ? <span onClick={() => setsignState('Sign In')}>Sign In now</span></p>
       }
     </div>
     <div className={styles.right}>
