@@ -9,7 +9,7 @@ import { useRouter } from 'next/router';
 function Header() {
   const dispatch = useDispatch();
   const router = useRouter();
-  const username = useSelector(state => state.user.value.username);
+  const user = useSelector(state => state.user.value);
   const [showLogout, setShowLogout] = useState(false); // On ne l'affiche pas initialement
   const [showSearch, setShowSearch] = useState(false); // On ne l'affiche pas initialement
 
@@ -27,17 +27,17 @@ function Header() {
   };
 
   const handleUserClick = () => {
-    if (username) {
+    if (user.username) {
       setShowLogout(!showLogout); // Afficher/masquer le bouton de déconnexion si connecté
     } else {
       redirectToLogin(); // Rediriger vers la page de connexion si non connecté
     }
   };
-  console.log(username)
+ 
   return (
     <header className={styles.header}>
       <div className={styles.left}>
-        <img src='pol-ho-high-resolution-logo-transparent(2) (1).png' alt='logo' />
+        <img src='pol-ho-high-resolution-logo-transparent(2).png' alt='logo' />
         <span>Shop</span>
         <span>About</span>
       </div>
@@ -47,9 +47,11 @@ function Header() {
         <FontAwesomeIcon icon={faCartShopping} />
           <FontAwesomeIcon icon={faUser} onClick={handleUserClick} />
          
-          {username && <span>{username}</span>}
+          
           {showLogout && (
-            <button onClick={handleLogout}>Logout</button>
+           <div className={styles.btn}>
+             <button className={styles.log} onClick={handleLogout}>Logout</button>
+             </div>
           )}
        
       </div>

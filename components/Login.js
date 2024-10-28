@@ -11,7 +11,7 @@ function Login() {
   const [email, setemail] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [signState, setsignState] = useState('Sign In') //Pour modifier les titres selon l'inscription/connexion
+  const [signState, setsignState] = useState('SignIn') //Pour modifier les titres selon l'inscription/connexion
   const dispatch = useDispatch();
   const router = useRouter();
 
@@ -29,8 +29,9 @@ function Login() {
       .then(data => {
         if (data.result) {
           dispatch(login({ token: data.token, username, email }));
-          router.push('/');
+          
         }
+       
       });
   };
 
@@ -44,8 +45,9 @@ function Login() {
       .then(data => {
         if (data.result) {
           dispatch(login({ token: data.token, email: data.email, username: data.username }));
-          router.push('/');
+
         }
+     
       });
   };
 
