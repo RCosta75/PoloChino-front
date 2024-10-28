@@ -28,6 +28,9 @@ export const trendSlice = createSlice({
   },
 });
 
-export const { addToCart, removeCart, clearCart, addQuantity, suppQuantity } 
-= trendSlice.actions;
+export const { addToCart,
+   removeCart, 
+   clearCart, 
+   addQuantity, 
+   suppQuantity } = trendSlice.actions;
 export default trendSlice.reducer;
