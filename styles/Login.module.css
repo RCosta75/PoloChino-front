@@ -1,0 +1,35 @@
+.main{
+    height: 100vh;
+    display: flex;
+}
+.left{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.left input{
+    width: 70%;
+    border-radius: 50px;
+    padding: 1vh;
+   
+}
+
+.left button{
+    width: 70%;
+    border-radius: 50px;
+    padding: 1vh;
+  
+}
+.left span{
+    border-bottom: 1px solid black;
+  
+}
+.right{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

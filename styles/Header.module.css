@@ -12,6 +12,10 @@
     align-items: center;
     flex-wrap: wrap; 
   }
+
+  .left, .right:hover{
+    cursor: pointer;
+  }
   
   .left img {
     width: 50px;
@@ -29,3 +33,4 @@
     border-radius: 50px;
     padding: 1vh;
   }
+
