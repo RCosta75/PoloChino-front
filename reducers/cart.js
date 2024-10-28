@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 // reducer pour contenir les polo dans le panier
 
 const initialState = {
-  value: [null],
+  value: [],
 };
 
 export const trendSlice = createSlice({

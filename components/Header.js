@@ -44,7 +44,7 @@ function Header() {
       <div className={styles.right}>
         {showSearch && <input type="text" placeholder="Search" className={styles.searchInput} />}
         <FontAwesomeIcon icon={faMagnifyingGlass} onClick={toggleSearch} />
-        <FontAwesomeIcon icon={faCartShopping} />
+        <FontAwesomeIcon icon={faCartShopping} onClick={() => router.push('/cart')}/>
           <FontAwesomeIcon icon={faUser} onClick={handleUserClick} />
          
           
