@@ -1,6 +1,8 @@
-import styles from '../styles/Home.module.css';
+
 import Header from './Header';
 import Head from 'next/head';
+import ProductContainer from './productContainer/ProductContainer';
+import ProductHeader from './ProductHeader';
 
 
 
