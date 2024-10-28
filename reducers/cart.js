@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 // reducer pour contenir les polo dans le panier
 
+
 const initialState = {
     value: [ ],
   };
