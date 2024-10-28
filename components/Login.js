@@ -20,26 +20,32 @@ function Login() {
     router.push('/');
   }
 
-const handleSignUp = () => {
-    fetch('url', {
+  const handleSignUp = () => {
+    fetch('http://localhost:3000/users/signup', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, username, password }),
     }).then(response => response.json())
       .then(data => {
-        data.result && dispatch(login({ token: data.token, username, email}));
+        if (data.result) {
+          dispatch(login({ token: data.token, username, email }));
+          router.push('/');
+        }
       });
   };
 
  
-const handleSignIn = () => {
-    fetch('url', {
+  const handleSignIn = () => {
+    fetch('http://localhost:3000/users/signin', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, password }),
     }).then(response => response.json())
       .then(data => {
-        data.result && dispatch(login({ token: data.token, email: data.email, username: data.username }));
+        if (data.result) {
+          dispatch(login({ token: data.token, email: data.email, username: data.username }));
+          router.push('/');
+        }
       });
   };
 

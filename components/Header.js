@@ -33,11 +33,11 @@ function Header() {
       redirectToLogin(); // Rediriger vers la page de connexion si non connecté
     }
   };
-
+  console.log(username)
   return (
     <header className={styles.header}>
       <div className={styles.left}>
-        <img src='polo-logo.png' alt='logo' />
+        <img src='pol-ho-high-resolution-logo-transparent(2) (1).png' alt='logo' />
         <span>Shop</span>
         <span>About</span>
       </div>
@@ -46,6 +46,7 @@ function Header() {
         <FontAwesomeIcon icon={faMagnifyingGlass} onClick={toggleSearch} />
         <FontAwesomeIcon icon={faCartShopping} />
           <FontAwesomeIcon icon={faUser} onClick={handleUserClick} />
+         
           {username && <span>{username}</span>}
           {showLogout && (
             <button onClick={handleLogout}>Logout</button>
