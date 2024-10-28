@@ -37,14 +37,14 @@ function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.left}>
-        <img src='pol-ho-high-resolution-logo-transparent(2).png' alt='logo' />
+        <img src='poloLogo.png' alt='logo' />
         <span>Shop</span>
         <span>About</span>
       </div>
       <div className={styles.right}>
         {showSearch && <input type="text" placeholder="Search" className={styles.searchInput} />}
         <FontAwesomeIcon icon={faMagnifyingGlass} onClick={toggleSearch} />
-        <FontAwesomeIcon icon={faCartShopping} />
+        <FontAwesomeIcon icon={faCartShopping} onClick={() => router.push('/cart')}/>
           <FontAwesomeIcon icon={faUser} onClick={handleUserClick} />
          
           

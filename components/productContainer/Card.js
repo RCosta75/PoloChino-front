@@ -26,7 +26,7 @@ export default function Card({ polo }) {
     }
 
   return (
-    <div className="group relative block overflow-hidden ">
+    <div  className="group relative block overflow-hidden">
       <button className="absolute end-4 top-4 z-10 rounded-full bg-white p-1.5 text-gray-900 transition hover:text-gray-900/75"
       onClick={() => handleLikes()}>
         <span className="sr-only">Wishlist</span>
@@ -37,7 +37,7 @@ export default function Card({ polo }) {
   viewBox="0 0 24 24"
   strokeWidth="1.5"
   stroke="currentColor"
-  className="size-4"
+  classNameName="size-4"
 >
   <path
     strokeLinecap="round"
@@ -47,21 +47,21 @@ export default function Card({ polo }) {
 </svg>
       </button>
       <img
-  src={polo.image}
-  alt={polo.description}
-  className="w-full h-[500px] object-cover transition duration-500 group-hover:scale-105"
-/>
+        src={polo?.image}
+        alt={polo?.description}
+        className="w-full h-[500px] object-cover transition duration-500 group-hover:scale-105 "
+      />
 
-      <div className="relative border border-gray-100 bg-white   p-6">
-        <p className="text-gray-700">{polo.price} €</p>
+      <div className="relative border border-gray-100 bg-white p-6">
+        <p className="text-gray-700">${polo?.price}</p>
 
         <h3 className="mt-1.5 text-lg font-medium text-gray-900">
-          {polo.name}
+          {polo?.name}
         </h3>
 
-        <p className="mt-1.5 h-20 line-clamp-3 text-gray-700">{polo.description}</p>
+        <p className="mt-1.5 line-clamp-3 text-gray-700">{polo?.description}</p>
 
-        <form className="mt-4 flex gap-4">
+        <div className="mt-4 flex gap-4">
           <button className="block w-full rounded bg-gray-100 px-4 py-3 text-sm font-medium text-gray-900 transition hover:scale-105"
           onClick={() => handleCart()}>
             Add to Cart
@@ -69,11 +69,11 @@ export default function Card({ polo }) {
 
           <button
             type="button"
-            className="block w-full rounded bg-gray-900 px-4 py-3 text-sm font-medium text-white transition hover:scale-105"
+            classNameName="block w-full rounded bg-gray-900 px-4 py-3 text-sm font-medium text-white transition hover:scale-105"
           >
             Buy Now
           </button>
-        </form>
+        </div>
       </div>
     </div>
   );
