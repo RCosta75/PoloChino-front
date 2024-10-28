@@ -1,16 +1,31 @@
-.header{
-    height: 5vh;
+.header {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: none;
+    flex-wrap: wrap; 
+  }
   
-
-}
-.left{
+  .left, .right {
     display: flex;
-    justify-content: space-around;
- 
-}
-.right{
-    display: flex;
-    justify-content: space-around;
-}
+    align-items: center;
+    flex-wrap: wrap; 
+  }
+  
+  .left img {
+    width: 50px;
+    height: auto;
+    margin-right: 1rem;
+  }
+  
+  .left span, .right input, .right svg {
+    margin: 0.5rem;
+  }
+  
+.right input {
+    flex: 1;
+    min-width: 100px;
+    border-radius: 50px;
+    padding: 1vh;
+  }

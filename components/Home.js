@@ -4,6 +4,7 @@ import Head from 'next/head';
 
 
 
+
 function Home() {
   
   return (
@@ -12,14 +13,9 @@ function Home() {
         <title>POL-HO - Home</title>
       </Head>
       <Header />
-      <div className={styles.poloContainer}>
-        {/* Nos articles polo */}
-        <h1>polo</h1>
-        <h1>polo</h1>
-        <h1>polo</h1>
-        <h1>polo</h1>
+     
       </div>
-    </div>
+  
   );
 }
 
