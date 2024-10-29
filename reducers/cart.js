@@ -12,16 +12,16 @@ export const trendSlice = createSlice({
   reducers: {
     addToCart: (state, action) => {
       state.value.push(action.payload);
-      console.log(action.payload)
-    },
-    removeCart: (state, action) => {
-      state.value.filter((e) => e === action.payload);
+      console.log(action.payload);
     },
     clearCart: (state, action) => {
-      state.value = [null];
+      state.value = [];
+    },
+    removeCart: (state, action) => {
+      state.value = state.value.filter((e) => e._id !== action.payload);
     },
     addQuantity: (state, action) => {
-      state.value.quantity += 1;
+      state.value.some((e) => e_id === action.payload)
     },
     suppQuantity: (state, action) => {
       state.value.quantity -= 1;
@@ -29,9 +29,6 @@ export const trendSlice = createSlice({
   },
 });
 
-export const { addToCart,
-   removeCart, 
-   clearCart, 
-   addQuantity, 
-   suppQuantity } = trendSlice.actions;
+export const { addToCart, removeCart, clearCart, addQuantity, suppQuantity } =
+  trendSlice.actions;
 export default trendSlice.reducer;

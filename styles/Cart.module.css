@@ -1,0 +1,66 @@
+.title {
+    padding: 20px 50px;
+    border-bottom: 1px solid black;
+    justify-content: space-around;
+    display: flex;
+    flex-direction: row;
+}
+
+.box {
+    display: flex;
+    flex-direction: row;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 90vh;
+    width: 60vw;
+    border: 1px solid red;
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+
+.resume {
+    display: flex;
+    flex-direction: column;
+    height: 90vh;
+    width: 40vw;
+    border: 1px solid blue;
+}
+
+.cardimg {
+    width: 100px;
+    height: 100%;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+}
+
+.cardcontainer {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid black;
+    justify-content: space-between;
+}
+
+.quant {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.modalite {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px;
+
+}
+
+.button {
+    border: solid 1px black;
+    font-size: xx-small;
+}
