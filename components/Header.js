@@ -43,7 +43,7 @@ function Header({ setSearchTerm }) {
   return (
     <header className={styles.header}>
       <div className={styles.left}>
-        <img src='poloLogo.png' alt='logo' />
+        <img src='poloLogo.png' alt='logo' onClick={() => router.push('/')}/>
         <span>Shop</span>
         <span>About</span>
       </div>
