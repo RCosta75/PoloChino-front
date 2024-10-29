@@ -11,8 +11,13 @@ export const trendSlice = createSlice({
   initialState,
   reducers: {
     addToCart: (state, action) => {
-      state.value.push(action.payload);
-      console.log(action.payload);
+      console.log(action.payload)
+      const polo = state.value.find((e) => e._id === action.payload._id)
+      if(polo){
+        polo.quantity++
+      } else {
+        state.value.push(action.payload);
+      }
     },
     clearCart: (state, action) => {
       state.value = [];
@@ -21,10 +26,19 @@ export const trendSlice = createSlice({
       state.value = state.value.filter((e) => e._id !== action.payload);
     },
     addQuantity: (state, action) => {
-      state.value.some((e) => e_id === action.payload)
+      const item = state.value.find((e) => e._id === action.payload)
+      if(item){
+        item.quantity++;
+      };
     },
     suppQuantity: (state, action) => {
-      state.value.quantity -= 1;
+      const item = state.value.find((e) => e._id === action.payload)
+      if(item){
+        item.quantity--;
+        if(item.quantity === 0){
+          state.value = state.value.filter((e) => e._id !== action.payload)
+        }
+      };
     },
   },
 });
