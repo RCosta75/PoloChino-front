@@ -1,12 +1,24 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { addToCart } from "../../reducers/cart";
+import { useRouter } from "next/router";
 
 
 export default function Card({ polo }) {
-
+ 
+  const router = useRouter();
   const dispatch = useDispatch()
   const user = useSelector((state) => state.user.value);
+
+
+
+  const handleImageClick = () => {
+     router.push({ pathname: '/productpage', 
+      query: { product: JSON.stringify(polo) },
+     });
+    }
+    // Utilise router.push avec query pour passer les données 
+    //du produit en tant que chaîne JSON.
 
     // fonction pour gerer les likes dans User.[likes]
     const handleLikes = () => {
@@ -31,13 +43,13 @@ export default function Card({ polo }) {
       onClick={() => handleLikes()}>
         <span className="sr-only">Wishlist</span>
 
-        <svg
+ <svg
   xmlns="http://www.w3.org/2000/svg"
   fill="none"
   viewBox="0 0 24 24"
   strokeWidth="1.5"
   stroke="currentColor"
-  classNameName="size-4"
+  className="size-4"
 >
   <path
     strokeLinecap="round"
@@ -50,6 +62,7 @@ export default function Card({ polo }) {
         src={polo?.image}
         alt={polo?.description}
         className="w-full h-[500px] object-cover transition duration-500 group-hover:scale-105 "
+        onClick={handleImageClick}
       />
 
       <div className="relative border border-gray-100 bg-white p-6">
@@ -69,7 +82,7 @@ export default function Card({ polo }) {
 
           <button
             type="button"
-            classNameName="block w-full rounded bg-gray-900 px-4 py-3 text-sm font-medium text-white transition hover:scale-105"
+            className="block w-full rounded bg-gray-900 px-4 py-3 text-sm font-medium text-white transition hover:scale-105"
           >
             Buy Now
           </button>

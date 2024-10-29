@@ -4,6 +4,7 @@ import Head from 'next/head';
 import ProductContainer from './productContainer/ProductContainer';
 import ProductHeader from './ProductHeader';
 import { useState } from 'react';
+import Footer from './Footer';
 
 
 
@@ -21,9 +22,9 @@ function Home() {
       </Head>
       <Header setSearchTerm={setSearchTerm} />
       <ProductHeader/>
-      <h1 className="text-3xl pt-10 text-center">ALL PRODUCTS</h1>
+      <h1 className="text-3xl pt-32 text-center">ALL PRODUCTS</h1>
       <ProductContainer searchTerm={searchTerm}/>
-     
+      <Footer/>
       </div>
   
   );
