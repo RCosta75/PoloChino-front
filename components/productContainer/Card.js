@@ -43,13 +43,13 @@ export default function Card({ polo }) {
       onClick={() => handleLikes()}>
         <span className="sr-only">Wishlist</span>
 
-        <svg
+ <svg
   xmlns="http://www.w3.org/2000/svg"
   fill="none"
   viewBox="0 0 24 24"
   strokeWidth="1.5"
   stroke="currentColor"
-  classNameName="size-4"
+  className="size-4"
 >
   <path
     strokeLinecap="round"
@@ -82,7 +82,7 @@ export default function Card({ polo }) {
 
           <button
             type="button"
-            classNameName="block w-full rounded bg-gray-900 px-4 py-3 text-sm font-medium text-white transition hover:scale-105"
+            className="block w-full rounded bg-gray-900 px-4 py-3 text-sm font-medium text-white transition hover:scale-105"
           >
             Buy Now
           </button>

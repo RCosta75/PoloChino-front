@@ -21,9 +21,8 @@ function Home() {
       </Head>
       <Header setSearchTerm={setSearchTerm} />
       <ProductHeader/>
-      <h1 className="text-3xl pt-10 text-center">ALL PRODUCTS</h1>
+      <h1 className="text-3xl pt-32 text-center">ALL PRODUCTS</h1>
       <ProductContainer searchTerm={searchTerm}/>
-     
       </div>
   
   );
