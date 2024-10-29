@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router';
- import ProductPage from '../components/productContainer/ProductPage';
+ import ProductPage from '../components/ProductPage'
  import Header from '../components/Header'
+
   export default function ProductPageWrapper(){
      const router = useRouter();
      const product = JSON.parse(router.query.product || '{}');
