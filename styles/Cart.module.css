@@ -43,7 +43,7 @@
     display: flex;
     flex-direction: row;
     border: 1px solid black;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 .quant {
@@ -63,4 +63,10 @@
 .button {
     border: solid 1px black;
     font-size: xx-small;
+}
+
+.droite {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
