@@ -39,12 +39,19 @@
   top: 6%; 
   right: 0%;
   width: 10%;
- 
-
-
-    
-   
   }
+
+  .popoverContent {
+    max-height: 40vh;
+    overflow-y: scroll;
+    scrollbar-width: none;
+  }
+    
+  .headerCart {
+    gap: 20px;
+  }
+   
+  
 .log{
   background-color: rgb(41, 41, 62);
   width: 100%;
