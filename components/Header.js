@@ -27,7 +27,7 @@ function Header({ setSearchTerm }) {
   };
 
   const poloProduct = cart?.map((polo, i) => {
-    return <CartCard key={i} polo={polo} className={styles.headerCart}/>;
+    return <CartCard key={i} polo={polo}/>;
   });
 
   const handleLogout = () => {
@@ -76,7 +76,6 @@ function Header({ setSearchTerm }) {
         <FontAwesomeIcon icon={faMagnifyingGlass} onClick={toggleSearch} />
 
         <Popover
-          overlayStyle={{ maxWidth: "300px", maxHeight: '30vh' }}
           placement="bottom"
           title="My Cart"
           content={popoverContent}
