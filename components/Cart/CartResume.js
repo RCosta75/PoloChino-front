@@ -1,12 +1,12 @@
 import React from "react";
-import styles from "../styles/Cart.module.css";
-import { useEffect, useState,  } from "react";
+import styles from "../../styles/Cart.module.css";
+import { useSelector } from "react-redux";
 
 
 
 export default function CartResume() {
 
-
+    const carto = useSelector((state) => state.cart.value);
 
 
 
