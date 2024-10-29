@@ -11,4 +11,9 @@ body {
 
 * {
   box-sizing: border-box;
+  font-family: 'Roboto Slab', serif;
+}
+
+* > title {
+  font-family: "Roboto";
 }
