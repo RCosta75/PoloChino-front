@@ -2,6 +2,8 @@ import React from 'react';
 import styles from '../../styles/ProductPage.module.css'
 import { addToCart } from "../../reducers/cart";
 import {useDispatch } from "react-redux";
+import Suggestions from '../Suggestions';
+
 
 
 
@@ -13,8 +15,8 @@ export default function ProductPage({ product }) {
         dispatch(addToCart({...product, quantity : 1}))
       }
     return ( 
+         <div className={styles.all}>
         <div className={styles.product}>
-       
         <div className={styles.left}>
           <div className={styles.imagecolumn}>
              <img src={product.image} alt={product.description} />
@@ -54,8 +56,10 @@ export default function ProductPage({ product }) {
          </div>
           <button className={styles.btn} onClick={() => handleCart()} >Add to Cart</button> 
           </div>
-        
         </div>
+
+         <Suggestions/>
+         </div>
           );};
 
 
