@@ -8,11 +8,11 @@ function Cart() {
 
     console.log(cart)
 
-    const poloProduct = cart?.map((polo, i) => {
+    const poloProduct = cart?.map((poloCart, i) => {
         return (
           <div className="w-full h-full">
             <div className=" pt-20 px-11 grid grid-cols-4 gap-8">
-              <Card key={i} polo={polo} />
+              <Card key={i} polo={poloCart} />
             </div>
           </div>
         );
