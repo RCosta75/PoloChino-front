@@ -2,7 +2,7 @@ import React from "react";
 import styles from "../styles/Cart.module.css";
 
 import { useDispatch } from "react-redux";
-import { addQuantity, suppQuantity , removeCart, clearCart } from "../reducers/cart";
+import { addQuantity, suppQuantity , removeCart } from "../reducers/cart";
 
 export default function CartCard({ polo }) {
 
@@ -24,9 +24,9 @@ export default function CartCard({ polo }) {
                 <button onClick={() => dispatch(addQuantity(polo._id))}>+</button>
                 </div>
         </div>
-      <div>
+      <div className={styles.droite}>
         <button onClick={() => dispatch(removeCart(polo._id))}>X</button>
-        <p>{polo.price}</p>
+        <p>{polo.price*polo.quantity}</p>
       </div>
     </div>
   );
