@@ -1,46 +1,30 @@
-export default function Suggestions() {
+import React, { useState, useEffect } from "react"; 
+import { useRouter } from "next/router";
+ export default function Suggestions() {
+   const [polo, setPolo] = useState([]);
+    const router = useRouter(); 
     
-    const products = [
-      {
-        id: 1,
-        image: '/TestPolo (1).jpg',
-        name: "mon oncle",
-        description: 'Cotton Polo Shirt with Collar and Pocket',
-        price: 24.99
-      },
-      {
-        id: 2,
-        image: '/TestPolo (2).jpg',
-        name: "l'oncle de lassana",
-        description: 'Pima Cotton Polo Shirt with V-Neck and Sleeves',
-        price: 29.99
-      },
-      {
-        id: 3,
-        image: '/TestPolo (3).jpg',
-        name: "l'oncle de ramy",
-        description: 'Performance Polo Shirt with Moisture Wicking Fabric',
-        price: 34.99
-      },
-      {
-        id: 4,
-        image: '/TestPolo (4).jpg',
-        name: "l'oncle de bryan",
-        description: 'Performance Polo Shirt with Moisture Wicking Fabric',
-        price: 34.99
-      },
-      {
-        id: 4,
-        image: '/TestPolo (5).jpg',
-        name: "l'oncle de bryan",
-        description: 'Performance Polo Shirt with Moisture Wicking Fabric',
-        price: 34.99
-      },
-     
-    ]
-    
+    useEffect(() => { fetch('http://localhost:3000/polos/get')
+       .then(response => response.json()) 
+       .then(data => { setPolo(data.polos);
+       })}
+       , []);
 
-    const poloProductSuggest =  products.map((poloSuggest, i) => {
+
+      const handleImageClick = (suggestData) => {
+        router.push({ pathname: '/productpage',
+         query: { id: suggestData.id,
+         name: suggestData.name,
+         description: suggestData.description,
+         price: suggestData.price,
+         image: suggestData.image,
+              },});
+              };
+             
+
+       
+
+    const poloProductSuggest =  polo.map((poloSuggest, i) => {
         return (
             <div  className="group relative block overflow-hidden">
 
@@ -65,7 +49,7 @@ export default function Suggestions() {
      </svg>
      
       </button>
-             <img
+             <img onClick={() => handleImageClick(poloSuggest)}
                 src={poloSuggest.image}
                 alt={poloSuggest.description}
                 className="aspect-square w-full h-80 rounded object-cover"
@@ -91,5 +75,9 @@ export default function Suggestions() {
           
         );
       });
+
+
+
+      
       return <div className="flex gap-10 mx-8 relative my-12  ">{poloProductSuggest}</div>;
 }

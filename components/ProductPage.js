@@ -1,15 +1,23 @@
 import React from 'react';
-import styles from '../../styles/ProductPage.module.css'
-import { addToCart } from "../../reducers/cart";
+import styles from '../styles/ProductPage.module.css'
+import { addToCart } from "../reducers/cart";
 import {useDispatch } from "react-redux";
-import Suggestions from '../Suggestions';
+import Suggestions from './Suggestions';
+import { useRouter } from "next/router";
 
 
 
 
-export default function ProductPage({ product }) {
+
+export default function ProductPage() {
     // Récupère les données du produit via des props.
     const dispatch = useDispatch()
+    const router = useRouter(); 
+    const { id, name, description, price, image } = router.query;
+    //Récupère les données du produit depuis query
+
+    const product = { id, name, description, price, image };
+    
 
     const handleCart = () => {
         dispatch(addToCart({...product, quantity : 1}))

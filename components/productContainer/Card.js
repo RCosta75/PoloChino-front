@@ -13,12 +13,17 @@ export default function Card({ polo }) {
 
 
   const handleImageClick = () => {
-     router.push({ pathname: '/productpage', 
-      query: { product: JSON.stringify(polo) },
-     });
-    }
-    // Utilise router.push avec query pour passer les données 
-    //du produit en tant que chaîne JSON.
+    router.push({ pathname: '/productpage',
+     query: { id: polo.id,
+     name: polo.name,
+     description: polo.description,
+     price: polo.price,
+     image: polo.image,
+          },});
+          };
+        // Utilise router.push avec les données du produit dans query pour
+        //rediriger vers ProductPage.
+
 
     // fonction pour gerer les likes dans User.[likes]
     const handleLikes = () => {
@@ -28,12 +33,12 @@ export default function Card({ polo }) {
         body: JSON.stringify({
           id: polo._id,
           token: user.token,
-        }),
+      }),
       }).then();
     };
 
     // Envoi les donnée du polo dans reducer + {quantity : 1}
-    const handleCart = (polo) => {
+    const handleCart = () => {
       dispatch(addToCart({...polo, quantity : 1}))
     }
 
@@ -76,7 +81,7 @@ export default function Card({ polo }) {
 
         <div className="mt-4 flex gap-4">
           <button className="block w-full rounded bg-gray-100 px-4 py-3 text-sm font-medium text-gray-900 transition hover:scale-105"
-          onClick={() => handleCart(polo)}>
+          onClick={() => handleCart()}>
             Add to Cart
           </button>
 
