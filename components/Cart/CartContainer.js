@@ -17,7 +17,7 @@ export default function CartContainer() {
   return (
     <div className={styles.container}>
       <h3 className={styles.title}>
-        ARTICLE DU PANIER{" "}
+        ARTICLE DU PANIER
         <button className={styles.button} onClick={() => dispatch(clearCart())}>
           CLEAR CART
         </button>
