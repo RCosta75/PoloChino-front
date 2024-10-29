@@ -21,8 +21,7 @@ export default function Card({ polo }) {
      image: polo.image,
           },});
           };
-        // Utilise router.push avec les données du produit dans query pour
-        //rediriger vers ProductPage.
+ //Utilise router.push avec les données du produit dans query pour rediriger vers ProductPage.
 
 
     // fonction pour gerer les likes dans User.[likes]

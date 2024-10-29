@@ -1,8 +1,16 @@
 .main{
     height: 100vh;
-    display: flex;
-    
+    display: flex;  
 }
+.main img{
+    height: 10vh;
+    width: 10vh;
+    padding: 1vh;
+}
+.main img:hover{
+    cursor: pointer;
+}
+
 .left{
     width: 50%;
     display: flex;

@@ -56,6 +56,7 @@ function Login() {
   
    return (
     <div className={styles.main}>
+       <img src="poloLogo.png" alt="logo" onClick={() => router.push("/")} />
     <div className={styles.left}>
       <h3>{signState}</h3> {/*  Par default SignIn */}
       {/* Si SignUp on rajoute l'input username en plus sinon null*/}
