@@ -8,11 +8,13 @@ function Cart() {
 
     console.log(cart)
 
-    const poloProduct = cart?.map((poloCart, i) => {
+    const vide = <span>Your Cart is empty, fill it with POLOS</span>
+
+    const poloProduct = cart?.map((polo, i) => {
         return (
           <div className="w-full h-full">
             <div className=" pt-20 px-11 grid grid-cols-4 gap-8">
-              <Card key={i} polo={poloCart} />
+              <Card key={i} polo={polo} />
             </div>
           </div>
         );
@@ -22,7 +24,7 @@ function Cart() {
   return (
     <>
   <Header />
-    {poloProduct}
+    {poloProduct ? poloProduct : vide}
     </>
 );
 }
