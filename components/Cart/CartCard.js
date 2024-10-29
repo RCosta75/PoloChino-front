@@ -1,31 +1,47 @@
 import React from "react";
-import styles from "../../styles/Cart.module.css";
-
 import { useDispatch } from "react-redux";
-import { addQuantity, suppQuantity, removeCart } from "../../reducers/cart";
+import { addQuantity, suppQuantity } from "../../reducers/cart";
 
 export default function CartCard({ polo }) {
   const dispatch = useDispatch();
 
   return (
-    <div className={styles.cardcontainer}>
-      <img className={styles.cardimg} src={polo.image} />
-      <div className={styles.card}>
-        <h4>{polo.name}</h4>
-        <span>{polo.price}</span>
-        <span>Taille : 52</span>
-        <span>{polo.color}</span>
-        <div className={styles.quant}>
-          <span>Quantité</span>
-          <button onClick={() => dispatch(suppQuantity(polo._id))}>-</button>
-          <span>{polo.quantity}</span>
-          <button onClick={() => dispatch(addQuantity(polo._id))}>+</button>
+    <div className="mx-auto max-w-2xl px-4" >
+      <div className="flex items-center py-6">
+        <img className="h-28 w-28 object-cover rounded-md " src={polo.image} />
+        <div className="ml-4 flex-auto" >
+        <div className="flex justify-between">
+            <h4>{polo.name}</h4>
+            <span>{polo.price*polo.quantity} €</span>
         </div>
+          <p>Taille : 52</p>
+          <p>{polo.color}</p>
+       <div>
+       <div>
+
+
+{/* INCREASE & DECREASE BUTTON */}
+
+  <div className="flex items-center   rounded border border-gray-200">
+    <button type="button" onClick={() => dispatch(suppQuantity(polo._id))} className="size-10 leading-10 text-gray-600 transition hover:opacity-75">
+      -
+    </button>
+
+    <span className="w-16 border-transparent text-center" >{polo.quantity}</span>
+
+    <button type="button" onClick={() => dispatch(addQuantity(polo._id))} className="size-10 leading-10 text-gray-600 transition hover:opacity-75">
+      +
+    </button>
+  </div>
+</div>
+       </div>
+     
+        </div>   
       </div>
-      <div className={styles.droite}>
-        <button onClick={() => dispatch(removeCart(polo._id))}>X</button>
-        <p>{polo.price * polo.quantity}</p>
-      </div>
+   
     </div>
+  
+    
   );
 }
+

@@ -1,9 +1,7 @@
 import React from "react";
-import styles from "../../styles/Cart.module.css";
-import CartCard from "./CartCard";
-
 import { useDispatch, useSelector } from "react-redux";
 import { clearCart } from "../../reducers/cart";
+import LeftBasketResume from "./LeftBasketResume";
 
 export default function CartContainer() {
   const dispatch = useDispatch();
@@ -11,18 +9,21 @@ export default function CartContainer() {
   const carto = useSelector((state) => state.cart.value);
 
   const poloProduct = carto?.map((polo, i) => {
-    return <CartCard key={i} polo={polo} />;
+    return <LeftBasketResume key={i} polo={polo} />
+    ;
   });
 
   return (
-    <div className={styles.container}>
-      <h3 className={styles.title}>
-        ARTICLE DU PANIER
-        <button className={styles.button} onClick={() => dispatch(clearCart())}>
-          CLEAR CART
-        </button>
-      </h3>
+    <div className="w-1/2">
+    <div className="flex items-center justify-between mx-36 py-20 text-xl">
+      
+         <h1 > CART ARTICLES</h1> 
+          <button className=" block  rounded bg-gray-900 px-4 py-3 font-medium text-white transition hover:scale-105"  onClick={()=> dispatch(clearCart())}>CLEAR CART</button>
+
+    </div>
+   
       <div>{poloProduct}</div>
+      
     </div>
   );
 }
