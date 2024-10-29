@@ -1,12 +1,13 @@
 import React from "react";
 import Card from "./Card";
-import { useEffect, useState } from "react";
+import { useEffect, useState,  } from "react";
 
 
 
-export default function ProductContainer() {
+export default function ProductContainer({ searchTerm }) {
 
-  const [poloData, setPoloData] = useState();
+  const [poloData, setPoloData] = useState([]);
+  //Filtrez les articles en fonction du terme de recherche dans ProductContainer
 
   useEffect(() => {
     fetch("http://localhost:3000/polos/get")
@@ -17,10 +18,16 @@ export default function ProductContainer() {
       });
   }, []);
 
+  const filteredPolos = poloData.filter((polo) =>
+     polo.name && polo.name.toLowerCase().includes(searchTerm.toLowerCase()) );
+  //Filtrage des articles en fonction 
+  //du terme de recherche et affichage des résultats filtrés.
+  // (polo.name && polo.name) pour vérifier l'existence du produit
 
-  const poloProduct = poloData?.map((polo, i) => {
+
+  const poloProduct =  filteredPolos.map((polo, i) => {
     return (
-      <div >
+      <div  >
           <Card key={i} polo={polo} />
       </div>
     );

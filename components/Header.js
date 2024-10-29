@@ -6,12 +6,18 @@ import { logout } from '../reducers/user';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 
-function Header() {
+function Header({ setSearchTerm }) {
+  //Passez le terme de recherche et la fonction de mise à jour de l'état de recherche au composant Header.
   const dispatch = useDispatch();
   const router = useRouter();
   const user = useSelector(state => state.user.value);
   const [showLogout, setShowLogout] = useState(false); // On ne l'affiche pas initialement
   const [showSearch, setShowSearch] = useState(false); // On ne l'affiche pas initialement
+  const [searchInput, setSearchInput] = useState('');
+
+
+  const handleSearch = () => { setSearchTerm(searchInput); };
+
 
   const handleLogout = () => {
     dispatch(logout());
@@ -42,7 +48,10 @@ function Header() {
         <span>About</span>
       </div>
       <div className={styles.right}>
-        {showSearch && <input type="text" placeholder="Search" className={styles.searchInput} />}
+        {showSearch && <input type="text" placeholder="Search" className={styles.searchInput} 
+        value={searchInput} 
+        onChange={(e) => setSearchInput(e.target.value)} />}
+        <button onClick={handleSearch}>Go</button>
         <FontAwesomeIcon icon={faMagnifyingGlass} onClick={toggleSearch} />
         <FontAwesomeIcon icon={faCartShopping} onClick={() => router.push('/cart')}/>
           <FontAwesomeIcon icon={faUser} onClick={handleUserClick} />
