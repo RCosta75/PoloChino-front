@@ -1,12 +1,24 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { addToCart } from "../../reducers/cart";
+import { useRouter } from "next/router";
 
 
 export default function Card({ polo }) {
-
+ 
+  const router = useRouter();
   const dispatch = useDispatch()
   const user = useSelector((state) => state.user.value);
+
+
+
+  const handleImageClick = () => {
+     router.push({ pathname: '/productpage', 
+      query: { product: JSON.stringify(polo) },
+     });
+    }
+    // Utilise router.push avec query pour passer les données 
+    //du produit en tant que chaîne JSON.
 
     // fonction pour gerer les likes dans User.[likes]
     const handleLikes = () => {
@@ -50,6 +62,7 @@ export default function Card({ polo }) {
         src={polo?.image}
         alt={polo?.description}
         className="w-full h-[500px] object-cover transition duration-500 group-hover:scale-105 "
+        onClick={handleImageClick}
       />
 
       <div className="relative border border-gray-100 bg-white p-6">

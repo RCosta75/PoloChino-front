@@ -5,6 +5,15 @@ import { useSelector } from 'react-redux';
 function Cart() {
 
     const cart =  useSelector(state => state.cart.value);
+    if (!cart || cart.length === 0) { 
+      return ( <> 
+      <Header /> 
+      <div> 
+        <h2>Your cart is empty!</h2>
+         <p>Add some items to your cart to see them here.</p>
+          
+         </div> 
+         </> ); }
 
     console.log(cart)
 
