@@ -10,7 +10,6 @@ import { useRouter } from "next/router";
 
 
 export default function ProductPage() {
-    // Récupère les données du produit via des props.
     const dispatch = useDispatch()
     const router = useRouter(); 
     const { id, name, description, price, image } = router.query;

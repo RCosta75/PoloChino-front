@@ -13,8 +13,10 @@ import { useRouter } from "next/router";
 import { Popover } from "antd";
 import CartCard from "./Cart/CartCard";
 
-function Header({ setSearchTerm }) {
+function Header({ setSearchTerm, handleReset }) {
   //Passez le terme de recherche et la fonction de mise à jour de l'état de recherche au composant Header.
+  //Passez handleReset en props.
+
   const dispatch = useDispatch();
   const router = useRouter();
   const user = useSelector((state) => state.user.value);
@@ -22,6 +24,8 @@ function Header({ setSearchTerm }) {
   const [showLogout, setShowLogout] = useState(false); // On ne l'affiche pas initialement
   const [showSearch, setShowSearch] = useState(false); // On ne l'affiche pas initialement
   const [searchInput, setSearchInput] = useState("");
+
+  
 
   const handleSearch = () => {
     setSearchTerm(searchInput);
@@ -65,11 +69,14 @@ function Header({ setSearchTerm }) {
   const popoverContent = (
     <div className={styles.popoverContent}>{poloProduct}</div>
   );
+  
 
   return (
     <header className={styles.header}>
       <div className={styles.left}>
-        <img src="poloLogo.png" alt="logo" onClick={() => router.push("/")} />
+       <img src="poloLogo.png" alt="logo" onClick={() => {router.push("/"); handleReset()}} />
+       {/* Rediriger vers la page d'accueil (router.push("/")).
+       Appeler la fonction handleReset pour réinitialiser les états. */}
         <span onClick={() => document.getElementById("products").scrollIntoView({ behavior: 'smooth' })}>Shop</span>
         <span>About</span>
       </div>

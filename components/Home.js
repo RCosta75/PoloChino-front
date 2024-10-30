@@ -15,13 +15,19 @@ function Home() {
   //Etat pour gérer la recherche dans le composant parent.
   //Utilisation d'un état pour stocker 
   //le terme de recherche et le passer comme prop au composant Header.
+const [reset, setReset] = useState(false);
+ const handleReset = () => { setSearchTerm('');
+   setReset(!reset);} 
+   // initialise un état reset avec une valeur initiale de false.
+   // setReset pour mettre à jour cet état.
+   //handleReset réinitialise searchTerm et inverse l'état reset.
   
   return (
     <div className={styles.home}>
        <Head>
         <title>POL-HO - Home</title>
       </Head>
-      <Header setSearchTerm={setSearchTerm} />
+      <Header setSearchTerm={setSearchTerm} handleReset={handleReset} />
       {!searchTerm && (
         <div className={styles.main}>
       <ProductHeader/>

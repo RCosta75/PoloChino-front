@@ -14,6 +14,7 @@ export default function LikeContainer() {
         .then((response) => response.json())
         .then((data) => {
           setPoloData(data.likes);
+          console.log(poloData);
         });
     }, []);
 
