@@ -1,10 +1,22 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { addQuantity, removeCart, suppQuantity } from '../../reducers/cart';
+import { useState } from 'react';
 
 
-export default function LeftBasketResume({ polo }) {
+export default function LeftBasketDetails({ polo }) {
   const dispatch = useDispatch();
+  const [selectedSize, setSelectedSize] = useState('M'); //taille par default
+  const [selectedColor, setSelectedColor] = useState('White');//couleur par default
+  const handleSizeChange = (size) => {
+     setSelectedSize(size); }
+     //met à jour selectedSize lorsqu'une nouvelle taille est sélectionnée.
+     
+    const handleColorChange = (color) => {
+      setSelectedColor(color); }
+ //met à jour selectedColor lorsqu'une nouvelle couleur est sélectionnée.
+
+
 
   return (
     <div className="mx-20 px-4 py-6">
@@ -15,8 +27,29 @@ export default function LeftBasketResume({ polo }) {
             <h4>{polo.name}</h4>
             <span>{(polo.price * polo.quantity).toFixed(2)} €</span>
           </div>
-          <p className="py-10">Taille : 52</p>
-          <p>{polo.color}</p>
+
+          <p className="py-2">Taille :</p>
+              <select value={selectedSize} onChange={handleSizeChange}
+               className="px-4 py-2 border border-gray-200"> {['XS', 'S', 'M', 'L', 'XL', 'XXL'].map(
+                size => ( <option key={size} value={size}>{size}</option>))}
+                 </select>
+        
+
+
+
+          <p>Couleur :</p>
+              {/* select = Élément conteneur pour le menu déroulant. */}
+              {polo.color && (
+            <select value={selectedColor} onChange={handleColorChange} 
+            className="px-4 py-2 border border-gray-200">
+               {['Blanc', 'Bleu', 'Vert', 'Jaune', 'Rouge'].map(
+                color => ( <option key={color} value={color}>{color}</option> 
+                ))} 
+                </select>)}
+
+
+
+
           <div className="py-10">
             <div className="flex items-center w-40 rounded border border-gray-200 mb-10">
               <button

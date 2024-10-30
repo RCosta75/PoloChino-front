@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { clearCart } from "../../reducers/cart";
 import LeftBasketDetails from "./LeftBasketDetails";
 
+
 export default function LeftBasket() {
   const dispatch = useDispatch();
 
