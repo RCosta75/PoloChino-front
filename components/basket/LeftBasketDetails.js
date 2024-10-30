@@ -28,14 +28,14 @@ export default function LeftBasketDetails({ polo }) {
             <span>{(polo.price * polo.quantity).toFixed(2)} €</span>
           </div>
 
-          <span className="py-2">Taille :    </span>
+          <span className="py-2">Size :    </span>
           {!polo.size ? (
               <select value={selectedSize} onChange={handleSizeChange}
                className="px-4 py-2 border border-gray-200"> {['XS', 'S', 'M', 'L', 'XL', 'XXL'].map(
                 size => ( <option key={size} value={size}>{size}</option>))}
                  </select>) : <span>{polo.size}</span>}
         
-            <p>Couleur :
+            <p>Color :
               {/* select = Élément conteneur pour le menu déroulant. */}
               {!polo.color ? (
             <select value={selectedColor} onChange={handleColorChange} 
