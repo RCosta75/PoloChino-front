@@ -12,7 +12,7 @@ export default function PopOverBasket ({ polo }) {
         <div className="ml-4 flex-auto" >
         <div className="flex justify-between">
             <h4>{polo.name}</h4>
-            <span>{polo.price*polo.quantity} €</span>
+            <span>{(polo.price*polo.quantity).toFixed(2)} €</span>
         </div>
           <p>{polo.size}</p>
           <p>{polo.color}</p>
