@@ -8,7 +8,6 @@ import { useState } from 'react';
 
 
 export default function ProductPage() {
-    // Récupère les données du produit via des props.
     const dispatch = useDispatch()
     const router = useRouter(); 
     const { _id, name, description, price, image } = router.query;
