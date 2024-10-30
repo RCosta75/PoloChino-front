@@ -43,6 +43,7 @@ function Header({ setSearchTerm }) {
   const handleLogout = () => {
     dispatch(logout());
     setShowLogout(false);
+    router.push("/")
   };
 
   const redirectToLogin = () => {
@@ -102,7 +103,7 @@ function Header({ setSearchTerm }) {
         </Popover>
 
         <FontAwesomeIcon icon={faUser} className={styles.rightIcon } onClick={handleUserClick} />
-        <FontAwesomeIcon icon={faHeart} className={styles.rightIcon } onClick={handleUserClick} />
+        <FontAwesomeIcon icon={faHeart} className={styles.rightIcon }/>
 
         {showLogout && (
           <div className={styles.btn}>
