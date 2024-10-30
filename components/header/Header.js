@@ -1,4 +1,4 @@
-import styles from "../styles/Header.module.css";
+import styles from "../../styles/Header.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faUser,
@@ -7,11 +7,11 @@ import {
   faHeart,
 } from "@fortawesome/free-solid-svg-icons";
 import React, { useState } from "react";
-import { logout } from "../reducers/user";
+import { logout } from "../../reducers/user";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import { Popover } from "antd";
-import PopOverBasket from "./basket/PopOverBasket";
+import PopOverBasket from "./PopOverBasket";
 
 
 function Header({ setSearchTerm }) {

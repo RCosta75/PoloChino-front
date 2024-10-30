@@ -1,7 +1,6 @@
 import LeftBasket from "../components/Basket/LeftBasket";
 import RightBasket from "../components/Basket/RightBasket";
-import Header from "../components/Header";
-
+import Header from "../components/header/Header";
 
 function Basket() {
   return (
