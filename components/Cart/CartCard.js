@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { addQuantity, suppQuantity } from "../../reducers/cart";
 
 export default function CartCard({ polo }) {
+  
   const dispatch = useDispatch();
 
   return (
@@ -14,7 +15,7 @@ export default function CartCard({ polo }) {
             <h4>{polo.name}</h4>
             <span>{polo.price*polo.quantity} €</span>
         </div>
-          <p>Taille : 52</p>
+          <p>{polo.size}</p>
           <p>{polo.color}</p>
        <div>
        <div>

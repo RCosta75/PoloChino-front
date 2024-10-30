@@ -12,16 +12,16 @@ export default function LeftBasketResume({ polo }) {
         <img className="h-96 w-96 object-cover rounded-md" src={polo.image} alt={polo.name} />
         <div className="ml-10 mt-10 flex-auto">
           <div className="flex justify-between">
-            <h4>{polo.name}</h4>
+            <h4>{polo.name}         </h4>
             <span>{(polo.price * polo.quantity).toFixed(2)} €</span>
           </div>
-          <p className="py-10">Taille : 52</p>
+          <p className="py-10">{polo.size}</p>
           <p>{polo.color}</p>
           <div className="py-10">
             <div className="flex items-center w-40 rounded border border-gray-200 mb-10">
               <button
                 type="button"
-                onClick={() => dispatch(suppQuantity(polo._id))}
+                onClick={() => dispatch(suppQuantity(polo))}
                 className="size-10 leading-10 text-gray-600 transition hover:opacity-75"
               >
                 -
@@ -35,7 +35,8 @@ export default function LeftBasketResume({ polo }) {
                 +
               </button>
             </div>
-          <button className=" block w-full rounded bg-gray-900 px-4 py-3 text-lg font-medium text-white transition hover:scale-105"  onClick={()=> dispatch(removeCart(polo._id))}>Remove Article</button>
+          <button className=" block w-full rounded bg-gray-900 px-4 py-3 text-lg font-medium text-white transition hover:scale-105"  
+          onClick={()=> dispatch(removeCart(polo))}>Remove Article</button>
           </div>
         </div>
       </div>
