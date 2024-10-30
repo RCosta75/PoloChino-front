@@ -5,9 +5,6 @@ import ProductContainer from './productContainer/ProductContainer';
 import ProductHeader from './ProductHeader';
 import { useState } from 'react';
 import Footer from './Footer';
-import styles from "../styles/Home.module.css";
-
-
 
 
 function Home() {
@@ -17,15 +14,13 @@ function Home() {
   //le terme de recherche et le passer comme prop au composant Header.
   
   return (
-    <div className={styles.home}>
+    <div >
        <Head>
         <title>POL-HO - Home</title>
       </Head>
       <Header setSearchTerm={setSearchTerm} />
       {!searchTerm && (
-        <div className={styles.main}>
       <ProductHeader/>
-      </div>
     )}
     {searchTerm  ? 
   <h1 className="text-3xl pt-32 text-center" >{searchTerm}</h1>

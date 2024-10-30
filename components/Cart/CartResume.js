@@ -2,12 +2,9 @@ import React from "react";
 import {  useSelector } from "react-redux";
 import { totalBasket } from "../../reducers/cart";
 
-
 export default function CartResume() {
 
-  
     const cartQuantity = useSelector(totalBasket);
-
   
 return(
     <div className="w-1/2 h-screen  " >
