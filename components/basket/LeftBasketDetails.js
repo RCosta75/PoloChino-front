@@ -52,7 +52,7 @@ export default function LeftBasketDetails({ polo }) {
             <div className="flex items-center w-40 rounded border border-gray-200 mb-10">
               <button
                 type="button"
-                onClick={() => dispatch(suppQuantity(polo._id))}
+                onClick={() => dispatch(suppQuantity(polo))}
                 className="size-10 leading-10 text-gray-600 transition hover:opacity-75"
               >
                 -
@@ -66,7 +66,7 @@ export default function LeftBasketDetails({ polo }) {
                 +
               </button>
             </div>
-          <button className=" block w-full rounded bg-gray-900 px-4 py-3 text-lg font-medium text-white transition hover:scale-105"  onClick={()=> dispatch(removeCart(polo._id))}>Remove Article</button>
+          <button className=" block w-full rounded bg-gray-900 px-4 py-3 text-lg font-medium text-white transition hover:scale-105"  onClick={()=> dispatch(removeCart(polo))}>Remove Article</button>
           </div>
         </div>
       </div>
