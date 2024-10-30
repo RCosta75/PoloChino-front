@@ -14,7 +14,6 @@ export const trendSlice = createSlice({
   reducers: {
     addToCart: (state, action) => {
       console.log(action.payload);
-      console.log(typeof state.value, "type of in add");
       const polo = state.value.find(
         (e) => e._id === action.payload._id && e.size === action.payload.size
       );
