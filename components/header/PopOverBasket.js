@@ -14,7 +14,7 @@ export default function PopOverBasket ({ polo }) {
             <h4>{polo.name}</h4>
             <span>{polo.price*polo.quantity} €</span>
         </div>
-          <p>Taille : 52</p>
+          <p>{polo.size}</p>
           <p>{polo.color}</p>
        <div>
        <div>
