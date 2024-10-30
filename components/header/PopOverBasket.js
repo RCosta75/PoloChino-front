@@ -23,13 +23,13 @@ export default function PopOverBasket ({ polo }) {
 {/* INCREASE & DECREASE BUTTON */}
 
   <div className="flex items-center   rounded border border-gray-200">
-    <button type="button" onClick={() => dispatch(suppQuantity(polo._id))} className="size-10 leading-10 text-gray-600 transition hover:opacity-75">
+    <button type="button" onClick={() => dispatch(suppQuantity(polo))} className="size-10 leading-10 text-gray-600 transition hover:opacity-75">
       -
     </button>
 
     <span className="w-16 border-transparent text-center" >{polo.quantity}</span>
 
-    <button type="button" onClick={() => dispatch(addQuantity(polo._id))} className="size-10 leading-10 text-gray-600 transition hover:opacity-75">
+    <button type="button" onClick={() => dispatch(addQuantity(polo))} className="size-10 leading-10 text-gray-600 transition hover:opacity-75">
       +
     </button>
   </div>

@@ -29,7 +29,7 @@ export default function LeftBasketDetails({ polo }) {
               <span className="w-16 border-transparent text-center">{polo.quantity}</span>
               <button
                 type="button"
-                onClick={() => dispatch(addQuantity(polo._id))}
+                onClick={() => dispatch(addQuantity(polo))}
                 className="size-10 leading-10 text-gray-600 transition hover:opacity-75"
               >
                 +

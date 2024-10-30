@@ -33,17 +33,17 @@ export const trendSlice = createSlice({
       );
     },
     addQuantity: (state, action) => {
-      const item = state.value.find((e) => e._id === action.payload);
+      const item = state.value.find((e) => e._id === action.payload._id && e.size === action.payload.size);
       if (item) {
         item.quantity++;
       }
     },
     suppQuantity: (state, action) => {
-      const item = state.value.find((e) => e._id === action.payload._id);
+      const item = state.value.find((e) => e._id === action.payload._id && e.size === action.payload.size);
       if (item) {
         item.quantity--;
         if (item.quantity === 0) {
-          state.value = state.value.filter((e) => e._id !== action.payload._id && e.size !== action.payload.size);
+          state.value = state.value.filter((e) => e._id !== action.payload._id || e.size !== action.payload.size);
         }
       }
     },
