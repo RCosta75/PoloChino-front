@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { addToCart } from "../../reducers/cart";
 import { useRouter } from "next/router";
+import { reRender } from "../../reducers/cart";
 
 
 export default function Card({ polo }) {
@@ -38,8 +39,9 @@ export default function Card({ polo }) {
           id: polo._id,
           token: user.token,
       }),
-      }).then()
-        
+      }).then(() => {
+        dispatch(reRender())
+      })
       };
     ;
 
