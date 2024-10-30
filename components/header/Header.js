@@ -14,10 +14,11 @@ import { Popover } from "antd";
 import PopOverBasket from "./PopOverBasket";
 
 
-function Header({ setSearchTerm, handleReset }) {
-  //Passez le terme de recherche et la fonction de mise à jour de l'état de recherche au composant Header.
-  //Passez handleReset en props.
 
+function Header({ setSearchTerm, handleReset }) {
+  //Passez le terme de recherche au composant Header.
+  //Passez la fonction handleReset en props a header
+  
   const dispatch = useDispatch();
   const router = useRouter();
   const user = useSelector((state) => state.user.value);
@@ -31,6 +32,9 @@ function Header({ setSearchTerm, handleReset }) {
   const handleSearch = () => {
     setSearchTerm(searchInput);
   };
+  //lorsque cette fonction est appelée, elle prend la valeur de searchInput qui représente  
+  //ce que l'utilisateur a tapé dans la barre de recherche
+  // et met à jour searchTerm avec cette valeur.
 
   const handleKeyDown = (event) => {
     if (event.key === 'Enter') {
@@ -71,13 +75,15 @@ function Header({ setSearchTerm, handleReset }) {
     <div className={styles.popoverContent}>{poloProduct}</div>
   );
   const res = () => {
-   router.push("/")
+    setSearchInput('');
+    handleReset();
+   router.push("/");
      }
 
   return (
     <header className={styles.header}>
       <div className={styles.left}>
-       <img src="poloLogo.png" alt="logo" onClick={() => res()} />
+       <img src="poloLogo.png" alt="logo" onClick={res} />
        {/* Rediriger vers la page d'accueil (router.push("/")).
        Appeler la fonction handleReset pour réinitialiser les états. */}
         <span onClick={() => document.getElementById("products").scrollIntoView({ behavior: 'smooth' })}>Shop</span>
@@ -85,20 +91,16 @@ function Header({ setSearchTerm, handleReset }) {
       </div>
     
       <div className={styles.right}>
-     
-        {showSearch && (
-          <input
-            type="text"
-            placeholder="Search"
-            className={styles.searchInput}
-            onKeyDown={handleKeyDown}
-            value={searchInput}
-            onChange={(e) => setSearchInput(e.target.value)}
-          />
-        )}
-       
-        <FontAwesomeIcon icon={faMagnifyingGlass} className={styles.rightIcon } onClick={toggleSearch} />
-        
+        {/* si l'on est pas dans la page home l'icone et l'input ne s'affichent pas */}
+      {router.pathname === "/" && (
+         <> {showSearch && ( 
+         <input type="text" placeholder="Search"
+          className={styles.searchInput}
+           onKeyDown={handleKeyDown} 
+          value={searchInput}
+          onChange={(e) => setSearchInput(e.target.value)} /> )}
+           <FontAwesomeIcon icon={faMagnifyingGlass} className={styles.rightIcon } onClick={toggleSearch} />
+            </> )}
        
 
         <Popover
