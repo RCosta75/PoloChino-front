@@ -70,12 +70,14 @@ function Header({ setSearchTerm, handleReset }) {
   const popoverContent = (
     <div className={styles.popoverContent}>{poloProduct}</div>
   );
-  
+  const res = () => {
+   router.push("/")
+     }
 
   return (
     <header className={styles.header}>
       <div className={styles.left}>
-       <img src="poloLogo.png" alt="logo" onClick={() => {router.push("/"); handleReset()}} />
+       <img src="poloLogo.png" alt="logo" onClick={() => res()} />
        {/* Rediriger vers la page d'accueil (router.push("/")).
        Appeler la fonction handleReset pour réinitialiser les états. */}
         <span onClick={() => document.getElementById("products").scrollIntoView({ behavior: 'smooth' })}>Shop</span>
