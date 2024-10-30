@@ -1,15 +1,15 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { clearCart } from "../../reducers/cart";
-import LeftBasketResume from "./LeftBasketResume";
+import LeftBasketDetails from "./LeftBasketDetails";
 
-export default function CartContainer() {
+export default function LeftBasket() {
   const dispatch = useDispatch();
 
   const carto = useSelector((state) => state.cart.value);
 
   const poloProduct = carto?.map((polo, i) => {
-    return <LeftBasketResume key={i} polo={polo} />
+    return <LeftBasketDetails key={i} polo={polo} />
     ;
   });
 

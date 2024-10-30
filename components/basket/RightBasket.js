@@ -2,7 +2,7 @@ import React from "react";
 import {  useSelector } from "react-redux";
 import { totalBasket } from "../../reducers/cart";
 
-export default function CartResume() {
+export default function RightBasket() {
 
     const cartQuantity = useSelector(totalBasket);
   

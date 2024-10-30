@@ -11,7 +11,7 @@ import { logout } from "../reducers/user";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import { Popover } from "antd";
-import CartCard from "./Cart/CartCard";
+import CartCard from "./basket/CartCard";
 
 function Header({ setSearchTerm }) {
   //Passez le terme de recherche et la fonction de mise à jour de l'état de recherche au composant Header.
