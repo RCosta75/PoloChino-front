@@ -1,8 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { addToCart } from "../../reducers/cart";
 import { useRouter } from "next/router";
-import { reRender } from "../../reducers/cart";
+import { addToCart, reRender } from "../../../reducers/cart";
 
 
 export default function Card({ polo }) {
