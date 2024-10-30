@@ -8,6 +8,7 @@ export default function LikeContainer() {
     const [poloData, setPoloData] = useState([]);
 
     const user = useSelector((state) => state.user.value);
+    const render = useSelector((state) => state.cart.render);
   
     useEffect(() => {
       fetch(`http://localhost:3000/likes/display/${user.token}`)
@@ -16,12 +17,12 @@ export default function LikeContainer() {
           setPoloData(data.likes);
           console.log(poloData);
         });
-    }, []);
+    }, [render]);
 
     const poloProduct =  poloData.map((polo, i) => {
         return (
           <div  >
-              <Card key={i} polo={polo} />
+              <Card key={i} polo={polo}  />
           </div>
         );
       });

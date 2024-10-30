@@ -1,25 +1,24 @@
 import React from 'react';
 import styles from '../styles/ProductPage.module.css'
-import { addToCart } from "../reducers/cart";
+import { addToCart } from "../../reducers/cart";
 import {useDispatch } from "react-redux";
 import Suggestions from './Suggestions';
 import { useRouter } from "next/router";
-
-
-
+import { useState } from 'react';
 
 
 export default function ProductPage() {
     const dispatch = useDispatch()
     const router = useRouter(); 
-    const { id, name, description, price, image } = router.query;
+    const { _id, name, description, price, image } = router.query;
     //Récupère les données du produit depuis query
 
-    const product = { id, name, description, price, image };
+    const product = { _id, name, description, price, image };
     
+    const [taille,setTaille] = useState('')
 
     const handleCart = () => {
-        dispatch(addToCart({...product, quantity : 1}))
+        dispatch(addToCart({...product, quantity : 1, size : taille}))
       }
     return ( 
          <div className={styles.all}>
@@ -54,10 +53,10 @@ export default function ProductPage() {
          <div>
             <h4>Size</h4>
             <div className={styles.sizes}>
-                 <div className={styles.sizescontainer}>S</div>
-                 <div className={styles.sizescontainer}>M</div>
-                 <div className={styles.sizescontainer}>L</div>
-                 <div className={styles.sizescontainer}>XL</div>
+                 <button className={styles.sizescontainer} onClick={() => setTaille("S")}>S</button>
+                 <button className={styles.sizescontainer} onClick={() => setTaille("M")}>M</button>
+                 <button className={styles.sizescontainer} onClick={() => setTaille("L")}>L</button>
+                 <button className={styles.sizescontainer} onClick={() => setTaille("XL")}>XL</button>
             </div>
             
          </div>

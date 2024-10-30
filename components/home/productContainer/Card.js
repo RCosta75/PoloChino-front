@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { addToCart } from "../../reducers/cart";
 import { useRouter } from "next/router";
+import { addToCart, reRender } from "../../../reducers/cart";
 
 
 export default function Card({ polo }) {
@@ -12,13 +12,13 @@ export default function Card({ polo }) {
 
   const handleBuy = () => {
     dispatch(addToCart({...polo, quantity : 1}))
-    router.push('/cart')
+    router.push('/basket')
   }
 
 
   const handleImageClick = () => {
     router.push({ pathname: '/productpage',
-     query: { id: polo.id,
+     query: { _id: polo._id,
      name: polo.name,
      description: polo.description,
      price: polo.price,
@@ -38,8 +38,9 @@ export default function Card({ polo }) {
           id: polo._id,
           token: user.token,
       }),
-      }).then()
-        
+      }).then(() => {
+        dispatch(reRender())
+      })
       };
     ;
 
