@@ -103,7 +103,14 @@ function Header({ setSearchTerm }) {
         </Popover>
 
         <FontAwesomeIcon icon={faUser} className={styles.rightIcon } onClick={handleUserClick} />
-        <FontAwesomeIcon icon={faHeart} className={styles.rightIcon }/>
+        
+        {user.token && (
+          <FontAwesomeIcon
+            icon={faHeart}
+            onClick={() => router.push("/likes")}
+            style={{ color: "#000000", cursor: "pointer" }}
+          />
+        )}
 
         {showLogout && (
           <div className={styles.btn}>
