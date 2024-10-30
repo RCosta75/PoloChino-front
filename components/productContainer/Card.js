@@ -13,7 +13,7 @@ export default function Card({ polo }) {
 
   const handleBuy = () => {
     dispatch(addToCart({...polo, quantity : 1}))
-    router.push('/cart')
+    router.push('/basket')
   }
 
 

@@ -1,10 +1,11 @@
 
-import Header from './Header';
+import Header from '../Header';
 import Head from 'next/head';
-import ProductContainer from './productContainer/ProductContainer';
-import ProductHeader from './ProductHeader';
+import ProductContainer from '../productContainer/ProductContainer';
+
 import { useState } from 'react';
-import Footer from './Footer';
+import Footer from '../Footer';
+import ProductHeader from './ProductHeader';
 
 
 function Home() {

@@ -11,7 +11,8 @@ import { logout } from "../reducers/user";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import { Popover } from "antd";
-import CartCard from "./basket/CartCard";
+import PopOverBasket from "./basket/PopOverBasket";
+
 
 function Header({ setSearchTerm }) {
   //Passez le terme de recherche et la fonction de mise à jour de l'état de recherche au composant Header.
@@ -37,7 +38,7 @@ function Header({ setSearchTerm }) {
 
 
   const poloProduct = cart?.map((polo, i) => {
-    return <CartCard key={i} polo={polo}/>;
+    return <PopOverBasket key={i} polo={polo}/>;
   });
 
   const handleLogout = () => {
@@ -98,7 +99,7 @@ function Header({ setSearchTerm }) {
         >
           <FontAwesomeIcon className={styles.rightIcon }
             icon={faCartShopping}
-            onClick={() => router.push("/cart")}
+            onClick={() => router.push("/basket")}
           />
         </Popover>
 

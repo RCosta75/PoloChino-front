@@ -3,7 +3,7 @@ import RightBasket from "../components/Basket/RightBasket";
 import Header from "../components/Header";
 
 
-export default function basket() {
+function Basket() {
   return (
     <>
     <Header />
@@ -14,3 +14,4 @@ export default function basket() {
   </>
     );
 }
+export default Basket;
