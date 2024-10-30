@@ -5,7 +5,6 @@ import {
   faCartShopping,
   faMagnifyingGlass,
   faHeart,
-  faHeart,
 } from "@fortawesome/free-solid-svg-icons";
 import React, { useState } from "react";
 import { logout } from "../reducers/user";
