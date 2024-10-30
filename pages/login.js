@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import Login from '../components/Login';
+import Login from '../components/header/Login';
 
 function LoginPage() {
   return (

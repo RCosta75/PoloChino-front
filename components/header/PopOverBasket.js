@@ -2,8 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { addQuantity, suppQuantity } from "../../reducers/cart";
 
-export default function CartCard({ polo }) {
-  
+export default function PopOverBasket ({ polo }) {
   const dispatch = useDispatch();
 
   return (

@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
-import { login } from '../reducers/user';
-import styles from '../styles/Login.module.css';
+import { login } from '../../reducers/user';
+import styles from '../../styles/Login.module.css';
 
 
 

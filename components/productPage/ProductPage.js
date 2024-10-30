@@ -1,13 +1,10 @@
 import React from 'react';
 import styles from '../styles/ProductPage.module.css'
-import { addToCart } from "../reducers/cart";
+import { addToCart } from "../../reducers/cart";
 import {useDispatch } from "react-redux";
 import Suggestions from './Suggestions';
 import { useRouter } from "next/router";
 import { useState } from 'react';
-
-
-
 
 
 export default function ProductPage() {

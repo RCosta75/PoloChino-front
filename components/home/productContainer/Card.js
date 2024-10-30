@@ -1,8 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { addToCart } from "../../reducers/cart";
 import { useRouter } from "next/router";
-import { reRender } from "../../reducers/cart";
+import { addToCart, reRender } from "../../../reducers/cart";
 
 
 export default function Card({ polo }) {
@@ -13,7 +12,7 @@ export default function Card({ polo }) {
 
   const handleBuy = () => {
     dispatch(addToCart({...polo, quantity : 1}))
-    router.push('/cart')
+    router.push('/basket')
   }
 
 

@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { addQuantity, removeCart, suppQuantity } from '../../reducers/cart';
 
 
-export default function LeftBasketResume({ polo }) {
+export default function LeftBasketDetails({ polo }) {
   const dispatch = useDispatch();
 
   return (
