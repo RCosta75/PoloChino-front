@@ -5,6 +5,7 @@ import {
   faCartShopping,
   faMagnifyingGlass,
   faHeart,
+  faHeart,
 } from "@fortawesome/free-solid-svg-icons";
 import React, { useState } from "react";
 import { logout } from "../reducers/user";
@@ -26,6 +27,15 @@ function Header({ setSearchTerm }) {
   const handleSearch = () => {
     setSearchTerm(searchInput);
   };
+
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      handleSearch();
+      setSearchInput('');
+    }
+  };
+
+
 
   const poloProduct = cart?.map((polo, i) => {
     return <CartCard key={i} polo={polo}/>;
@@ -63,25 +73,30 @@ function Header({ setSearchTerm }) {
         <span onClick={() => document.getElementById("products").scrollIntoView({ behavior: 'smooth' })}>Shop</span>
         <span>About</span>
       </div>
+    
       <div className={styles.right}>
+     
         {showSearch && (
           <input
             type="text"
             placeholder="Search"
             className={styles.searchInput}
+            onKeyDown={handleKeyDown}
             value={searchInput}
             onChange={(e) => setSearchInput(e.target.value)}
           />
         )}
-        <button onClick={handleSearch}>Go</button>
-        <FontAwesomeIcon icon={faMagnifyingGlass} onClick={toggleSearch} />
+       
+        <FontAwesomeIcon icon={faMagnifyingGlass} className={styles.rightIcon } onClick={toggleSearch} />
+        
+       
 
         <Popover
           placement="bottom"
           title="My Cart"
           content={popoverContent}
         >
-          <FontAwesomeIcon
+          <FontAwesomeIcon className={styles.rightIcon }
             icon={faCartShopping}
             onClick={() => router.push("/cart")}
           />
