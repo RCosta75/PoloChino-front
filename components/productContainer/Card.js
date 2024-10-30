@@ -10,6 +10,10 @@ export default function Card({ polo }) {
   const dispatch = useDispatch()
   const user = useSelector((state) => state.user.value);
 
+  const handleBuy = () => {
+    dispatch(addToCart({...polo, quantity : 1}))
+    router.push('/cart')
+  }
 
 
   const handleImageClick = () => {
@@ -26,6 +30,7 @@ export default function Card({ polo }) {
 
     // fonction pour gerer les likes dans User.[likes]
     const handleLikes = () => {
+      
       fetch(`http://localhost:3000/likes/update`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -33,8 +38,10 @@ export default function Card({ polo }) {
           id: polo._id,
           token: user.token,
       }),
-      }).then();
-    };
+      }).then()
+        
+      };
+    ;
 
     // Envoi les donnée du polo dans reducer + {quantity : 1}
     const handleCart = () => {
@@ -43,6 +50,7 @@ export default function Card({ polo }) {
 
   return (
     <div  className="group relative block overflow-hidden">
+      {user.token &&(
       <button className="absolute end-4 top-4 z-10 rounded-full bg-white p-1.5 text-gray-900 transition hover:text-gray-900/75"
       onClick={() => handleLikes()}>
         <span className="sr-only">Wishlist</span>
@@ -61,7 +69,7 @@ export default function Card({ polo }) {
     d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"
   />
 </svg>
-      </button>
+      </button>)}
       <img
         src={polo?.image}
         alt={polo?.description}
@@ -84,7 +92,7 @@ export default function Card({ polo }) {
             Add to Cart
           </button>
 
-          <button
+          <button onClick={handleBuy}
             type="button"
             className="block w-full rounded bg-gray-900 px-4 py-3 text-sm font-medium text-white transition hover:scale-105"
           >

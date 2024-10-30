@@ -20,7 +20,7 @@ import { useRouter } from "next/router";
          image: suggestData.image,
               },});
               };
-             
+ //Utilise router.push avec les données du produit dans query pour rediriger vers ProductPage.
 
        
 

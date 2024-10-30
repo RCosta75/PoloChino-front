@@ -59,7 +59,7 @@ function Header({ setSearchTerm }) {
     <header className={styles.header}>
       <div className={styles.left}>
         <img src="poloLogo.png" alt="logo" onClick={() => router.push("/")} />
-        <span>Shop</span>
+        <span onClick={() => document.getElementById("products").scrollIntoView({ behavior: 'smooth' })}>Shop</span>
         <span>About</span>
       </div>
       <div className={styles.right}>

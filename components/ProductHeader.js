@@ -1,4 +1,7 @@
 export default function ProductHeader() {
+
+
+  
   return (
     <div className="w-full h-screen  flex">
       <div className=" relative w-1/2 p-4 ">
