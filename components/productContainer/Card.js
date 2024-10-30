@@ -19,7 +19,7 @@ export default function Card({ polo }) {
 
   const handleImageClick = () => {
     router.push({ pathname: '/productpage',
-     query: { id: polo.id,
+     query: { _id: polo._id,
      name: polo.name,
      description: polo.description,
      price: polo.price,
