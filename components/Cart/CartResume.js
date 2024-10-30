@@ -1,16 +1,14 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import {  useSelector } from "react-redux";
+import { totalBasket } from "../../reducers/cart";
 
 
 export default function CartResume() {
 
-    const cartValue = useSelector((state) => state.cart.value);
   
-    const itemsInBasket = cartValue.reduce((total, product) => {
-        return (total += product.price*product.quantity)
-      }, 0)
-      
-    
+    const cartQuantity = useSelector(totalBasket);
+
+  
 return(
     <div className="w-1/2 h-screen  " >
     <h3 className="text-center text-xl py-20" >RESUME DE LA COMMANDE</h3>
@@ -18,7 +16,7 @@ return(
          text-xl">
             <div className="flex justify-between">
                 <p>Valeur de la commande</p>
-                <span>{itemsInBasket} €</span>
+                <span>{cartQuantity} €</span>
             </div>
             <div className="flex pt-10 justify-between">
                 <p>Livraison</p>
@@ -26,7 +24,7 @@ return(
             </div>
             <div className="flex mt-20 justify-between">
                 <p>TOTAL</p>
-                <p>{itemsInBasket} €</p>
+                <p>{cartQuantity} €</p>
             </div>
         </div>
        

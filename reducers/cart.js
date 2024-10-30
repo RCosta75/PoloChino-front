@@ -4,6 +4,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   value: [],
+  total: 0,
 };
 
 export const trendSlice = createSlice({
@@ -40,9 +41,16 @@ export const trendSlice = createSlice({
         }
       };
     },
+  
   },
 });
 
-export const { addToCart, removeCart, clearCart, addQuantity, suppQuantity } =
+export const totalBasket = (state) => state.cart.value.reduce(
+  (total, item) => total + item.price * item.quantity,
+  0
+).toFixed(2);
+
+export const { addToCart, removeCart, clearCart, addQuantity, suppQuantity  } =
   trendSlice.actions;
 export default trendSlice.reducer;
+

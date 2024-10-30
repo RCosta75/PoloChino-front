@@ -13,7 +13,7 @@ export default function LeftBasketResume({ polo }) {
         <div className="ml-10 mt-10 flex-auto">
           <div className="flex justify-between">
             <h4>{polo.name}</h4>
-            <span>{polo.price * polo.quantity} €</span>
+            <span>{(polo.price * polo.quantity).toFixed(2)} €</span>
           </div>
           <p className="py-10">Taille : 52</p>
           <p>{polo.color}</p>
