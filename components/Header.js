@@ -4,6 +4,7 @@ import {
   faUser,
   faCartShopping,
   faMagnifyingGlass,
+  faHeart,
 } from "@fortawesome/free-solid-svg-icons";
 import React, { useState } from "react";
 import { logout } from "../reducers/user";
@@ -86,6 +87,13 @@ function Header({ setSearchTerm }) {
           />
         </Popover>
 
+        {user.token && (
+          <FontAwesomeIcon
+            icon={faHeart}
+            onClick={() => router.push("/likes")}
+            style={{ color: "#000000", cursor: "pointer" }}
+          />
+        )}
         <FontAwesomeIcon icon={faUser} onClick={handleUserClick} />
 
         {showLogout && (
