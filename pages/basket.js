@@ -1,5 +1,7 @@
-import LeftBasket from "../components/Basket/LeftBasket";
-import RightBasket from "../components/Basket/RightBasket";
+
+import LeftBasket from "../components/basket/LeftBasket";
+import RightBasket from "../components/basket/RightBasket";
+
 import Header from "../components/header/Header";
 
 function Basket() {
@@ -8,7 +10,7 @@ function Basket() {
     <Header />
     <div className="w-full h-screen flex  ">
       <LeftBasket/>
-      <RightBasket/>
+      <RightBasket />
     </div>
   </>
     );
