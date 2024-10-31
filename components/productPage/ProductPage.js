@@ -5,14 +5,15 @@ import { useDispatch } from "react-redux";
 import Suggestions from "./Suggestions";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import Footer from "../Footer";
 
 export default function ProductPage() {
   const dispatch = useDispatch();
   const router = useRouter();
-  const { _id, name, description, price, image } = router.query;
+  const { _id, name, description, price, image, marque, coupe, matiere } = router.query;
   //Récupère les données du produit depuis query
 
-  const product = { _id, name, description, price, image };
+  const product = { _id, name, description, price, image, marque, coupe, matiere };
 
   const [taille, setTaille] = useState("");
   const [color, setColor] = useState("");
@@ -39,7 +40,10 @@ export default function ProductPage() {
           <div className={styles.entete}>
             <h1>{product.name}</h1>
             <h1>Price: ${product.price}</h1>
+            <h1>{product.marque}</h1>
           </div>
+          <p>Matière : {product.matiere}</p>
+          <p>Coupe : {product.coupe}</p>
           <p>{product.description}</p>
 
           <div>
@@ -87,11 +91,12 @@ export default function ProductPage() {
         </div>
       </div>
 
-      <div className="flex justify-between overflow-x-hidden w-full">
-      <div className="flex w-full overflow-scroll [&>div]:flex-shrink-0">
+      <div className="flex justify-between overflow-x-hidden w-full py-20">
+      <div className="flex w-full overflow-scroll [&>div]:flex-shrink-0 bg-stone-100">
         <Suggestions/>
       </div>
       </div>
+      <Footer/>
     </div>
   );
 }

@@ -21,6 +21,9 @@ import { addToCart } from "../../reducers/cart";
          description: suggestData.description,
          price: suggestData.price,
          image: suggestData.image,
+         marque: suggestData.marque,
+         coupe : suggestData.coupe,
+         matiere : suggestData.matiere
               },});
               };
  //Utilise router.push avec les données du produit dans query pour rediriger vers ProductPage.
@@ -65,6 +68,7 @@ import { addToCart } from "../../reducers/cart";
 
          <div className="mt-3 flex justify-between">
              <div>
+               <h1 className="font-bold text-gray-900 group-hover:underline group-hover:underline-offset-4">{poloSuggest.marque}</h1>
               <h3 className="font-medium text-gray-900 group-hover:underline group-hover:underline-offset-4">
               {poloSuggest.name}
               </h3>

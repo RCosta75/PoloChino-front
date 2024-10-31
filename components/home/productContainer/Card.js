@@ -15,7 +15,6 @@ export default function Card({ polo }) {
     router.push('/basket')
   }
 
-
   const handleImageClick = () => {
     router.push({ pathname: '/productpage',
      query: { _id: polo._id,
@@ -23,6 +22,9 @@ export default function Card({ polo }) {
      description: polo.description,
      price: polo.price,
      image: polo.image,
+     marque: polo.marque,
+     coupe : polo.coupe,
+     matiere : polo.matiere
           },});
           };
  //Utilise router.push avec les données du produit dans query pour rediriger vers ProductPage.
@@ -50,7 +52,7 @@ export default function Card({ polo }) {
     }
 
   return (
-    <div  className="group relative block overflow-hidden">
+    <div  className="group relative block overflow-hidden rounded">
       {user.token &&(
       <button className="absolute end-4 top-4 z-10 rounded-full bg-white p-1.5 text-gray-900 transition hover:text-gray-900/75"
       onClick={() => handleLikes()}>
@@ -62,7 +64,7 @@ export default function Card({ polo }) {
   viewBox="0 0 24 24"
   strokeWidth="1.5"
   stroke="currentColor"
-  className="size-4"
+  className="size-4 "
 >
   <path
     strokeLinecap="round"
@@ -78,17 +80,17 @@ export default function Card({ polo }) {
         onClick={handleImageClick}
       />
 
-      <div className="relative border border-gray-100 bg-white h-52 p-6">
+      <div className="relative border border-gray-100 bg-white h-52 p-6 rounded-bl-lg rounded-br-lg">
         <p className="text-gray-700">{polo?.price} €</p>
 
         <h3 className="mt-1.5 text-lg font-medium text-gray-900">
-          {polo?.name}
+          {polo?.marque}
         </h3>
 
-        <p className="h-14 line-clamp-3 text-gray-700">{polo?.description}</p>
+        <p className="h-14 line-clamp-3 text-gray-700">{polo?.name}</p>
 
-        <div className="mt-4 flex gap-4">
-          <button className="block w-full rounded bg-gray-100 px-4 py-3 text-sm font-medium text-gray-900 transition hover:scale-105"
+        <div className="mt-4 flex gap-4 ">
+          <button className="block w-full rounded bg-[#bfdbf7] px-4 py-3 text-sm font-medium text-gray-900 transition hover:scale-105"
           onClick={() => handleCart()}>
             Add to Cart
           </button>

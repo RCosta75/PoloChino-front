@@ -5,11 +5,11 @@
   padding: 1rem;
   background-color: none;
   flex-wrap: wrap;
-  height: 10%;
+  height: 70px;
   width: 100%;
   position: fixed;
   z-index: 1000;
-  background-color: aliceblue;
+  background-color: #bfdbf7;
 }
 
 .left,
@@ -76,6 +76,4 @@
 .total {
   font-weight: bold;
   text-align: right;
-
 }
-
