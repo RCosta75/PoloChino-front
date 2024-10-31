@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../../reducers/user';
-import styles from '../../styles/Login.module.css';
 
 
 
@@ -53,34 +52,59 @@ function Login() {
 
 
 
-  
-   return (
-    <div className={styles.main}>
-       <img src="poloLogo.png" alt="logo" onClick={() => router.push("/")} />
-    <div className={styles.left}>
-      <h3>{signState}</h3> {/*  Par default SignIn */}
-      {/* Si SignUp on rajoute l'input username en plus sinon null*/}
-      {signState === 'Sign Up' ? 
-        <input type="text" onChange={(e) => setUsername(e.target.value)} value={username} placeholder="Username" />
+
+ return (
+
+<div className="bg-gray-100 flex justify-center items-center h-screen">
+
+<div className="w-1/2 h-screen hidden lg:block">
+<img src="/TestPolo (1).jpg" alt="logo" onClick={() => router.push("/")}  className="object-cover w-full h-full"/>
+</div>
+
+<div className="lg:p-36 md:p-52 sm:20 p-8 w-full lg:w-1/2">
+  <h1 className="text-2xl font-semibold mb-4">{signState}</h1>
+  {signState === 'Sign Up' ? 
+        <input type="text" className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500" autocomplete="off" onChange={(e) => setUsername(e.target.value)} value={username} placeholder="Username" />
         : null 
       }
-      <input type="text" onChange={(e) => setemail(e.target.value)} value={email} placeholder="Email" />
-      <input type="password" onChange={(e) => setPassword(e.target.value)} value={password} placeholder="Password" />
-      {/* Le bouton call par defaut la fonction handleSignIn mais si SignUp call la fonction handleSignUp*/}
-      <button  onClick={signState === 'Sign In' ? handleSignIn : handleSignUp}>
-        {signState}
-      </button>
-       {/*Par defaut on  a le bouton pour afficher SignUp et si on est dans SignIn on le bouton pour afficher SignIn*/}
-      {signState === 'Sign In' ? 
-        <p>New member? <span onClick={() => setsignState('Sign Up')}>Sign Up now</span></p> 
+
+ 
+    <div className="mb-4">
+      <label for="email" className="block text-gray-600">Email</label>
+      <input type="text" id="email"  name="email" className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500" autocomplete="off" onChange={(e) => setemail(e.target.value)} value={email} placeholder="Email"></input>
+    </div>
+
+    <div className="mb-4">
+      <label for="password" className="block text-gray-600">Password</label>
+     
+      <input type="password" id="password" name="password" className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500" autocomplete="off" onChange={(e) => setPassword(e.target.value)} value={password} placeholder="Password"></input>
+    </div>
+
+    <div className="mb-4 flex items-center">
+      <input type="checkbox" id="remember" name="remember" className="text-blue-500"></input>
+      <label for="remember" className="text-gray-600 ml-2">Remember Me</label>
+    </div>
+
+    <div className="mb-6 text-blue-500">
+      <a href="#" className="hover:underline">Forgot Password?</a>
+    </div>
+
+    <button onClick={signState === 'Sign In' ? handleSignIn : handleSignUp} className="bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-md py-2 px-4 w-full"> {signState}</button>
+  
+
+  <div className="mt-6 text-blue-500 text-center">
+    <div >  {signState === 'Sign In' ? 
+        <p>New member? <button  className="hover:underline" onClick={() => setsignState('Sign Up')}>Sign Up now</button></p> 
         : 
-        <p>Already have an account ? <span onClick={() => setsignState('Sign In')}>Sign In now</span></p>
-      }
-    </div>
-    <div className={styles.right}>
-        <h1>Image</h1>
-    </div>
-    </div>
-  );
+        <p>Already have an account ? <button  className="hover:underline" onClick={() => setsignState('Sign In')}>Sign In now</button></p>
+      }</div>
+  </div>
+</div>
+</div>
+
+
+);
 }
+
+
 export default Login;
