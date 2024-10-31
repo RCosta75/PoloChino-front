@@ -10,6 +10,7 @@ export default function PopOverBasket ({ polo }) {
       <div className="flex items-center py-6">
         <img className="h-28 w-28 object-cover rounded-md " src={polo.image} />
         <div className="ml-4 flex-auto" >
+          <h1 className="mt-1.5 text-lg font-semibold text-gray-900">{polo.marque}</h1>
         <div className="flex justify-between">
             <h4>{polo.name}</h4>
             <span>{(polo.price*polo.quantity).toFixed(2)} €</span>

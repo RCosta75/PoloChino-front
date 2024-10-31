@@ -1,11 +1,16 @@
 import React from "react";
 import Card from "./Card";
 import { useEffect, useState,  } from "react";
+import { useSelector } from "react-redux";
 
 
 
 export default function ProductContainer({ searchTerm }) {
 
+  const user = useSelector((state) => state.user.value);
+  const render = useSelector((state) => state.cart.render);
+
+   const [likesData,setLikesData] = useState([])
   const [poloData, setPoloData] = useState([]);
   //Filtrez les articles en fonction du terme de recherche dans ProductContainer
   const [sortOrder, setSortOrder] = useState("croissant"); // Ajout de l'état pour l'ordre de tri
@@ -15,9 +20,19 @@ export default function ProductContainer({ searchTerm }) {
       .then((response) => response.json())
       .then((data) => {
         setPoloData(data.polos);
-        console.log(poloData);
       });
   }, []);
+
+
+  useEffect(() => {
+    fetch(`http://localhost:3000/users/get/${user?.token}`)
+      .then((response) => response.json())
+      .then((data) => {
+        setLikesData(data.likes)
+      });
+  }, [render]);
+
+
 
   const handleSortChange = (order) => {
      setSortOrder(order); //Met à jour l'état de l'ordre de tri lorsqu'on sélectionne une nouvelle option.
@@ -49,7 +64,7 @@ export default function ProductContainer({ searchTerm }) {
   const poloProduct =  filteredPolos.map((polo, i) => {
     return (
       <div  >
-          <Card key={i} polo={polo} />
+          <Card key={i} polo={polo} isLike={likesData?.some((e) => e === polo._id)}/>
       </div>
     );
   });

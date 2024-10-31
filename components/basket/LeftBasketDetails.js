@@ -38,7 +38,7 @@ export default function LeftBasketDetails({ polo }) {
         <img className="h-96 w-96 object-cover rounded-md" src={polo.image} alt={polo.name} onClick={() => handleImageClick()} />
         <div className="ml-10 mt-10 flex-auto ">
           <div className="flex-col justify-between">
-            <h1>{polo.marque}</h1>
+            <h1 className="font-bold text-gray-900 text-2xl">{polo.marque}</h1>
             <h4>{polo.name}</h4>
             <span>{(polo.price * polo.quantity).toFixed(2)} €</span>
           </div>

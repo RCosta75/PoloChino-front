@@ -114,7 +114,7 @@ function Header({ setSearchTerm, handleReset }) {
       icon={faCartShopping}
       onClick={() => router.push("/basket")}
     />
-    <div className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -end-2 dark:border-gray-900">
+    <div className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-black bg-[#bfdbf7] border-1 border-white rounded-full -top-2 -end-2 dark:border-gray-900">
       {poloProduct.length}
     </div>
   </div>
@@ -130,9 +130,6 @@ function Header({ setSearchTerm, handleReset }) {
               onClick={() => router.push("/likes")}
               style={{ color: "#000000", cursor: "pointer" }}
             />
-            <div className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -end-2 dark:border-gray-900">
-            {poloProduct.length}
-          </div>
       </div>
           
         )}
