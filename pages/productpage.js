@@ -1,6 +1,5 @@
 import { useRouter } from "next/router";
-import { useState } from "react";
-
+import  { useState } from "react";
 import ProductPage from "../components/productPage/ProductPage";
 import Header from "../components/header/Header";
 
