@@ -112,6 +112,8 @@ function Header({ setSearchTerm, handleReset }) {
             icon={faCartShopping}
             onClick={() => router.push("/basket")}
           />
+
+          
         </Popover>
 
         <FontAwesomeIcon icon={faUser} className={styles.rightIcon } onClick={handleUserClick} />
