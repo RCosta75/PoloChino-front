@@ -87,7 +87,11 @@ export default function ProductPage() {
         </div>
       </div>
 
-      <Suggestions />
+      <div className="flex justify-between overflow-x-hidden w-full">
+      <div className="flex w-full overflow-scroll [&>div]:flex-shrink-0">
+        <Suggestions/>
+      </div>
+      </div>
     </div>
   );
 }
