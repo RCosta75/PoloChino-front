@@ -104,27 +104,37 @@ function Header({ setSearchTerm, handleReset }) {
            <FontAwesomeIcon icon={faMagnifyingGlass} className={styles.rightIcon } onClick={toggleSearch} />
             </> )}
        
-
-        <Popover
-          placement="bottom"
-          title="My Cart"
-          content={popoverContent}
-        >
-          <FontAwesomeIcon className={styles.rightIcon }
-            icon={faCartShopping}
-            onClick={() => router.push("/basket")}
-          />
-         
-        </Popover>
+            <Popover
+  placement="bottom"
+  title="My Cart"
+  content={popoverContent}
+>
+  <div className="relative inline-block">
+    <FontAwesomeIcon
+      icon={faCartShopping}
+      onClick={() => router.push("/basket")}
+    />
+    <div className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -end-2 dark:border-gray-900">
+      {poloProduct.length}
+    </div>
+  </div>
+</Popover>
+        
 
         <FontAwesomeIcon icon={faUser} className={styles.rightIcon } onClick={handleUserClick} />
         
         {user.token && (
-          <FontAwesomeIcon
-            icon={faHeart}
-            onClick={() => router.push("/likes")}
-            style={{ color: "#000000", cursor: "pointer" }}
-          />
+    <div className="relative inline-block">
+            <FontAwesomeIcon
+              icon={faHeart}
+              onClick={() => router.push("/likes")}
+              style={{ color: "#000000", cursor: "pointer" }}
+            />
+            <div className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -end-2 dark:border-gray-900">
+            {poloProduct.length}
+          </div>
+      </div>
+          
         )}
 
         {showLogout && (
