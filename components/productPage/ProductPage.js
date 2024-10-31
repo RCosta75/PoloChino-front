@@ -43,9 +43,9 @@ export default function ProductPage() {
           <p>{product.description}</p>
 
           <div>
-            <h4>Couleurs disponible</h4>
+            <h4>Colors :</h4>
             <div className={styles.colors}>
-              <button onClick={() => setColor("Blue")} className={styles.colorrectanglebleu}></button>
+              <button onClick={() => setColor("Red")} className={styles.colorrectanglebleu}></button>
               <button onClick={() => setColor("Green")} className={styles.colorrectanglevert}></button>
               <button onClick={() => setColor("Yellow")} className={styles.colorrectanglejaune}></button>
               <button onClick={() => setColor("White")} className={styles.colorrectangleblanc}></button>
@@ -53,7 +53,7 @@ export default function ProductPage() {
             </div>
           </div>
           <div>
-            <h4>Size</h4>
+            <h4>Size :</h4>
             <div className={styles.sizes}>
               <button
                 className={styles.sizescontainer}
