@@ -90,12 +90,12 @@ function Login() {
       <a href="#" className="hover:underline">Forgot Password?</a>
     </div>
 
-    <button onClick={signState === 'Sign In' ? handleSignIn : handleSignUp} className="bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-md py-2 px-4 w-full"> {signState}</button>
+    <button onClick={signState === 'Sign In' ? handleSignIn : handleSignUp} className="bg-[#bfdbf7] hover:bg-[#010203] hover:text-[#bfdbf7] text-[#010203] font-semibold rounded-md py-2 px-4 w-full"> {signState}</button>
   
 
   <div className="mt-6 text-blue-500 text-center">
     <div >  {signState === 'Sign In' ? 
-        <p>New member? <button  className="hover:underline" onClick={() => setsignState('Sign Up')}>Sign Up now</button></p> 
+        <p className='text-[#010203]'>New member? <button  className="hover:underline text-blue-600" onClick={() => setsignState('Sign Up')}>Sign Up now</button></p> 
         : 
         <p>Already have an account ? <button  className="hover:underline" onClick={() => setsignState('Sign In')}>Sign In now</button></p>
       }</div>
