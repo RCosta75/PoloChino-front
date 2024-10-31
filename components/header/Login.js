@@ -64,6 +64,7 @@ function Login() {
 <div className="lg:p-36 md:p-52 sm:20 p-8 w-full lg:w-1/2">
   <h1 className="text-2xl font-semibold mb-4">{signState}</h1>
   {signState === 'Sign Up' ? 
+        
         <input type="text" className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500" autocomplete="off" onChange={(e) => setUsername(e.target.value)} value={username} placeholder="Username" />
         : null 
       }
@@ -71,13 +72,13 @@ function Login() {
  
     <div className="mb-4">
       <label for="email" className="block text-gray-600">Email</label>
-      <input type="text" id="email"  name="email" className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500" autocomplete="off" onChange={(e) => setemail(e.target.value)} value={email} placeholder="Email"></input>
+      <input type="text" id="email"  name="email" className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500" autocomplete="off" onChange={(e) => setemail(e.target.value)} value={email} placeholder="Type your Email"></input>
     </div>
 
     <div className="mb-4">
       <label for="password" className="block text-gray-600">Password</label>
      
-      <input type="password" id="password" name="password" className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500" autocomplete="off" onChange={(e) => setPassword(e.target.value)} value={password} placeholder="Password"></input>
+      <input type="password" id="password" name="password" className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500" autocomplete="off" onChange={(e) => setPassword(e.target.value)} value={password} placeholder="Type your Password"></input>
     </div>
 
     <div className="mb-4 flex items-center">
