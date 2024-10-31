@@ -9,12 +9,12 @@ export default function LeftBasketDetails({ polo }) {
   const [selectedSize, setSelectedSize] = useState('M'); //taille par default
   const [selectedColor, setSelectedColor] = useState('White');//couleur par default
   const handleSizeChange = (size) => {
-     setSelectedSize(size); }
-     //met à jour selectedSize lorsqu'une nouvelle taille est sélectionnée.
+     setSelectedSize(size.target.value); }
+     // utilise target.value pour obtenir la valeur sélectionnée
      
     const handleColorChange = (color) => {
-      setSelectedColor(color); }
- //met à jour selectedColor lorsqu'une nouvelle couleur est sélectionnée.
+      setSelectedColor(color.target.value); }
+  //utilise target.value pour obtenir la couleur sélectionnée
 
 
 
@@ -28,7 +28,7 @@ export default function LeftBasketDetails({ polo }) {
             <span>{(polo.price * polo.quantity).toFixed(2)} €</span>
           </div>
 
-          <span className="py-2">Size :    </span>
+          <span className="py-2">Size :</span>
           {!polo.size ? (
               <select value={selectedSize} onChange={handleSizeChange}
                className="px-4 py-2 border border-gray-200"> {['XS', 'S', 'M', 'L', 'XL', 'XXL'].map(

@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import { Popover } from "antd";
 import PopOverBasket from "./PopOverBasket";
+import { totalBasket } from "../../reducers/cart";
 
 
 
@@ -26,7 +27,7 @@ function Header({ setSearchTerm, handleReset }) {
   const [showLogout, setShowLogout] = useState(false); // On ne l'affiche pas initialement
   const [showSearch, setShowSearch] = useState(false); // On ne l'affiche pas initialement
   const [searchInput, setSearchInput] = useState("");
-
+  const cartQuantity = useSelector(totalBasket);
   
 
   const handleSearch = () => {
@@ -72,7 +73,7 @@ function Header({ setSearchTerm, handleReset }) {
   };
 
   const popoverContent = (
-    <div className={styles.popoverContent}>{poloProduct}</div>
+    <div className={styles.popoverContent}>{poloProduct} <p className={styles.total}> {cartQuantity}</p>  </div>
   );
   const res = () => {
     setSearchInput('');
@@ -112,6 +113,7 @@ function Header({ setSearchTerm, handleReset }) {
             icon={faCartShopping}
             onClick={() => router.push("/basket")}
           />
+         
         </Popover>
 
         <FontAwesomeIcon icon={faUser} className={styles.rightIcon } onClick={handleUserClick} />
