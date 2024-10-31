@@ -85,7 +85,7 @@ function Header({ setSearchTerm, handleReset }) {
   return (
     <header className={styles.header}>
       <div className={styles.left}>
-       <img src="poloLogo.png" alt="logo" onClick={res} />
+       <img src="poloLogo.png" alt="logo" onClick={res} sizes="2xl"/>
        {/* Rediriger vers la page d'accueil (router.push("/")).
        Appeler la fonction handleReset pour réinitialiser les états. */}
          {router.pathname === "/" && (
@@ -102,7 +102,7 @@ function Header({ setSearchTerm, handleReset }) {
            onKeyDown={handleKeyDown} 
           value={searchInput}
           onChange={(e) => setSearchInput(e.target.value)} /> )}
-           <FontAwesomeIcon icon={faMagnifyingGlass} className={styles.rightIcon } onClick={toggleSearch} />
+           <FontAwesomeIcon icon={faMagnifyingGlass} className={styles.rightIcon } onClick={toggleSearch} size="lg"/>
             </> )}
        
             <Popover
@@ -114,6 +114,7 @@ function Header({ setSearchTerm, handleReset }) {
     <FontAwesomeIcon
       icon={faCartShopping}
       onClick={() => router.push("/basket")}
+      size="lg"
     />
     <div className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-black bg-[#bfdbf7] border-1 border-white rounded-full -top-2 -end-2 dark:border-gray-900">
       {poloProduct.length}
@@ -122,7 +123,7 @@ function Header({ setSearchTerm, handleReset }) {
 </Popover>
         
 
-        <FontAwesomeIcon icon={faUser} className={styles.rightIcon } onClick={handleUserClick} />
+        <FontAwesomeIcon icon={faUser} className={styles.rightIcon } onClick={handleUserClick} size="lg"/>
         
         {user.token && (
     <div className="relative inline-block">
