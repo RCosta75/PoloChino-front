@@ -57,7 +57,7 @@ export default function ProductContainer({ searchTerm }) {
   return (<div> 
     <div className="flex justify-end p-4">
     {/* //lier une étiquette descriptive à un élément de formulaire(select'sort') */}
-       <label htmlFor="sort" className="mr-2">Trier </label>
+       <label htmlFor="sort" className="mr-2">Trier par :</label>
        <select id="sort" value={sortOrder} onChange={(e) => handleSortChange(e.target.value)}
        //onChange déclenche la fonction handleSortChange lorsque l'utilisateur
        // sélectionne une nouvelle option e.target.value contient la nouvelle valeur sélectionnée.

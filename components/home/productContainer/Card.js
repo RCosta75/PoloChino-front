@@ -83,7 +83,7 @@ export default function Card({ polo }) {
       <div className="relative border border-gray-100 bg-white h-52 p-6 rounded-bl-lg rounded-br-lg">
         <p className="text-gray-700">{polo?.price} €</p>
 
-        <h3 className="mt-1.5 text-lg font-medium text-gray-900">
+        <h3 className="mt-1.5 text-lg font-bold text-gray-900">
           {polo?.marque}
         </h3>
 

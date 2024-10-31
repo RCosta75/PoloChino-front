@@ -30,10 +30,10 @@ const [reset, setReset] = useState(false);
     )}
     {searchTerm  ? 
   <h1 className="text-3xl pt-32 text-center" >{searchTerm}</h1>
-  : <h1 className="text-3xl pt-32 text-center" >All Products</h1>
+  : <h1 className="text-3xl pt-32 text-center" id='products'>All Products</h1>
 }
    
-      <div id='products'>
+      <div>
       <ProductContainer searchTerm={searchTerm}/>
       </div>
       <Footer/>

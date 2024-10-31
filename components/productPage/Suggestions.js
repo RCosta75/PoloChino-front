@@ -35,7 +35,7 @@ import { addToCart } from "../../reducers/cart";
 
 
 
-            <div  className="group  relative block overflow-hidden">
+            <div  className="group bg-white rounded-br-md rounded-bl-md  relative block overflow-hidden">
 
 {/* LIKE BUTTON */}
         <button className="absolute end-4 top-4 z-10 rounded-full bg-white p-1.5 text-gray-900 transition hover:text-gray-900/75"
@@ -61,12 +61,12 @@ import { addToCart } from "../../reducers/cart";
              <img onClick={() => handleImageClick(poloSuggest)}
                 src={poloSuggest.image}
                 alt={poloSuggest.description}
-                className="aspect-square w-full h-80 rounded object-cover"
+                className="aspect-square w-full h-80 rounded-tr rounded-tl object-cover"
              />
 
 {/* TITLE AND PRICE */}
 
-         <div className="mt-3 flex justify-between">
+         <div className="mt-3 flex justify-between pl-4 ">
              <div>
                <h1 className="font-bold text-gray-900 group-hover:underline group-hover:underline-offset-4">{poloSuggest.marque}</h1>
               <h3 className="font-medium text-gray-900 group-hover:underline group-hover:underline-offset-4">
