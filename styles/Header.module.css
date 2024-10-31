@@ -76,4 +76,6 @@
 .total {
   font-weight: bold;
   text-align: right;
+  justify-content: space-between;
+  display: flex;
 }

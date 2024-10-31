@@ -27,7 +27,8 @@ function Header({ setSearchTerm, handleReset }) {
   const [showLogout, setShowLogout] = useState(false); // On ne l'affiche pas initialement
   const [showSearch, setShowSearch] = useState(false); // On ne l'affiche pas initialement
   const [searchInput, setSearchInput] = useState("");
-  const cartQuantity = useSelector(totalBasket);
+
+  const totalPrice = useSelector(totalBasket);
   
 
   const handleSearch = () => {
@@ -73,7 +74,7 @@ function Header({ setSearchTerm, handleReset }) {
   };
 
   const popoverContent = (
-    <div className={styles.popoverContent}>{poloProduct} <p className={styles.total}>Total: {cartQuantity}</p>  </div>
+    <div className={styles.popoverContent}>{poloProduct} <p className={styles.total}> <span> Quantité : {poloProduct.length}</span><span>Total: {totalPrice}</span></p>  </div>
   );
   const res = () => {
     setSearchInput('');

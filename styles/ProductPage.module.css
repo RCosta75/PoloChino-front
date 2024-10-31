@@ -3,6 +3,8 @@
   flex-direction: column;
   background-color: white;
   padding-top: 75px;
+  overflow-y: scroll;
+  scrollbar-width: none; 
 }
 .product {
   height: 100vh;
@@ -112,8 +114,7 @@
   border-radius: 5px;
   text-transform: uppercase;
   font-weight: bold;
-  background-color: whitesmoke;
-  border: 1px solid black;
+  background-color: #7f4f24;
 }
 
 .colorrectanglenoir {
@@ -126,7 +127,7 @@
   border-radius: 5px;
   text-transform: uppercase;
   font-weight: bold;
-  background-color: black;
+  background-color: #bfdbf7;
 }
 
 .sizes {
@@ -201,7 +202,7 @@
 
 .colors > button:focus {
   color: #ffffff;
-  border: 4px #8296b0 solid;
+  border: 3px #001021 solid;
 }
 
 .colors > button:active {

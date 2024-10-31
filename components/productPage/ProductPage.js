@@ -52,8 +52,8 @@ export default function ProductPage() {
               <button onClick={() => setColor("Red")} className={styles.colorrectanglebleu}></button>
               <button onClick={() => setColor("Green")} className={styles.colorrectanglevert}></button>
               <button onClick={() => setColor("Yellow")} className={styles.colorrectanglejaune}></button>
-              <button onClick={() => setColor("White")} className={styles.colorrectangleblanc}></button>
-              <button onClick={() => setColor("Black")} className={styles.colorrectanglenoir}></button>
+              <button onClick={() => setColor("Blue")} className={styles.colorrectanglenoir}></button>
+              <button onClick={() => setColor("Brown")} className={styles.colorrectangleblanc}></button>
             </div>
           </div>
           <div>
