@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react"; 
 import { useRouter } from "next/router";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../reducers/cart";
  export default function Suggestions() {
    const [polo, setPolo] = useState([]);
     const router = useRouter(); 
+    const dispatch = useDispatch()
     
     useEffect(() => { fetch('http://localhost:3000/polos/get')
        .then(response => response.json()) 
@@ -18,6 +21,9 @@ import { useRouter } from "next/router";
          description: suggestData.description,
          price: suggestData.price,
          image: suggestData.image,
+         marque: suggestData.marque,
+         coupe : suggestData.coupe,
+         matiere : suggestData.matiere
               },});
               };
  //Utilise router.push avec les données du produit dans query pour rediriger vers ProductPage.
@@ -62,12 +68,13 @@ import { useRouter } from "next/router";
 
          <div className="mt-3 flex justify-between">
              <div>
+               <h1 className="font-bold text-gray-900 group-hover:underline group-hover:underline-offset-4">{poloSuggest.marque}</h1>
               <h3 className="font-medium text-gray-900 group-hover:underline group-hover:underline-offset-4">
               {poloSuggest.name}
               </h3>
              <p className="mt-1 text-sm text-gray-700">{poloSuggest.price}€ </p>
             </div>
-            <button   className="mr-4" > 
+            <button   className="mr-4" onClick={() => dispatch(addToCart({...poloSuggest, quantity : 1}))}> 
             <svg xmlns="http://www.w3.org/2000/svg" 
             fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-5">
              <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />

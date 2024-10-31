@@ -29,8 +29,8 @@ export default function LikeContainer() {
 
   return (
     <div>
-      <h1 className="pt-40 text-center font-bold text-2xl" >Your Liked Product</h1>
-      <div className=" pt-20 px-11 grid grid-cols-4 gap-8">{poloProduct}</div>
+      <h1 className="pt-20 text-center text-3xl bg-stone-100 underline" >Your Liked Product</h1>
+      <div className=" pt-20 px-11 grid grid-cols-4 gap-8 bg-stone-100 py-10">{poloProduct}</div>
     </div>
   );
 }
