@@ -72,3 +72,10 @@
 .log:hover {
   color: red;
 }
+
+.total {
+  font-weight: bold;
+  text-align: right;
+
+}
+

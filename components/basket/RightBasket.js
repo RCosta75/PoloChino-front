@@ -23,6 +23,8 @@ return(
                 <p>TOTAL</p>
                 <p>{cartQuantity} €</p>
             </div>
+            <button className="block w-full rounded bg-black px-4 py-3 mt-10 text-lg font-medium text-white transition hover:scale-105"  > Procéder au paiement </button>
+            
         </div>
        
     </div>
