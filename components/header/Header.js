@@ -18,7 +18,7 @@ import { totalBasket } from "../../reducers/cart";
 
 function Header({ setSearchTerm, handleReset }) {
   //Passez le terme de recherche au composant Header.
-  //Passez la fonction handleReset en props a header
+  //Passez la fonction handleReset  a header
   
   const dispatch = useDispatch();
   const router = useRouter();
