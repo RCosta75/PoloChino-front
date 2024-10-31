@@ -73,7 +73,7 @@ function Header({ setSearchTerm, handleReset }) {
   };
 
   const popoverContent = (
-    <div className={styles.popoverContent}>{poloProduct} <p className={styles.total}> {cartQuantity}</p>  </div>
+    <div className={styles.popoverContent}>{poloProduct} <p className={styles.total}>Total: {cartQuantity}</p>  </div>
   );
   const res = () => {
     setSearchInput('');
@@ -87,7 +87,8 @@ function Header({ setSearchTerm, handleReset }) {
        <img src="poloLogo.png" alt="logo" onClick={res} />
        {/* Rediriger vers la page d'accueil (router.push("/")).
        Appeler la fonction handleReset pour réinitialiser les états. */}
-        <span onClick={() => document.getElementById("products").scrollIntoView({ behavior: 'smooth' })}>Shop</span>
+         {router.pathname === "/" && (
+        <span onClick={() => document.getElementById("products").scrollIntoView({ behavior: 'smooth' })}>Shop</span>)}
         <span>About</span>
       </div>
     
