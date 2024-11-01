@@ -108,7 +108,7 @@ export default function ProductPage() {
       </div>
 
       <div className="flex justify-between overflow-x-hidden w-full py-20">
-      <div className="flex w-full overflow-scroll [&>div]:flex-shrink-0 bg-stone-100">
+      <div className="flex w-full overflow-scroll no-scrollbar [&>div]:flex-shrink-0 bg-stone-100">
         <Suggestions/>
       </div>
       </div>

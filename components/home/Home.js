@@ -20,7 +20,7 @@ const [reset, setReset] = useState(false);
    //handleReset réinitialise searchTerm et inverse l'état reset.
   
   return (
-    <div className='bg-stone-100'>
+    <div className='bg-stone-100 no-scrollbar overflow-y-auto'>
        <Head>
         <title>POL-HO - Home</title>
       </Head>
