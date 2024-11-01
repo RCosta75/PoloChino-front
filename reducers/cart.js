@@ -57,6 +57,10 @@ export const totalBasket = (state) =>
     .reduce((total, item) => total + item.price * item.quantity, 0)
     .toFixed(2);
 
+    export const totalQuantityBasket = (state) =>
+      state.cart.value
+        .reduce((totalQuantity, item) => totalQuantity + item.quantity, 0)
+
 export const {
   addToCart,
   removeCart,

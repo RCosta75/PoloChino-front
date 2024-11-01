@@ -19,15 +19,20 @@
   flex-wrap: wrap;
 }
 
+.left {
+  font-size: large;
+}
+
 .left,
 .right:hover {
   cursor: pointer;
 }
 
-.left img {
-  width: 50px;
+.mid img {
+  width: 100px;
   height: auto;
   margin-right: 1rem;
+  cursor: pointer;
 }
 
 .left span,
