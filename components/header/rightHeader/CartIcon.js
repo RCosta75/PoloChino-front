@@ -5,8 +5,10 @@ import { totalBasket, totalQuantityBasket } from "../../../reducers/cart";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PopOverBasket from "../PopOverBasket";
+import { useRouter } from "next/router";
 
 export default function CartIcon() {
+  const router = useRouter();
   const cart = useSelector((state) => state.cart.value);
   const totalPrice = useSelector(totalBasket);
   const totalQuantity = useSelector(totalQuantityBasket);

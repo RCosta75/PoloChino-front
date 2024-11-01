@@ -87,7 +87,7 @@ export default function Card({ polo, isLike }) {
           {polo?.marque}
         </h3>
 
-        <p className="h-14 line-clamp-3 text-gray-700">{polo?.name}</p>
+        <p className="h-10 line-clamp-3 text-gray-700">{polo?.name}</p>
 
         <div className="mt-4 flex gap-4 ">
           <button

@@ -1,18 +1,32 @@
-import React from 'react';
+import React from "react";
 
 export default function PictureProductPage({ image, description }) {
   return (
-    <div className="grid grid-cols-2 gap-4 ">
-      <div className="flex flex-col">
- 
-          <img  src={image} alt={description} className="mb-4 aspect-square w-full h-80 object-cover" />
-          <img src={image} alt={description} className="mb-4 aspect-square w-full h-80 object-cover" />
-          <img src={image} alt={description} className="mb-4 aspect-square w-full h-80 object-cover" />
-          <img src={image} alt={description} className="mb-4 aspect-square w-full h-80 object-cover" />
-
+    <div className="flex w-1/2 pt-20 items-center justify-center gap-10  ">
+      <div className="flex flex-col justify-center items-center">
+        <img
+          src={image}
+          alt={description}
+          className="w-24 py-5 rounded-xl object-contain"
+        />
+        <img
+          src={image}
+          alt={description}
+          className="w-24 py-5 rounded-xl object-contain"
+        />
+        <img
+          src={image}
+          alt={description}
+          className="w-24 py-5 rounded-xl object-contain"
+        />
+        <img
+          src={image}
+          alt={description}
+          className="w-24 py-5 rounded-xl object-contain"
+        />
       </div>
-      <div>
-      <img src={image} alt={description} className=" w-full h-full object-cover" />
+      <div className="flex ">
+        <img src={image} alt={description} className="rounded-md h-[700px]" />
       </div>
     </div>
   );
