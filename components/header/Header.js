@@ -45,7 +45,7 @@ function Header({ setSearchTerm, handleReset }) {
     }
   };
 
-
+  
 
   const poloProduct = cart?.map((polo, i) => {
     return <PopOverBasket key={i} polo={polo}/>;
@@ -72,6 +72,15 @@ function Header({ setSearchTerm, handleReset }) {
       redirectToLogin(); // Rediriger vers la page de connexion si non connecté
     }
   };
+
+
+
+  const handleClick = () => {
+    if (poloProduct.length > 0) {
+      router.push("/basket"); 
+     } else {
+        router.push("/emptybasket"); 
+       } };
 
   const popoverContent = (
     <div className={styles.popoverContent}>{poloProduct} <p className={styles.total}> <span> Quantité : {poloProduct.length}</span><span>Total: {totalPrice}</span></p>  </div>
@@ -114,9 +123,10 @@ function Header({ setSearchTerm, handleReset }) {
   content={popoverContent}
 >
   <div className="relative inline-block">
+  
     <FontAwesomeIcon
       icon={faCartShopping}
-      onClick={() => router.push("/basket")}
+      onClick={() => handleClick()}
       size="lg"
     />
     <div className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-black bg-[#bfdbf7] border-1 border-white rounded-full -top-2 -end-2 dark:border-gray-900">
