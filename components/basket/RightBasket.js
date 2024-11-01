@@ -12,11 +12,16 @@ export default function RightBasket() {
     const cartQuantity = useSelector(totalBasket);
     const router = useRouter();
     const user = useSelector((state) => state.user.value)
-
+    
     const handlePaymentClick = () => {
          if (user.token) {
              router.push("/orderform"); 
-            } else { router.push("/login");}
+            } else router.push(`/login?redirect=${router.asPath}`)
+              //permet de rediriger les utilisateurs non connectés
+            // vers la page de connexion tout en conservant l'URL de la page
+            // qu'ils tentaient d'accéder.
+           
+           
         }
          // Redirige vers la page de connexion si non connecté
    

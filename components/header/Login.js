@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../reducers/user";
 import clsx from "clsx";
 
+
+
 function Login() {
   const user = useSelector((state) => state.user.value);
   const [email, setemail] = useState("");
@@ -13,12 +15,20 @@ function Login() {
   const [buttonPressed, setButtonPressed] = useState(false);
   const dispatch = useDispatch();
   const router = useRouter();
+  const { redirect } = router.query; // Récupère l'URL de redirection depuis rightBasket
+
   
 
-
-    if (user.token) {
-      router.push("/");
-    }
+  useEffect(() => {
+     if (user.token) { 
+      router.push(redirect || "/"); // Redirige vers la page précédente ou vers la page d'accueil
+    } }, [user.token, redirect]);
+    //Le paramètre redirect indique la page où l'utilisateur était avant de se connecter.
+    //En surveillant redirect, nous pouvons rediriger l'utilisateur
+    // vers cette page après une connexion réussie.
+    //Si nous ne surveillons pas user.token,
+    // nous ne saurons pas quand l'utilisateur s'est connecté,
+    // et nous ne pourrons pas effectuer la redirection en conséquence.
 
 
   useEffect(() => {
@@ -160,7 +170,7 @@ function Login() {
             ) : (
               <p>
                 Already have an account ?{" "}
-                <button
+                <button 
                   className="hover:underline"
                   onClick={() => setsignState("Sign In")}
                 >

@@ -1,7 +1,13 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 
 
 export default function OrderForm() {
+  const user = useSelector((state) => state.user.value);
+  const carto = useSelector((state) => state.cart.value);
+  const totalPrice = useSelector(totalBasket);
+
+
   const [formData, setFormData] = useState({
     email: '',
     firstName: '',
@@ -10,9 +16,7 @@ export default function OrderForm() {
     city: '',
     postalCode: '',
     phoneNumber: '',
-    cardNumber: '',
-    cardName: '',
-    cvc: '',
+    
   });
 
   const handleChange = (e) => {
@@ -26,7 +30,33 @@ export default function OrderForm() {
     e.preventDefault();
     console.log("Form Data Submitted:", formData);
   };
-  console.log(formData.lastName)
+  
+  const orderData = { 
+              user : user.email, 
+              polo : carto, 
+              date: new Date(),
+              status: 'Pending',
+              fees: 0,
+              total: totalPrice,
+          } ;
+
+ fetch('http://localhost:3000/orders', {
+        method: 'POST', 
+        headers: {
+        'Content-Type': 'application/json' 
+        }, body: JSON.stringify(orderData), 
+       }).then(response => response.json())
+        .then(data => { console.log('Order valide:', data); })
+        .catch((error) => { console.error('Error:', error);
+
+  }); 
+
+
+
+
+
+
+
 
   return (
     <div className="w-2/3 max-w-lg bg-white shadow-md rounded-lg p-8 mx-auto mt-20">
