@@ -13,6 +13,7 @@ import { useRouter } from "next/router";
 import { Popover } from "antd";
 import PopOverBasket from "./PopOverBasket";
 import { totalBasket, totalQuantityBasket } from "../../reducers/cart";
+import { totalBasket, totalQuantityBasket } from "../../reducers/cart";
 
 
 
@@ -58,7 +59,7 @@ function Header({ setSearchTerm, handleReset }) {
     }
   };
 
-
+  
 
 
   const handleLogout = () => {
@@ -85,6 +86,16 @@ function Header({ setSearchTerm, handleReset }) {
 
 
 
+  const handleClick = () => {
+    if (poloProduct.length > 0) {
+      router.push("/basket"); 
+     } else {
+        router.push("/emptybasket"); 
+       } };
+
+  const popoverContent = (
+    <div className={styles.popoverContent}>{poloProduct} <p className={styles.total}> <span> Quantité : {totalQuantity}</span><span>Total: {totalPrice}</span></p>  </div>
+  );
   const res = () => {
     setSearchInput('');
     handleReset();
@@ -94,7 +105,6 @@ function Header({ setSearchTerm, handleReset }) {
   return (
     <header className={styles.header}>
       <div className={styles.left}>
-       <img src="poloLogo.png" alt="logo" onClick={res} sizes="2xl"/>
        {/* Rediriger vers la page d'accueil (router.push("/")).
        Appeler la fonction handleReset pour réinitialiser les états. */}
          {router.pathname === "/" && (
@@ -102,6 +112,10 @@ function Header({ setSearchTerm, handleReset }) {
         <span>About</span>
       </div>
     
+          <div className={styles.mid}>
+            <img src="poloLogo.png" alt="logo" onClick={res} />
+            </div>
+
       <div className={styles.right}>
         {/* si l'on est pas dans la page home l'icone et l'input ne s'affichent pas */}
       {router.pathname === "/" && (
@@ -120,13 +134,14 @@ function Header({ setSearchTerm, handleReset }) {
   content={popoverContent}
 >
   <div className="relative inline-block">
+  
     <FontAwesomeIcon
       icon={faCartShopping}
-      onClick={() => router.push("/basket")}
+      onClick={() => handleClick()}
       size="lg"
     />
     <div className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-black bg-[#bfdbf7] border-1 border-white rounded-full -top-2 -end-2 dark:border-gray-900">
-      {poloProduct.length}
+      {totalQuantity}
     </div>
   </div>
 </Popover>
@@ -140,6 +155,7 @@ function Header({ setSearchTerm, handleReset }) {
               icon={faHeart}
               onClick={() => router.push("/likes")}
               style={{ color: "#000000", cursor: "pointer" }}
+              size="lg"
             />
       </div>
           

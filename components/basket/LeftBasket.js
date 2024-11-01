@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { clearCart } from "../../reducers/cart";
 import LeftBasketDetails from "./LeftBasketDetails";
+import EmptyBasket from "./EmptyBasket"
 
 
 export default function LeftBasket() {
@@ -22,8 +23,10 @@ export default function LeftBasket() {
           <button className=" block  rounded bg-gray-900 px-4 py-3 font-medium text-white transition hover:scale-105"  onClick={()=> dispatch(clearCart())}>CLEAR CART</button>
 
     </div>
+    {poloProduct.length > 0 ? ( <div>{poloProduct}</div> ) : ( <EmptyBasket />)}
+     {/* Affiche le composant EmptyBasket si le panier est vide */}
    
-      <div>{poloProduct}</div>
+      
       
     </div>
   );
