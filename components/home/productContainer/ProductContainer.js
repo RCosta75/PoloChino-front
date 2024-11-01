@@ -28,6 +28,8 @@ export default function ProductContainer({ searchTerm }) {
       });
   }, []);
 
+  // recupere les like et met a jour le coeur selon user.likes
+  // envoi en props 
   useEffect(() => {
     fetch(`http://localhost:3000/users/get/${user?.token}`)
       .then((response) => response.json())
@@ -88,7 +90,7 @@ export default function ProductContainer({ searchTerm }) {
         <Card
           key={i}
           polo={polo}
-          isLike={likesData?.some((e) => e === polo._id)}
+          isLike={likesData?.some((e) => e === polo._id)} // props pour les likes
         />
       </div>
     );

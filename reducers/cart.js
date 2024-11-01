@@ -52,10 +52,10 @@ export const trendSlice = createSlice({
   },
 });
 
-export const totalBasket = (state) =>
-  state.cart.value
-    .reduce((total, item) => total + item.price * item.quantity, 0)
-    .toFixed(2);
+    export const totalBasket = (state) =>
+      state.cart.value
+        .reduce((total, item) => total + item.price * item.quantity, 0)
+        .toFixed(2);
 
     export const totalQuantityBasket = (state) =>
       state.cart.value

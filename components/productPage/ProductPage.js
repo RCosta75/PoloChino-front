@@ -21,7 +21,7 @@ export default function ProductPage() {
     if (buttonPressed) {
       setTimeout(() => {
         setButtonPressed(false);
-      }, 300);
+      }, 100);
     }
   }, [buttonPressed]);
 
@@ -109,7 +109,7 @@ export default function ProductPage() {
 
       <div className="flex justify-between overflow-x-hidden w-full py-20">
       <div className="flex w-full overflow-scroll no-scrollbar [&>div]:flex-shrink-0 bg-stone-100">
-        <Suggestions/>
+        <Suggestions />
       </div>
       </div>
       <Footer/>
