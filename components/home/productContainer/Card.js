@@ -52,7 +52,7 @@ export default function Card({ polo, isLike }) {
     <div className="group relative block overflow-hidden rounded">
       {user.token && (
         <button
-          className="absolute end-4 top-4 z-10 rounded-full bg-white p-1.5 text-gray-900 transition hover:text-gray-900/75"
+          className="absolute end-4 top-4 z-10 rounded-full bg-[#bfdbf7] p-1.5 text-gray-900 transition hover:text-gray-900/75"
           onClick={() => handleLikes()}
         >
           <span className="sr-only">Wishlist</span>
