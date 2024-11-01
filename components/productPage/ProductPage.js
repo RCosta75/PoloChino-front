@@ -4,16 +4,26 @@ import { addToCart } from "../../reducers/cart";
 import { useDispatch } from "react-redux";
 import Suggestions from "./Suggestions";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Footer from "../Footer";
+import clsx from "clsx";
 
 export default function ProductPage() {
   const dispatch = useDispatch();
   const router = useRouter();
+  const [buttonPressed, setButtonPressed] = useState(false);
   const { _id, name, description, price, image, marque, coupe, matiere } = router.query;
   //Récupère les données du produit depuis query
 
   const product = { _id, name, description, price, image, marque, coupe, matiere };
+
+  useEffect(() => {
+    if (buttonPressed) {
+      setTimeout(() => {
+        setButtonPressed(false);
+      }, 300);
+    }
+  }, [buttonPressed]);
 
   const [taille, setTaille] = useState("");
   const [color, setColor] = useState("");
@@ -49,43 +59,49 @@ export default function ProductPage() {
           <div>
             <h4>Colors :</h4>
             <div className={styles.colors}>
-              <button onClick={() => setColor("Red")} className={styles.colorrectanglebleu}></button>
-              <button onClick={() => setColor("Green")} className={styles.colorrectanglevert}></button>
-              <button onClick={() => setColor("Yellow")} className={styles.colorrectanglejaune}></button>
-              <button onClick={() => setColor("Blue")} className={styles.colorrectanglenoir}></button>
-              <button onClick={() => setColor("Brown")} className={styles.colorrectangleblanc}></button>
+              <button onClick={() => setColor("Red")} className={color !== "Red" ? styles.colorrectanglerouge : styles.colorrectanglerougefocus}></button>
+              <button onClick={() => setColor("Green")} className={color !== "Green" ? styles.colorrectanglevert : styles.colorrectanglevertfocus}></button>
+              <button onClick={() => setColor("Yellow")} className={color !== "Yellow" ? styles.colorrectanglejaune : styles.colorrectanglejaunefocus }></button>
+              <button onClick={() => setColor("Blue")} className={color !== "Blue" ? styles.colorrectanglebleu : styles.colorrectanglebleufocus}></button>
+              <button onClick={() => setColor("Brown")} className={color !== "Brown" ? styles.colorrectanglemarron : styles.colorrectanglemarronfocus}></button>
             </div>
           </div>
           <div>
             <h4>Size :</h4>
             <div className={styles.sizes}>
               <button
-                className={styles.sizescontainer}
+                className={ taille === "S" ? styles.sizescontainerfocus : styles.sizescontainer}
                 onClick={() => setTaille("S")}
               >
                 S
               </button>
               <button
-                className={styles.sizescontainer}
+                className={taille === "M" ? styles.sizescontainerfocus : styles.sizescontainer}
                 onClick={() => setTaille("M")}
               >
                 M
               </button>
               <button
-                className={styles.sizescontainer}
+                className={taille === "L" ? styles.sizescontainerfocus : styles.sizescontainer}
                 onClick={() => setTaille("L")}
               >
                 L
               </button>
               <button
-                className={styles.sizescontainer}
+                className={taille === "XL" ? styles.sizescontainerfocus : styles.sizescontainer}
                 onClick={() => setTaille("XL")}
               >
                 XL
               </button>
             </div>
           </div>
-          <button className={styles.btn} onClick={() => handleCart()}>
+          <button className={clsx(
+            buttonPressed
+              ? "bg-[#010203] text-[#bfdbf7]"
+              : "bg-[#bfdbf7] text-[#010203]",
+            " font-semibold rounded-md py-2 px-4 w-3/4 "
+          )}
+          onClick={() => {handleCart(); setButtonPressed(true)}}>
             Add to Cart
           </button>
         </div>
