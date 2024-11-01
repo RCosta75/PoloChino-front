@@ -12,7 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import { Popover } from "antd";
 import PopOverBasket from "./PopOverBasket";
-import { totalBasket } from "../../reducers/cart";
+import { totalBasket, totalQuantityBasket } from "../../reducers/cart";
 
 
 
@@ -29,6 +29,7 @@ function Header({ setSearchTerm, handleReset }) {
   const [searchInput, setSearchInput] = useState("");
 
   const totalPrice = useSelector(totalBasket);
+  const totalQuantity = useSelector(totalQuantityBasket)
   
 
   const handleSearch = () => {
@@ -83,7 +84,7 @@ function Header({ setSearchTerm, handleReset }) {
        } };
 
   const popoverContent = (
-    <div className={styles.popoverContent}>{poloProduct} <p className={styles.total}> <span> Quantité : {poloProduct.length}</span><span>Total: {totalPrice}</span></p>  </div>
+    <div className={styles.popoverContent}>{poloProduct} <p className={styles.total}> <span> Quantité : {totalQuantity}</span><span>Total: {totalPrice}</span></p>  </div>
   );
   const res = () => {
     setSearchInput('');
@@ -130,7 +131,7 @@ function Header({ setSearchTerm, handleReset }) {
       size="lg"
     />
     <div className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-black bg-[#bfdbf7] border-1 border-white rounded-full -top-2 -end-2 dark:border-gray-900">
-      {poloProduct.length}
+      {totalQuantity}
     </div>
   </div>
 </Popover>
