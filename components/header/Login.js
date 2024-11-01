@@ -4,11 +4,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../reducers/user";
 import clsx from "clsx";
 
-
-
 function Login() {
   const user = useSelector((state) => state.user.value);
   const [email, setemail] = useState("");
+  const [emailError, setEmailError] = useState(true);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [signState, setsignState] = useState("Sign In"); //Pour modifier les titres selon l'inscription/connexion
@@ -17,40 +16,42 @@ function Login() {
   const router = useRouter();
   const { redirect } = router.query; // Récupère l'URL de redirection depuis rightBasket
 
-  
-
   useEffect(() => {
-     if (user.token) { 
+    if (user.token) {
       router.push(redirect || "/"); // Redirige vers la page précédente ou vers la page d'accueil
-    } }, [user.token, redirect]);
-    //Le paramètre redirect indique la page où l'utilisateur était avant de se connecter.
-    //En surveillant redirect, nous pouvons rediriger l'utilisateur
-    // vers cette page après une connexion réussie.
-    //Si nous ne surveillons pas user.token,
-    // nous ne saurons pas quand l'utilisateur s'est connecté,
-    // et nous ne pourrons pas effectuer la redirection en conséquence.
-
+    }
+  }, [user.token, redirect]);
+  //Le paramètre redirect indique la page où l'utilisateur était avant de se connecter.
+  //En surveillant redirect, nous pouvons rediriger l'utilisateur
+  // vers cette page après une connexion réussie.
+  //Si nous ne surveillons pas user.token,
+  // nous ne saurons pas quand l'utilisateur s'est connecté,
+  // et nous ne pourrons pas effectuer la redirection en conséquence.
 
   useEffect(() => {
     if (buttonPressed) {
       setTimeout(() => {
         setButtonPressed(false);
-      }, 400);
+      }, 300);
     }
   }, [buttonPressed]);
 
   const handleSignUp = () => {
-    fetch("http://localhost:3000/users/signup", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, username, password }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.result) {
-          dispatch(login({ token: data.token, username, email }));
-        }
-      });
+     if(EMAIL_REGEX.test(email)){
+      fetch("http://localhost:3000/users/signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, username, password }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.result) {
+            dispatch(login({ token: data.token, username, email }));
+          }
+        })
+     } else {
+      setEmailError(false)
+     }
   };
 
   const handleSignIn = () => {
@@ -73,11 +74,16 @@ function Login() {
       });
   };
 
+  const EMAIL_REGEX =
+    /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
   return (
     <div className="bg-gray-100 flex justify-center items-center h-screen">
-      <div className="lg:p-36 md:p-52 sm:20 p-8 w-full lg:w-1/2">
-        <h1 className="text-2xl font-semibold mb-4">{signState}</h1>
+      <div className="lg:p-36 md:p-52 sm:20 p-8 w-full lg:w-1/2 h-screen">
+        <h1 className="text-2xl font-semibold mb-4">{signState}</h1>        
         {signState === "Sign Up" ? (
+          <>
+          Username
           <input
             type="text"
             className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500"
@@ -86,6 +92,7 @@ function Login() {
             value={username}
             placeholder="Username"
           />
+          </>
         ) : null}
 
         <div className="mb-4">
@@ -102,6 +109,7 @@ function Login() {
             value={email}
             placeholder="Type your Email"
           ></input>
+            {!emailError && <p className="text-red-600" >Invalid email address</p>}
         </div>
 
         <div className="mb-4">
@@ -142,7 +150,7 @@ function Login() {
         <button
           onClick={() => {
             signState === "Sign In" ? handleSignIn() : handleSignUp();
-           setButtonPressed(true);
+            setButtonPressed(true);
           }}
           className={clsx(
             buttonPressed
@@ -169,8 +177,8 @@ function Login() {
               </p>
             ) : (
               <p>
-                Already have an account ?{" "}
-                <button 
+                <span className="text-slate-950">Already have an account ?{" "}</span>
+                <button
                   className="hover:underline"
                   onClick={() => setsignState("Sign In")}
                 >
