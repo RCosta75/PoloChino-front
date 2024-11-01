@@ -131,6 +131,7 @@ function Header({ setSearchTerm, handleReset }) {
               icon={faHeart}
               onClick={() => router.push("/likes")}
               style={{ color: "#000000", cursor: "pointer" }}
+              size="lg"
             />
       </div>
           
