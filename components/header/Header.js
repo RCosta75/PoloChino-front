@@ -85,7 +85,6 @@ function Header({ setSearchTerm, handleReset }) {
   return (
     <header className={styles.header}>
       <div className={styles.left}>
-       <img src="poloLogo.png" alt="logo" onClick={res} sizes="2xl"/>
        {/* Rediriger vers la page d'accueil (router.push("/")).
        Appeler la fonction handleReset pour réinitialiser les états. */}
          {router.pathname === "/" && (
@@ -93,6 +92,10 @@ function Header({ setSearchTerm, handleReset }) {
         <span>About</span>
       </div>
     
+          <div className={styles.mid}>
+            <img src="poloLogo.png" alt="logo" onClick={res} />
+            </div>
+
       <div className={styles.right}>
         {/* si l'on est pas dans la page home l'icone et l'input ne s'affichent pas */}
       {router.pathname === "/" && (
