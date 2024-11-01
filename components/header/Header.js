@@ -12,7 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import { Popover } from "antd";
 import PopOverBasket from "./PopOverBasket";
-import { totalBasket } from "../../reducers/cart";
+import { totalBasket, totalQuantityBasket } from "../../reducers/cart";
 
 
 
@@ -29,11 +29,24 @@ function Header({ setSearchTerm, handleReset }) {
   const [searchInput, setSearchInput] = useState("");
 
   const totalPrice = useSelector(totalBasket);
+  const totalQuantity = useSelector(totalQuantityBasket)
   
+  
+
+  const poloProduct = cart?.map((polo, i) => {
+    return <PopOverBasket key={i} polo={polo}/>;
+  });
+
+  const popoverContent = (
+    <div className={styles.popoverContent}>{poloProduct} <p className={styles.total}> <span> Quantité : {totalQuantity}</span><span>Total: {totalPrice}</span></p>  </div>
+  );
 
   const handleSearch = () => {
     setSearchTerm(searchInput);
   };
+
+
+
   //lorsque cette fonction est appelée, elle prend la valeur de searchInput qui représente  
   //ce que l'utilisateur a tapé dans la barre de recherche
   // et met à jour searchTerm avec cette valeur.
@@ -47,9 +60,6 @@ function Header({ setSearchTerm, handleReset }) {
 
 
 
-  const poloProduct = cart?.map((polo, i) => {
-    return <PopOverBasket key={i} polo={polo}/>;
-  });
 
   const handleLogout = () => {
     dispatch(logout());
@@ -73,9 +83,8 @@ function Header({ setSearchTerm, handleReset }) {
     }
   };
 
-  const popoverContent = (
-    <div className={styles.popoverContent}>{poloProduct} <p className={styles.total}> <span> Quantité : {poloProduct.length}</span><span>Total: {totalPrice}</span></p>  </div>
-  );
+
+
   const res = () => {
     setSearchInput('');
     handleReset();
@@ -149,3 +158,4 @@ function Header({ setSearchTerm, handleReset }) {
 }
 
 export default Header;
+
