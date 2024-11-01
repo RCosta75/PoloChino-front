@@ -29,7 +29,7 @@ export default function OrderForm() {
   console.log(formData.lastName)
 
   return (
-    <div className="max-w-md mx-auto p-4">
+    <div className="w-2/3 max-w-lg bg-white shadow-md rounded-lg p-8 mx-auto mt-20">
       <h2 className="text-xl mb-4">Formulaire de Commande</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
@@ -117,42 +117,8 @@ export default function OrderForm() {
             required
           />
         </div>
-        <div className="mb-4">
-          <label htmlFor="cardNumber" className="block text-sm font-medium mb-1">Numéro de Carte :</label>
-          <input
-            type="text"
-            name="cardNumber"
-            id="cardNumber"
-            value={formData.cardNumber}
-            onChange={handleChange}
-            className="border p-2 w-full"
-            required
-          />
-        </div>
-        <div className="mb-4">
-          <label htmlFor="cardName" className="block text-sm font-medium mb-1">Nom sur la Carte :</label>
-          <input
-            type="text"
-            name="cardName"
-            id="cardName"
-            value={formData.cardName}
-            onChange={handleChange}
-            className="border p-2 w-full"
-            required
-          />
-        </div>
-        <div className="mb-4">
-          <label htmlFor="cvc" className="block text-sm font-medium mb-1">CVC :</label>
-          <input
-            type="text"
-            name="cvc"
-            id="cvc"
-            value={formData.cvc}
-            onChange={handleChange}
-            className="border p-2 w-full"
-            required
-          />
-        </div>
+      
+      
         <button type="submit" className="w-full bg-blue-500 text-white p-2 rounded">
           Valider la Commande
         </button>

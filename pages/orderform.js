@@ -16,7 +16,9 @@ export default function orderform() {
   return (
     <>
     <Header setSearchTerm={setSearchTerm} handleReset={handleReset}/>
-    <OrderForm />
+    <div className="flex justify-center items-center min-h-screen bg-gray-100">
+    <OrderForm  className="w-full h-full "/>
+    </div>
   </>
   )
 }

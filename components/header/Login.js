@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../../reducers/user';
@@ -13,11 +13,15 @@ function Login() {
   const [signState, setsignState] = useState('Sign In') //Pour modifier les titres selon l'inscription/connexion
   const dispatch = useDispatch();
   const router = useRouter();
+  const { from } = router.query;//récupère la page d'origine de l'utilisateur dans router.query.
 
 
-  if (user.token) {
-    router.push('/');
-  }
+  useEffect(() => {
+     if (user.token) {
+       router.push(from || '/'); 
+      } }, [user.token]);
+  //Utilisation de useEffect pour vérifier si l'utilisateur
+  // est connecté et rediriger vers la page précédente ou vers la page d'accueil ('/') :
 
   const handleSignUp = () => {
     fetch('http://localhost:3000/users/signup', {

@@ -96,10 +96,12 @@ export default function ProductContainer({ searchTerm }) {
 
   return (
     <div>
+      <div className="flex space-x-4 p-4">
         <SortFilter sortOrder={sortOrder} handleSortChange={handleSortChange} />
         <MaterialFilter selectedMaterial={selectedMaterial} handleMaterialChange={handleMaterialChange} />
         <BrandFilter selectedBrand={selectedBrand} handleBrandChange={handleBrandChange} />
         <CoupeFilter selectedCoupe={selectedCoupe} handleCoupeChange={handleCoupeChange} />
+        </div>
       {poloProduct.length > 0 ? (
         <div className=" pt-20 px-11 grid grid-cols-4 gap-8">{poloProduct}</div>
         ) : (
