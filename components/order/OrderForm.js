@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-
+import { useRouter } from "next/router";
+import { totalBasket } from "../../reducers/cart";
 
 export default function OrderForm() {
   const user = useSelector((state) => state.user.value);
   const carto = useSelector((state) => state.cart.value);
   const totalPrice = useSelector(totalBasket);
-
+  const router = useRouter();
 
   const [formData, setFormData] = useState({
     email: '',
@@ -16,7 +17,6 @@ export default function OrderForm() {
     city: '',
     postalCode: '',
     phoneNumber: '',
-    
   });
 
   const handleChange = (e) => {
@@ -29,34 +29,37 @@ export default function OrderForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Form Data Submitted:", formData);
+
+    const orderData = { 
+      user: user._id, //pas sur de moi
+      polo: carto.map(item => item._id), 
+      date: new Date().toISOString(),
+      status: 'Pending',
+      fees: 0,
+      total: totalPrice,
+    };
+
+    console.log('Order data being sent:', orderData); // On envoie la commande sur mongoose
+
+    fetch('http://localhost:3000/orders', {
+      method: 'POST', 
+      headers: {
+        'Content-Type': 'application/json'
+      }, 
+      body: JSON.stringify(orderData), 
+    })
+      .then(response => response.json())
+      .then(data => { 
+        if(data.result) {
+          router.push('/allorders');
+        } else {
+          console.error('Order not created:', data.error);
+        }
+      })
+      .catch((error) => { 
+        console.error('Error:', error);
+      }); 
   };
-  
-  const orderData = { 
-              user : user.email, 
-              polo : carto, 
-              date: new Date(),
-              status: 'Pending',
-              fees: 0,
-              total: totalPrice,
-          } ;
-
- fetch('http://localhost:3000/orders', {
-        method: 'POST', 
-        headers: {
-        'Content-Type': 'application/json' 
-        }, body: JSON.stringify(orderData), 
-       }).then(response => response.json())
-        .then(data => { console.log('Order valide:', data); })
-        .catch((error) => { console.error('Error:', error);
-
-  }); 
-
-
-
-
-
-
-
 
   return (
     <div className="w-2/3 max-w-lg bg-white shadow-md rounded-lg p-8 mx-auto mt-20">
@@ -97,7 +100,6 @@ export default function OrderForm() {
             className="border p-2 w-full"
             required
           />
-          
         </div>
         <div className="mb-4">
           <label htmlFor="address" className="block text-sm font-medium mb-1">Adresse :</label>
@@ -147,8 +149,6 @@ export default function OrderForm() {
             required
           />
         </div>
-      
-      
         <button type="submit" className="w-full bg-blue-500 text-white p-2 rounded">
           Valider la Commande
         </button>
