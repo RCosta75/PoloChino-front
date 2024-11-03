@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import { totalBasket } from "../../reducers/cart";
 
 export default function OrderForm() {
-  const user = useSelector((state) => state.user.value);
+  const userToken = useSelector((state) => state.user.value.token);
   const carto = useSelector((state) => state.cart.value);
   const totalPrice = useSelector(totalBasket);
   const router = useRouter();
@@ -31,16 +31,17 @@ export default function OrderForm() {
     console.log("Form Data Submitted:", formData);
 
     const orderData = { 
-      user: user._id, //pas sur de moi
+      token: userToken, //pas sur de moi
       polo: carto.map(item => item._id), 
       date: new Date().toISOString(),
       status: 'Pending',
       fees: 0,
       total: totalPrice,
+      totalPrice, ...formData // on ajoute les infos du formulaire pas sur
     };
 
     console.log('Order data being sent:', orderData); // On envoie la commande sur mongoose
-
+  
     fetch('http://localhost:3000/orders', {
       method: 'POST', 
       headers: {
@@ -51,9 +52,10 @@ export default function OrderForm() {
       .then(response => response.json())
       .then(data => { 
         if(data.result) {
+          console.log(data)
           router.push('/allorders');
         } else {
-          console.error('Order not created:', data.error);
+          console.error('Order not created:');
         }
       })
       .catch((error) => { 
