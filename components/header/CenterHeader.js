@@ -5,7 +5,9 @@ export default function CenterHeader({ handleReset }) {
   const router = useRouter();
 
   const res = () => {
-    handleReset();
+    if(router.pathname === "/"){
+      handleReset();
+    }
     router.push("/");
   };
 
