@@ -8,7 +8,7 @@ function Header({ setSearchTerm, handleReset }) {
       <div className="flex h-16  justify-between  items-center  gap-8 px-4 sm:px-6 lg:px-8">
         <LeftHeader />
         <CenterHeader handleReset={handleReset} />
-        <RightHeader setSearchTerm={setSearchTerm} />
+        <RightHeader setSearchTerm={setSearchTerm} className="w-1/2"/>
       </div>
     </header>
   );
