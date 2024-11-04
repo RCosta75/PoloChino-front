@@ -35,6 +35,8 @@ export default function SearchIcon({ setSearchTerm }) {
               onKeyDown={handleKeyDown}
               value={searchInput}
               onChange={(e) => setSearchInput(e.target.value)}
+              className=" border border-gray-300 rounded-md  pl-2 focus:outline-none focus:border"
+              autocomplete="off"
             />
           )}
           <FontAwesomeIcon
