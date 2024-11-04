@@ -52,6 +52,7 @@ export default function LoginIcon() {
 
       {showLogout && (
         <div className={styles.btn}>
+          <button className={styles.log}onClick={() => router.push("/allorders")} >Suivi des commandes</button>
           <button className={styles.log} onClick={handleLogout}>
             Logout
           </button>

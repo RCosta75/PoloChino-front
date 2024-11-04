@@ -1,13 +1,19 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { useRouter } from "next/router";
-import { totalBasket } from "../../reducers/cart";
+import { totalBasket, clearCart } from "../../reducers/cart";
+import { useDispatch } from "react-redux";
+
 
 export default function OrderForm() {
   const userToken = useSelector((state) => state.user.value.token);
   const carto = useSelector((state) => state.cart.value);
   const totalPrice = useSelector(totalBasket);
   const router = useRouter();
+  const dispatch = useDispatch();
+
+  
+  
 
   const [formData, setFormData] = useState({
     email: '',
@@ -88,7 +94,9 @@ export default function OrderForm() {
       .then(data => { 
         if(data.result) {
           console.log(data)
+          dispatch(clearCart())
           router.push('/allorders');
+
           alert('Votre commande est validée')
         } else {
           console.error('Order not created:');

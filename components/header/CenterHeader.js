@@ -12,7 +12,7 @@ export default function CenterHeader({ handleReset }) {
   return (
     <div>
       <nav aria-label="Global">
-        <img className="h-10" src="poloLogo.png" alt="logo" onClick={res} />
+        <img className="h-10  cursor-pointer" src="poloLogo.png" alt="logo" onClick={res} />
       </nav>
     </div>
   );
