@@ -9,7 +9,9 @@ import CoupeFilter from "./CoupeFilter";
 import ResetFilter from "./ResetFilter"
 // Les composants de filtre sont appelés dans le composant parent et passent les états et fonctions appropriés.
 
-export default function ProductContainer({ searchTerm }) {
+export default function ProductContainer({ searchTerm, reset }) {
+  //reset comme un argument, pour surveiller les changements de sa valeur dans useEffect
+  // et réinitialiser les filtres en conséquence.
   const [poloData, setPoloData] = useState([]);
   const [likesData, setLikesData] = useState([]);
   //Filtrez les articles en fonction du terme de recherche dans ProductContainer
@@ -38,6 +40,17 @@ export default function ProductContainer({ searchTerm }) {
         setLikesData(data.likes);
       });
   }, [render]);
+
+
+  useEffect(() => {
+     setSortOrder("");
+     setSelectedMaterial("");
+     setSelectedBrand("");
+     setSelectedCoupe("");
+     }, [reset]);// s'assurer que chaque fois que la variable reset change, l'état des filtres et de l'ordre de tri est réinitialisé.
+
+
+
 
   const handleSortChange = (order) => {
     setSortOrder(order); //Met à jour l'état de l'ordre de tri lorsqu'on sélectionne un nouveau type de tri
