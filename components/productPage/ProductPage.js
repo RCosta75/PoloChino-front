@@ -15,6 +15,7 @@ export default function ProductPage() {
   const { _id, name, description, price, image, marque, coupe, matiere } = router.query;
   //Récupère les données du produit depuis query
 
+
   const product = { _id, name, description, price, image, marque, coupe, matiere };
 
   useEffect(() => {
@@ -28,8 +29,31 @@ export default function ProductPage() {
   const [taille, setTaille] = useState("");
   const [color, setColor] = useState("");
 
+  const [errorColor, setErrorColor] = useState(false);
+  const [errorSize, setErrorSize] = useState(false);
+  const [bothError, setBothError] = useState(false);
+
+
+  // permet de gerer que l'user a bien choisi une taille et une couleur avant d'envoyer le polo dans le panier
   const handleCart = () => {
-    dispatch(addToCart({ ...product, quantity: 1, size: taille, color : color }));
+    if (taille.length < 1 && color.length < 1) {
+      setBothError(true)
+    } else if (taille.length < 1) {
+      setErrorSize(true);
+      setErrorColor(false);
+      setBothError(false)
+    } else if (color.length < 1) {
+      setErrorColor(true);
+      setErrorSize(false);
+      setBothError(false)
+    } else {
+      dispatch(addToCart({ ...product, quantity: 1, size: taille, color: color }));
+      setErrorColor(false);
+      setErrorSize(false);
+      setBothError(false);
+      setTaille("");
+      setColor("");
+    }
   };
   return (
     <div className={styles.all}>
@@ -57,6 +81,16 @@ export default function ProductPage() {
           <p>{product.description}</p>
 
           <div>
+          {bothError ? (
+          <span className="text-red-600 text-lg">Choose a color & a size please !</span>
+        ) : (
+          <></>
+        )}
+          {errorColor ? (
+          <span className="text-red-600 text-lg">Choose a color please !</span>
+        ) : (
+          <></>
+        )}
             <h4>Colors :</h4>
             <div className={styles.colors}>
               <button onClick={() => setColor("Red")} className={color !== "Red" ? styles.colorrectanglerouge : styles.colorrectanglerougefocus}></button>
@@ -67,6 +101,11 @@ export default function ProductPage() {
             </div>
           </div>
           <div>
+          {errorSize ? (
+            <span className="text-red-600 text-lg">Choose a size please !</span>
+          ) : (
+            <></>
+          )}
             <h4>Size :</h4>
             <div className={styles.sizes}>
               <button

@@ -18,7 +18,7 @@ export default function ProductPageWrapper() {
   // Le composant Header a maintenant accès à la fonction handleReset.
 
   return (
-    <div>
+    <div className="overflow-y-scroll scrollbar-none ">
       <Header setSearchTerm={setSearchTerm} handleReset={handleReset} />
       <ProductPage product={product} />;
     </div>

@@ -29,7 +29,7 @@ export default function ProductContainer({ searchTerm }) {
   }, []);
 
   // recupere les like et met a jour le coeur selon user.likes
-  // envoi en props 
+  // envoi en props
   useEffect(() => {
     fetch(`http://localhost:3000/users/get/${user?.token}`)
       .then((response) => response.json())
@@ -74,7 +74,9 @@ export default function ProductContainer({ searchTerm }) {
     polo.name && polo.name.toLowerCase().includes(searchTerm.toLowerCase());
     // Filtrage des articles en fonction du terme de recherche et des filtres sélectionnés
     // Filtrer par matière si sélectionnée
-    const matchesMaterial = selectedMaterial ? polo.matiere === selectedMaterial : true;
+    const matchesMaterial = selectedMaterial
+      ? polo.matiere === selectedMaterial
+      : true;
     //Vérifie si la matière du produit (polo.matiere) correspond à la matière sélectionnée (selectedMaterial).
     //Si aucune matière n'est sélectionnée, renvoie true, signifiant que tous les produits sont inclus dans le filtrage.
     const matchesBrand = selectedBrand ? polo.marque === selectedBrand : true;
@@ -98,21 +100,32 @@ export default function ProductContainer({ searchTerm }) {
 
   return (
     <div>
-      <div className="flex space-x-4 p-4">
+      <div className="flex space-x-4 p-4 overflow-y-scroll scrollbar-none">
         <SortFilter sortOrder={sortOrder} handleSortChange={handleSortChange} />
-        <MaterialFilter selectedMaterial={selectedMaterial} handleMaterialChange={handleMaterialChange} />
-        <BrandFilter selectedBrand={selectedBrand} handleBrandChange={handleBrandChange} />
-        <CoupeFilter selectedCoupe={selectedCoupe} handleCoupeChange={handleCoupeChange} />
-        </div>
+        <MaterialFilter
+          selectedMaterial={selectedMaterial}
+          handleMaterialChange={handleMaterialChange}
+        />
+        <BrandFilter
+          selectedBrand={selectedBrand}
+          handleBrandChange={handleBrandChange}
+        />
+        <CoupeFilter
+          selectedCoupe={selectedCoupe}
+          handleCoupeChange={handleCoupeChange}
+        />
+      </div>
       {poloProduct.length > 0 ? (
-        <div className=" pt-20 px-11 grid grid-cols-4 gap-8">{poloProduct}</div>
-        ) : (
-        <div>
-        <p className=" text-center items-center text-xl">
-        Aucun produit trouvé.
-        </p>
+        <div className=" pt-20 px-11 grid md:grid-cols-4 sm:grid-cols-1 gap-8">
+          {poloProduct}
         </div>
-        )}
+      ) : (
+        <div>
+          <p className=" text-center items-center text-xl">
+            Aucun produit trouvé.
+          </p>
+        </div>
+      )}
     </div>
   );
 }

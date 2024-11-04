@@ -29,7 +29,7 @@ export default function RightBasket() {
 return(
     <div>
     {cartQuantity > 0 ? (  
-    <div className="w-1/2 h-screen  " >
+    <div className="pt-10 h-screen  " >
     <h3 className="text-center text-lg py-20" >RESUME DE LA COMMANDE</h3>
         <div className="mx-10 mt-5">
             <div className="flex justify-between">
