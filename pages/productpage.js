@@ -8,7 +8,7 @@ export default function ProductPageWrapper() {
   const product = JSON.parse(router.query.product || "{}");
   //Si router.query.product est indéfini ou null, elle renverra la chaîne vide {}
   //Parse les données du produit de l'URL et les passées au composant ProductPage.
-  const [setSearchTerm] = useState("");
+  const [searchTerm,setSearchTerm] = useState("");
   const [reset, setReset] = useState(false);
   const handleReset = () => {
     setSearchTerm("");
