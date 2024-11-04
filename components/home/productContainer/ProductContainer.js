@@ -123,7 +123,7 @@ export default function ProductContainer({ searchTerm, reset }) {
 
   return (
     <div>
-      <div className="flex space-x-4 p-4 overflow-y-scroll scrollbar-none">
+      <div className="flex justify-center mt-12 space-x-4 p-4 items-center overflow-y-scroll scrollbar-none">
         <SortFilter sortOrder={sortOrder} handleSortChange={handleSortChange} />
         <MaterialFilter
           selectedMaterial={selectedMaterial}

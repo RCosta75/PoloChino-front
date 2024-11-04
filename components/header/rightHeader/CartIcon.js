@@ -19,12 +19,16 @@ export default function CartIcon() {
 
   const popoverContent = (
     <div className="font-bold">
-      <span>TKT</span>
       {poloProduct}
       <p className="flex flex-row justify-between">
         <span> Quantité : {totalQuantity}</span>
         <span>Total: {totalPrice}</span>
       </p>
+      <div className="flex justify-center">
+      <button 
+      onClick={() => handleClick()}
+      className="w-full rounded mt-4  bg-[#001021] p-2 text-sm text-stone-100 transition hover:scale-105">Go To Cart</button>
+      </div>
     </div>
   );
 

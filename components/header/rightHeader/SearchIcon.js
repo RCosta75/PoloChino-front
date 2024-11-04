@@ -41,7 +41,7 @@ export default function SearchIcon({ setSearchTerm }) {
             icon={faMagnifyingGlass}
             onClick={toggleSearch}
             size="lg"
-            className="cursor-pointer"
+            className="cursor-pointer pl-5"
           />
         </>
       )}
