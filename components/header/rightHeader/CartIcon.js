@@ -18,9 +18,10 @@ export default function CartIcon() {
   });
 
   const popoverContent = (
-    <div className="font-bold flex">
+    <div className="font-bold">
+      <span>TKT</span>
       {poloProduct}
-      <p className="flex gap-5">
+      <p className="flex flex-row justify-between">
         <span> Quantité : {totalQuantity}</span>
         <span>Total: {totalPrice}</span>
       </p>
