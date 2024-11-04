@@ -6,6 +6,7 @@ import SortFilter from "./SortFilter";
 import MaterialFilter from "./MaterielFilter";
 import BrandFilter from "./BrandFilter";
 import CoupeFilter from "./CoupeFilter";
+import ResetFilter from "./ResetFilter"
 // Les composants de filtre sont appelés dans le composant parent et passent les états et fonctions appropriés.
 
 export default function ProductContainer({ searchTerm }) {
@@ -53,6 +54,14 @@ export default function ProductContainer({ searchTerm }) {
   const handleCoupeChange = (coupe) => {
     setSelectedCoupe(coupe);
   }; // Met à jour l'état de l'ordre de tri lorsqu'on sélectionne une nouvelle coupe
+
+
+
+  const handleResetFilters = () => {
+     setSortOrder("");
+     setSelectedMaterial("");
+     setSelectedBrand("");
+     setSelectedCoupe(""); };
 
   const sortedPolos = [...poloData].sort((a, b) => {
     if (sortOrder === "croissant") {
@@ -115,6 +124,7 @@ export default function ProductContainer({ searchTerm }) {
           selectedCoupe={selectedCoupe}
           handleCoupeChange={handleCoupeChange}
         />
+        <ResetFilter handleResetFilters={handleResetFilters} />
       </div>
       {poloProduct.length > 0 ?  (
         <div className=" pt-20 px-11 grid md:grid-cols-4 sm:grid-cols-1 gap-8">
