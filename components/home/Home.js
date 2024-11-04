@@ -19,12 +19,15 @@ function Home() {
   // setReset pour mettre à jour cet état.
   //handleReset réinitialise searchTerm et inverse l'état reset.
 
+  const handleResetFilters = () => { 
+     setReset(!reset); }; // on donne cette fonction à ProductContainer
+
   return (
     <div className="bg-stone-100 no-scrollbar overflow-y-auto">
       <Head>
         <title>POL-HO - Home</title>
       </Head>
-      <Header setSearchTerm={setSearchTerm} handleReset={handleReset} />
+      <Header setSearchTerm={setSearchTerm} handleReset={handleReset} handleResetFilters={handleResetFilters} />
       {!searchTerm && <ProductHeader />}
       {searchTerm ? (
         <h1 className="text-3xl pt-32 text-center">{searchTerm}</h1>
@@ -38,7 +41,9 @@ function Home() {
       )}
 
       <div>
-        <ProductContainer searchTerm={searchTerm} />
+        <ProductContainer searchTerm={searchTerm} reset={reset} />
+        {/* passes l'état reset au composant ProductContainer comme une prop, */}
+   
       </div>
       <Footer />
     </div>

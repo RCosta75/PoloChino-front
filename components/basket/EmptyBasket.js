@@ -1,34 +1,18 @@
 import React from "react";
-import {useSelector } from "react-redux";
-
 import { useRouter } from "next/router";
 
-
-export default function LeftBasket() {
- 
-const router = useRouter();
-
+export default function EmptyBasket() {
+  const router = useRouter();
 
   return (
-    <div className="w-1/2">
-    <div className="flex-col items-center justify-between mx-36 py-20 text-xl">
-      
-        <p>Vous n'avez aucun article</p>
-        <button onClick={ ()=>{router.push("/")}}> Faut shop   </button>
-
-    </div>
-   
-      
-      
+    <div className="w-full h-screen flex flex-col items-center justify-center py-20">
+      <p className="text-gray-600 text-2xl mb-4">Votre panier est vide</p>
+      <button 
+        onClick={() => {router.push("/")}} 
+        className="bg-gray-950 hover:py-1px-2 text-white font-bold py-3 px-6 rounded text-lg"
+      >
+        Poursuivre vos achats
+      </button>
     </div>
   );
 }
-
-
-
-
-
-
-
-
-

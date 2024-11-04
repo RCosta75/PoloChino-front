@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import React from "react";
 
-export default function CenterHeader({ handleReset }) {
+export default function CenterHeader({ handleReset, handleResetFilters }) {
   const router = useRouter();
 
   const res = () => {

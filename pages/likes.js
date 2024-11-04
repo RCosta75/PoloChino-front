@@ -13,13 +13,15 @@ export default function likes() {
   const [reset, setReset] = useState(false);
   const handleReset = () => { 
       setSearchTerm('');
-      setReset(!reset);}
+      setReset(!reset);
+    }
        // Passage de handleReset au composant Header dans like.js :
        // Le composant Header a maintenant accès à la fonction handleReset.
-    
+       const handleResetFilters = () => { 
+        setReset(!reset); }; 
   return (
     <div>
-        <Header setSearchTerm={setSearchTerm} handleReset={handleReset}/>
+        <Header setSearchTerm={setSearchTerm} handleReset={handleReset} handleResetFilters={handleResetFilters}/>
         <LikeContainer/>
         <Footer/>
     </div>
