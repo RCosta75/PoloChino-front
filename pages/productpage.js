@@ -8,7 +8,7 @@ export default function ProductPageWrapper() {
   const product = JSON.parse(router.query.product || "{}");
   //Si router.query.product est indéfini ou null, elle renverra la chaîne vide {}
   //Parse les données du produit de l'URL et les passées au composant ProductPage.
-  const [searchTerm, setSearchTerm] = useState("");
+  const [setSearchTerm] = useState("");
   const [reset, setReset] = useState(false);
   const handleReset = () => {
     setSearchTerm("");
@@ -18,7 +18,7 @@ export default function ProductPageWrapper() {
   // Le composant Header a maintenant accès à la fonction handleReset.
 
   return (
-    <div>
+    <div className="w-full h-full">
       <Header setSearchTerm={setSearchTerm} handleReset={handleReset} />
       <ProductPage product={product} />;
     </div>

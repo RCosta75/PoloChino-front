@@ -2,7 +2,11 @@ import React from "react";
 
 import Suggestions from "./Suggestions";
 import { useRouter } from "next/router";
+<<<<<<< HEAD
 
+=======
+import { useState } from "react";
+>>>>>>> nhatfront
 import Footer from "../Footer";
 
 import PictureProductPage from "./PictureProductPage";
