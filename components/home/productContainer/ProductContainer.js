@@ -100,7 +100,7 @@ export default function ProductContainer({ searchTerm }) {
 
   return (
     <div>
-      <div className="flex space-x-4 p-4">
+      <div className="flex space-x-4 p-4 overflow-y-scroll scrollbar-none">
         <SortFilter sortOrder={sortOrder} handleSortChange={handleSortChange} />
         <MaterialFilter
           selectedMaterial={selectedMaterial}
@@ -117,6 +117,10 @@ export default function ProductContainer({ searchTerm }) {
       </div>
       {poloProduct.length > 0 ? (
         <div className=" pt-20 px-11 grid grid-cols-4 gap-8 md:">
+          {poloProduct}
+        </div>
+      ) : (
+        <div className=" pt-20 px-11 grid md:grid-cols-4 sm:grid-cols-1 gap-8">
           {poloProduct}
         </div>
       ) : (
