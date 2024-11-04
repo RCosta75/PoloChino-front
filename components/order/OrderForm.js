@@ -17,6 +17,10 @@ export default function OrderForm() {
     city: '',
     postalCode: '',
     phoneNumber: '',
+    cardNumber: '',
+    expiryDate: '',
+    cvv: ''
+
   });
 
   const handleChange = (e) => {
@@ -37,7 +41,7 @@ export default function OrderForm() {
       status: 'Pending',
       fees: 0,
       total: totalPrice,
-      totalPrice, ...formData // on ajoute les infos du formulaire pas sur
+       ...formData // on ajoute les infos du formulaire pas sur
     };
 
     console.log('Order data being sent:', orderData); // On envoie la commande sur mongoose
@@ -54,6 +58,7 @@ export default function OrderForm() {
         if(data.result) {
           console.log(data)
           router.push('/allorders');
+          alert('Votre commande est validée')
         } else {
           console.error('Order not created:');
         }
@@ -151,6 +156,39 @@ export default function OrderForm() {
             required
           />
         </div>
+        <div className="mb-4">
+           <label htmlFor="cardNumber" className="block text-sm font-medium mb-1">Numéro de carte :</label>
+           <input
+            type="text"
+            name="cardNumber"
+            id="cardNumber" 
+            value={formData.cardNumber} 
+            onChange={handleChange}
+             className="border p-2 w-full" required />
+            </div>
+            <div className="mb-4">
+             <label htmlFor="expiryDate" className="block text-sm font-medium mb-1"> Date d'expiration :</label>
+             <input type="text" 
+                    name="expiryDate" 
+                    id="expiryDate" 
+                    value={formData.expiryDate}
+                    onChange={handleChange}
+                    className="border p-2 w-full" required /> 
+              </div>
+              <div className="mb-4">
+                 <label htmlFor="cvv" className="block text-sm font-medium mb-1">CVV :</label>
+                 <input 
+                 type="text" 
+                 name="cvv"
+                 id="cvv" 
+                 value={formData.cvv}
+                 onChange={handleChange}
+                 className="border p-2 w-full" required />
+                  </div>
+
+
+
+
         <button type="submit" className="w-full bg-blue-500 text-white p-2 rounded">
           Valider la Commande
         </button>
