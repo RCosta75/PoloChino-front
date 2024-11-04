@@ -19,7 +19,7 @@ export default function OrderForm() {
     phoneNumber: '',
     cardNumber: '',
     expiryDate: '',
-    cvv: ''
+    cvv: '',
 
   });
 
@@ -30,9 +30,40 @@ export default function OrderForm() {
     });
   };
 
+  const validateCreditCard = (number) => {
+    const visaRegex = /^4[0-9]{12}(?:[0-9]{3})?$/;
+     return visaRegex.test(number);
+ }
+ const validateExpiryDate = (date) => {
+   const expiryRegex = /^(0[1-9]|1[0-2])\/?([0-9]{4}|[0-9]{2})$/;  // MM/YY or MM/YYYY
+   return expiryRegex.test(date);
+ }
+
+
+ const validateCVV = (cvv) => {   // 3 or 4 digit CVV
+   const cvvRegex = /^[0-9]{3,4}$/; ;
+   return cvvRegex.test(cvv); 
+  }
+
+
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Form Data Submitted:", formData);
+
+    if (!validateCreditCard(formData.cardNumber)) {
+       alert("Veuillez entrer un numéro de carte Visa valide.");
+        return; }
+
+     if (!validateExpiryDate(formData.expiryDate)) {
+           alert("Veuillez entrer une date d'expiration valide (MM/YY ou MM/YYYY)."); 
+           return;
+           }
+ 
+     if (!validateCVV(formData.cvv)) {
+             alert("Veuillez entrer un CVV valide (3 ou 4 chiffres)."); 
+             return; 
+            }
+
 
     const orderData = { 
       token: userToken, //pas sur de moi
