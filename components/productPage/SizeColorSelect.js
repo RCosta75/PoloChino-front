@@ -65,12 +65,12 @@ export default function SizeColorSelect({product}) {
     {bothError ? (
     <span className="text-red-600 text-lg">Choose a color & a size please !</span>
   ) : (
-    <></>
+    <div className="h-6"></div>
   )}
     {errorColor ? (
     <span className="text-red-600 text-lg">Choose a color please !</span>
   ) : (
-    <></>
+    <div className="h-6"></div>
   )}
       <h4>Colors :</h4>
       <div className={styles.colors}>
@@ -85,7 +85,7 @@ export default function SizeColorSelect({product}) {
     {errorSize ? (
       <span className="text-red-600 text-lg">Choose a size please !</span>
     ) : (
-      <></>
+        <div className="h-6"></div>
     )}
       <h4>Size :</h4>
       <div className={styles.sizes}>
@@ -116,10 +116,10 @@ export default function SizeColorSelect({product}) {
       </div>
     </div>
     <button className={clsx(
-      buttonPressed
-        ? "bg-[#010203] text-[#bfdbf7]"
+      !buttonPressed
+        ? "bg-[#010203] text-stone-100"
         : "bg-[#bfdbf7] text-[#010203]",
-      " font-semibold rounded-md py-2 px-4 w-3/4 mt-5 "
+      " rounded-md py-2 px-4 w-3/4 mt-5 "
     )}
     onClick={() => {handleCart(); setButtonPressed(true)}}>
       Add to Cart

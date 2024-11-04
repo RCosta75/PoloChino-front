@@ -50,7 +50,7 @@ export default function ModalProduct({ polo, setIsModalOpen, isModalOpen }) {
     }
   };
   return (
-    <div className="flex justify-center items-center bg-slate-50 h-full">
+    <div className="flex justify-center items-center bg-stone-100 h-full">
       <div className="flex w-1/2">
         <img className="max-h-96" src={polo.image} alt={polo.description} />
       </div>
@@ -70,7 +70,7 @@ export default function ModalProduct({ polo, setIsModalOpen, isModalOpen }) {
         ) : (
           <></>
         )}
-        <div className=" flex justify-between">
+        <div className=" flex gap-3">
           <h4 className="font-semibold text-xl">Colors :</h4>
           <button
             onClick={() => setColor("Red")}
@@ -166,10 +166,10 @@ export default function ModalProduct({ polo, setIsModalOpen, isModalOpen }) {
         <div className="justify-center flex">
           <button
             className={clsx(
-              buttonPressed
-                ? "bg-[#010203] text-[#bfdbf7]"
+              !buttonPressed
+                ? "bg-[#010203] text-stone-100"
                 : "bg-[#bfdbf7] text-[#010203]",
-              " font-semibold rounded-md py-2 px-4 w-3/4 "
+              "  rounded-md py-2 px-4 w-3/4 "
             )}
             onClick={() => {
               handleCart();

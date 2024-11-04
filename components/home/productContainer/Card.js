@@ -38,16 +38,20 @@ export default function Card({ polo, isLike }) {
 
   // fonction pour gerer les likes dans User.[likes]
   const handleLikes = () => {
-    fetch(`http://localhost:3000/likes/update`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        id: polo._id,
-        token: user.token,
-      }),
-    }).then(() => {
-      dispatch(reRender());
-    });
+    if(user.token){
+      fetch(`http://localhost:3000/likes/update`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          id: polo._id,
+          token: user.token,
+        }),
+      }).then(() => {
+        dispatch(reRender());
+      });  
+    } else {
+      router.push("/login")
+    }
   };
   // Envoi les donnée du polo dans reducer + {quantity : 1}
 
@@ -62,7 +66,6 @@ export default function Card({ polo, isLike }) {
 
   return (
     <div className="group relative block overflow-hidden rounded">
-      {user.token && (
         <button
           className="absolute end-4 top-4 z-10 rounded-full bg-[#bfdbf7] p-1.5 text-gray-900 transition hover:text-gray-900/75"
           onClick={() => handleLikes()}
@@ -84,7 +87,6 @@ export default function Card({ polo, isLike }) {
             />
           </svg>
         </button>
-      )}
       <img
         src={polo?.image}
         alt={polo?.description}
@@ -103,12 +105,12 @@ export default function Card({ polo, isLike }) {
 
         <div className="mt-4 flex gap-4 ">
           <button
-            className="block w-full rounded   bg-[#001021] px-3 py-2 text-sm font-medium text-white transition hover:scale-105"
+            className="block w-full rounded   bg-[#001021] px-3 py-2 text-sm font-medium text-stone-100 transition hover:scale-105"
             onClick={() => openProductModal()}
           >
             Add to Cart
           </button>
-          <Modal open={isModalOpen} footer={null} closeIcon={null} maskClosable={true} onCancel={handleCancel} width={600} height={500}> 
+          <Modal open={isModalOpen} footer={null} closeIcon={null} maskClosable={true} onCancel={handleCancel} width={700} height={400} > 
             <ModalProduct polo={polo} setIsModalOpen={setIsModalOpen} />
           </Modal>
 

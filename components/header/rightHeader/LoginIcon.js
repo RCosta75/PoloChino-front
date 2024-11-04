@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faHeart } from "@fortawesome/free-solid-svg-icons";
+import styles from "../../../styles/Header.module.css";
+import { logout } from "../../../reducers/user";
 
 export default function LoginIcon() {
   const dispatch = useDispatch();
@@ -34,15 +36,15 @@ export default function LoginIcon() {
   };
 
   return (
-    <div>
-      <FontAwesomeIcon icon={faUser} onClick={handleUserClick} size="lg" />
+    <div className="flex">
+      <div className="cursor-pointer"><FontAwesomeIcon icon={faUser} onClick={handleUserClick} size="lg" /></div>
 
       {user.token && (
-        <div className="relative inline-block">
+        <div className="relative inline-block pl-4 cursor-pointer">
           <FontAwesomeIcon
             icon={faHeart}
             onClick={() => router.push("/likes")}
-            style={{ color: "#000000", cursor: "pointer" }}
+            style={{ color: "#000000"}}
             size="lg"
           />
         </div>
