@@ -71,7 +71,8 @@ export default function ProductContainer({ searchTerm }) {
   const filteredPolos = sortedPolos.filter((polo) => {
     //Filtrage des articles en fonction du terme de recherche et affichage des résultats filtrés.
     // (polo.name && polo.name) pour vérifier l'existence du produit
-    polo.name && polo.name.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesSearchTerm = 
+    polo.name ? polo.name.toLowerCase().includes(searchTerm.toLowerCase()) : true;
     // Filtrage des articles en fonction du terme de recherche et des filtres sélectionnés
     // Filtrer par matière si sélectionnée
     const matchesMaterial = selectedMaterial
@@ -81,7 +82,7 @@ export default function ProductContainer({ searchTerm }) {
     //Si aucune matière n'est sélectionnée, renvoie true, signifiant que tous les produits sont inclus dans le filtrage.
     const matchesBrand = selectedBrand ? polo.marque === selectedBrand : true;
     const matchesCoupe = selectedCoupe ? polo.coupe === selectedCoupe : true;
-    return matchesMaterial && matchesBrand && matchesCoupe;
+    return matchesMaterial && matchesBrand && matchesCoupe && matchesSearchTerm;
     //Si matchesBradn et matchesMaterial et matchesCoupe sont tous vrais,
     // alors true est retourné et le produit est inclus dans les résultats filtrés.
   });
@@ -116,6 +117,10 @@ export default function ProductContainer({ searchTerm }) {
         />
       </div>
       {poloProduct.length > 0 ? (
+        <div className=" pt-20 px-11 grid grid-cols-4 gap-8 md:">
+          {poloProduct}
+        </div>
+      ) : (
         <div className=" pt-20 px-11 grid md:grid-cols-4 sm:grid-cols-1 gap-8">
           {poloProduct}
         </div>
