@@ -16,7 +16,7 @@ export default function LeftBasket() {
   });
 
   return (
-    <div className="w-1/2">
+    <div className="w-1/2 pt-10">
     <div className="flex items-center justify-between mx-36 py-20 text-xl">
       
          <h1 > CART ARTICLES</h1> 

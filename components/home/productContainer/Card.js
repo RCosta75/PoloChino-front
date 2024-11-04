@@ -2,11 +2,17 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 import { addToCart, reRender } from "../../../reducers/cart";
+import { Modal } from 'antd';
+import { useState } from "react";
+import ModalProduct from "../../productPage/ModalProduct";
 
 export default function Card({ polo, isLike }) {
   const router = useRouter();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.value);
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  // etat pour dire si modal ouvert ou nom, props.open
 
   const handleBuy = () => {
     dispatch(addToCart({ ...polo, quantity: 1 }));
@@ -44,8 +50,14 @@ export default function Card({ polo, isLike }) {
     });
   };
   // Envoi les donnée du polo dans reducer + {quantity : 1}
-  const handleCart = () => {
-    dispatch(addToCart({ ...polo, quantity: 1 }));
+
+  // Modal pour choisir sa taille et sa couleur plus rapidement
+  const openProductModal = () => {
+    setIsModalOpen(true);
+  }
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
   };
 
   return (
@@ -62,7 +74,7 @@ export default function Card({ polo, isLike }) {
             fill={isLike ? "#010203" : "whitesmoke"}
             viewBox="0 0 24 24"
             strokeWidth="1.5"
-            stroke="currentColor"
+            stroke="#010203"
             className="size-5 "
           >
             <path
@@ -91,19 +103,15 @@ export default function Card({ polo, isLike }) {
 
         <div className="mt-4 flex gap-4 ">
           <button
-            className="block w-full rounded   bg-[#001021] px-4 py-3 text-sm font-medium text-white transition hover:scale-105"
-            onClick={() => handleCart()}
+            className="block w-full rounded   bg-[#001021] px-3 py-2 text-sm font-medium text-white transition hover:scale-105"
+            onClick={() => openProductModal()}
           >
             Add to Cart
           </button>
+          <Modal open={isModalOpen} footer={null} closeIcon={null} maskClosable={true} onCancel={handleCancel} width={600} height={500}> 
+            <ModalProduct polo={polo} setIsModalOpen={setIsModalOpen} />
+          </Modal>
 
-          <button
-            onClick={handleBuy}
-            type="button"
-            className="block w-full rounded bg-[#bfdbf7] px-4 py-3 text-sm font-medium text-blue-950 transition hover:scale-105"
-          >
-            Buy Now
-          </button>
         </div>
       </div>
     </div>

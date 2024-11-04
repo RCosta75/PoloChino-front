@@ -3,13 +3,18 @@ import { useDispatch } from 'react-redux';
 import { addQuantity, removeCart, suppQuantity } from '../../reducers/cart';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
+import { Modal } from 'antd';
+import ModalProduct from '../productPage/ModalProduct';
 
-
+// FORM POUR DEFILER DIFFERENT CHOIX DE COULEUR ET DE SIZE ET CHANGER LA VALUE OU
+// MODAL QUAND ON CLICK SUR SIZE OU COLOR ?? INVERSE DATA FLOW POUR RENVOYER LE CHANGEMENT DE COULEUR OU DE SIZE A LELEMENT PARENT ET POUR METTRE A JOUR LE PANIER ???
 export default function LeftBasketDetails({ polo }) {
   const dispatch = useDispatch();
   const router = useRouter()
   const [selectedSize, setSelectedSize] = useState('M'); //taille par default
   const [selectedColor, setSelectedColor] = useState('White');//couleur par default
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  // etat pour dire si modal ouvert ou nom, props.open
   const handleSizeChange = (size) => {
      setSelectedSize(size.target.value); }
      // utilise target.value pour obtenir la valeur sélectionnée
@@ -17,6 +22,15 @@ export default function LeftBasketDetails({ polo }) {
     const handleColorChange = (color) => {
       setSelectedColor(color.target.value); }
   //utilise target.value pour obtenir la couleur sélectionnée
+
+
+  const openProductModal = () => {
+    setIsModalOpen(true);
+  }
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
 
   const handleImageClick = () => {
     router.push({ pathname: '/productpage',
@@ -39,18 +53,21 @@ export default function LeftBasketDetails({ polo }) {
         <div className="ml-10 mt-10 flex-auto ">
           <div className="flex-col justify-between">
             <h1 className="font-bold text-gray-900 text-2xl">{polo.marque}</h1>
-            <h4>{polo.name}</h4>
+            <h4 >{polo.name}</h4>
             <span>{(polo.price * polo.quantity).toFixed(2)} €</span>
           </div>
 
-          <span className="py-2">Size :   </span>
+          <span onClick={() => openProductModal()} className="py-2 text-sky-600 cursor-pointer">Size :   </span>
+          <Modal open={isModalOpen} footer={null} closeIcon={null} maskClosable={true} onCancel={handleCancel} width={600} height={500}> 
+            <ModalProduct polo={polo} setIsModalOpen={setIsModalOpen} />
+          </Modal>
           {!polo.size ? (
               <select value={selectedSize} onChange={handleSizeChange}
                className="px-4 py-2 border border-gray-200"> {['XS', 'S', 'M', 'L', 'XL', 'XXL'].map(
                 size => ( <option key={size} value={size}>{size}</option>))}
                  </select>) : <span>{polo.size}</span>}
         
-            <p>Color :
+            <p ><span onClick={() => openProductModal()} className="py-2 text-sky-600 cursor-pointer">Color :</span>
               {/* select = Élément conteneur pour le menu déroulant. */}
               {!polo.color ? (
             <select value={selectedColor} onChange={handleColorChange} 

@@ -17,3 +17,11 @@ body {
 * > title {
   font-family: "Roboto";
 }
+
+* > .scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+.ant-modal-content {
+  background-color: whitesmoke !important ;
+}
