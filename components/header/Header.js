@@ -5,6 +5,7 @@ import {
   faCartShopping,
   faMagnifyingGlass,
   faHeart,
+  faTruck,
 } from "@fortawesome/free-solid-svg-icons";
 import React, { useState } from "react";
 import { logout } from "../../reducers/user";
@@ -147,6 +148,11 @@ function Header({ setSearchTerm, handleReset }) {
               style={{ color: "#000000", cursor: "pointer" }}
               size="lg"
             />
+            <FontAwesomeIcon icon={faTruck}
+              onClick={() => router.push("/allorders")}
+              style={{ color: "#000000", cursor: "pointer" }}
+              size="lg"
+             />
       </div>
           
         )}
