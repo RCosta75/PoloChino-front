@@ -17,11 +17,6 @@ export default function Card({ polo, isLike }) {
 
   const carto = cart?.some((e) => e._id === polo._id);
 
-  const handleBuy = () => {
-    dispatch(addToCart({ ...polo, quantity: 1 }));
-    router.push("/basket");
-  };
-
   const handleImageClick = () => {
     router.push({
       pathname: "/productpage",

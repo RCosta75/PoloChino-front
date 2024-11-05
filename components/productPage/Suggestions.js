@@ -9,7 +9,7 @@ export default function Suggestions() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.value);
   const render = useSelector((state) => state.cart.render);
-  const cart = useSelector((state) => state.cart.value)
+  const cart = useSelector((state) => state.cart.value);
 
   const [likesData, setLikesData] = useState([]);
 
@@ -27,7 +27,7 @@ export default function Suggestions() {
       .then((data) => {
         setLikesData(data.likes);
       });
-  }, [render,cart]);
+  }, [render, cart]);
 
   const handleImageClick = (suggestData) => {
     router.push({
@@ -62,10 +62,10 @@ export default function Suggestions() {
     };
 
     const isLike = likesData?.some((e) => e === poloSuggest._id);
-    const carto = cart?.some((e => e._id === poloSuggest._id))
+    const carto = cart?.some((e) => e._id === poloSuggest._id);
 
     return (
-      <div className="group bg-white rounded-br-md rounded-bl-md  relative block overflow-hidden ">
+      <div className="group bg-white cursor-pointer rounded-br-md rounded-bl-md  relative block overflow-hidden">
         {/* LIKE BUTTON */}
         {user.token && (
           <button
@@ -115,7 +115,7 @@ export default function Suggestions() {
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              fill={carto ? "#bfdbf7":"none"}
+              fill={carto ? "#bfdbf7" : "none"}
               viewBox="0 0 24 24"
               strokeWidth={1.5}
               stroke="currentColor"
