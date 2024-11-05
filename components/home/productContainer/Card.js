@@ -29,6 +29,7 @@ export default function Card({ polo, isLike }) {
         marque: polo.marque,
         coupe: polo.coupe,
         matiere: polo.matiere,
+        comments: JSON.stringify(polo.comments), // Obj to String le tableau
       },
     });
   };

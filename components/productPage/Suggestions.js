@@ -41,6 +41,7 @@ export default function Suggestions() {
         marque: suggestData.marque,
         coupe: suggestData.coupe,
         matiere: suggestData.matiere,
+        comments: JSON.stringify(suggestData.comments), // Obj to String le tableau
       },
     });
   };
@@ -133,8 +134,9 @@ export default function Suggestions() {
   });
 
   return (
-    <div className="flex gap-10 mx-8 relative my-12  ">
-      {poloProductSuggest}
+    <div className="flex-col gap-10 mx-8 relative my-12  ">
+    
+      <div className="flex gap-10 mx-8 relative my-12  ">{poloProductSuggest}</div>
     </div>
   );
 }
