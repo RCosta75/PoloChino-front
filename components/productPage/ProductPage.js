@@ -1,6 +1,7 @@
 import React from "react";
 
 import Suggestions from "./Suggestions";
+import Review from "./Review";
 import { useRouter } from "next/router";
 import Footer from "../Footer";
 
@@ -35,7 +36,10 @@ export default function ProductPage() {
         <ProductPageDescription product={product} />
       </div>
 
-      <div className="flex justify-between overflow-x-hidden w-full pt-20">
+      <div className="flex flex-col justify-between overflow-x-hidden w-full pt-20">
+      <div className="flex w-full overflow-scroll no-scrollbar [&>div]:flex-shrink-0 ">
+          <Review />
+        </div>
         <div className="flex w-full overflow-scroll no-scrollbar [&>div]:flex-shrink-0 ">
           <Suggestions />
         </div>
