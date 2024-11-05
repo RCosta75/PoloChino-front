@@ -33,12 +33,26 @@ function Home() {
         handleReset={handleReset}
         handleResetFilters={handleResetFilters}
       />
+
       {!searchTerm && <ProductHeader />}
+      <div className="w-full flex justify-center">
+        <div className="max-w-5xl mt-20  text-center">
+          <h2 className="text-3xl font-bold sm:text-4xl">FEEL THE POLO</h2>
+
+          <p className="mt-14 text-xl text-gray-600">
+            Welcome to our site dedicated to polo, the sport where elegance,
+            strategy, and passion meet. Discover the latest news, competitions,
+            and our best tips for players and enthusiasts. Dive into the unique
+            world of polo and share our passion for this exceptional sport.
+          </p>
+        </div>
+      </div>
+
       {searchTerm ? (
-        <h1 className="text-3xl pt-32 text-center">{searchTerm}</h1>
+        <h1 className="text-3xl pt-14 text-center">{searchTerm}</h1>
       ) : (
         <h1
-          className="text-3xl pt-32 text-center underline underline-offset-6"
+          className="text-3xl pt-20 text-center underline underline-offset-6"
           id="products"
         >
           All Products

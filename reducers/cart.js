@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { React } from "react";
 
 // reducer pour contenir les polo dans le panier
 
@@ -32,17 +31,24 @@ export const trendSlice = createSlice({
       );
     },
     addQuantity: (state, action) => {
-      const item = state.value.find((e) => e._id === action.payload._id && e.size === action.payload.size);
+      const item = state.value.find(
+        (e) => e._id === action.payload._id && e.size === action.payload.size
+      );
       if (item) {
         item.quantity++;
       }
     },
     suppQuantity: (state, action) => {
-      const item = state.value.find((e) => e._id === action.payload._id && e.size === action.payload.size);
+      const item = state.value.find(
+        (e) => e._id === action.payload._id && e.size === action.payload.size
+      );
       if (item) {
         item.quantity--;
         if (item.quantity === 0) {
-          state.value = state.value.filter((e) => e._id !== action.payload._id || e.size !== action.payload.size);
+          state.value = state.value.filter(
+            (e) =>
+              e._id !== action.payload._id || e.size !== action.payload.size
+          );
         }
       }
     },
@@ -52,15 +58,16 @@ export const trendSlice = createSlice({
   },
 });
 
-    export const totalBasket = (state) =>
-      state.cart.value
-        .reduce((total, item) => total + item.price * item.quantity, 0)
-        .toFixed(2);
+export const totalBasket = (state) =>
+  state.cart.value
+    .reduce((total, item) => total + item.price * item.quantity, 0)
+    .toFixed(2);
 
 export const totalQuantityBasket = (state) =>
-      state.cart.value
-        .reduce((totalQuantity, item) => totalQuantity + item.quantity, 0)
-        
+  state.cart.value.reduce(
+    (totalQuantity, item) => totalQuantity + item.quantity,
+    0
+  );
 
 export const {
   addToCart,
