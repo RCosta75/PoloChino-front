@@ -33,7 +33,6 @@ export default function ProductContainer({ searchTerm, reset }) {
   }, []);
 
 
-
   // recupere les like et met a jour le coeur selon user.likes
   // envoi en props
   useEffect(() => {
