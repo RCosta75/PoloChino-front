@@ -37,23 +37,34 @@ export default function LoginIcon() {
 
   return (
     <div className="flex">
-      <div className="cursor-pointer"><FontAwesomeIcon icon={faUser} onClick={handleUserClick} size="lg" /></div>
+      <div className="cursor-pointer">
+        <FontAwesomeIcon icon={faUser} onClick={handleUserClick} size="lg" />
+      </div>
 
       {user.token && (
         <div className="relative inline-block pl-4 cursor-pointer">
           <FontAwesomeIcon
             icon={faHeart}
             onClick={() => router.push("/likes")}
-            style={{ color: "#000000"}}
+            style={{ color: "#000000" }}
             size="lg"
           />
         </div>
       )}
 
       {showLogout && (
-        <div className={styles.btn}>
-          <button className={styles.log}onClick={() => router.push("/allorders")} >Suivi des commandes</button>
-          <button className={styles.log} onClick={handleLogout}>
+        <div className="absolute border border-gray rounded-md flex flex-col bg-white top-16 right-16">
+          <button
+            className="p-4 border-b-2 hover:bg-slate-200 hover:border-gray-100"
+            onClick={() => router.push("/allorders")}
+          >
+            Suivi des commandes
+          </button>
+
+          <button
+            className="p-4 hover:bg-slate-200  hover:border-b-gray-100 "
+            onClick={handleLogout}
+          >
             Logout
           </button>
         </div>

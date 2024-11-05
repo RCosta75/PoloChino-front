@@ -8,7 +8,7 @@ export default function LeftHeader() {
     <div>
       {router.pathname === "/" && (
         <span
-        className="cursor-pointer text-xl"
+          className="cursor-pointer text-xl"
           onClick={() =>
             document
               .getElementById("products")
@@ -18,7 +18,12 @@ export default function LeftHeader() {
           Shop
         </span>
       )}
-      <span className="ml-4 cursor-pointer text-xl">About</span>
+      <button
+        onClick={() => router.push("/about")}
+        className="ml-4 cursor-pointer text-xl"
+      >
+        About
+      </button>
     </div>
   );
 }

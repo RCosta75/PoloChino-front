@@ -25,9 +25,12 @@ export default function CartIcon() {
         <span>Total: {totalPrice}</span>
       </p>
       <div className="flex justify-center">
-      <button 
-      onClick={() => handleClick()}
-      className="w-full rounded mt-4  bg-[#001021] p-2 text-sm text-stone-100 transition hover:scale-105">Go To Cart</button>
+        <button
+          onClick={() => handleClick()}
+          className="w-full rounded mt-4  bg-[#001021] p-2 text-sm text-stone-100 transition hover:scale-105"
+        >
+          Go To Cart
+        </button>
       </div>
     </div>
   );
@@ -49,7 +52,7 @@ export default function CartIcon() {
             onClick={() => handleClick()}
             size="lg"
           />
-          <div className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-black bg-[#bfdbf7] border-1 border-white rounded-full -top-2 -end-2 dark:border-gray-900">
+          <div className="absolute inline-flex items-center justify-center w-4 h-4 text-xs font-bold text-black bg-[#bfdbf7] border-1 border-white rounded-full -top-2 -end-2 dark:border-gray-900">
             {totalQuantity}
           </div>
         </div>

@@ -37,7 +37,7 @@ function Login() {
   }, [buttonPressed]);
 
   const handleSignUp = () => {
-     if(EMAIL_REGEX.test(email)){
+    if (EMAIL_REGEX.test(email)) {
       fetch("http://localhost:3000/users/signup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -48,10 +48,10 @@ function Login() {
           if (data.result) {
             dispatch(login({ token: data.token, username, email }));
           }
-        })
-     } else {
-      setEmailError(false)
-     }
+        });
+    } else {
+      setEmailError(false);
+    }
   };
 
   const handleSignIn = () => {
@@ -79,19 +79,19 @@ function Login() {
 
   return (
     <div className="bg-gray-100 flex justify-center items-center h-screen">
-      <div className="lg:p-36 md:p-52 sm:20 p-8 w-full lg:w-1/2 h-screen">
-        <h1 className="text-2xl font-semibold mb-4">{signState}</h1>        
+      <div className="lg:p-36 md:p-52 sm:20 p-8 w-full lg:w-1/2  h-screen">
+        <h1 className="text-2xl mt-40 font-semibold mb-4">{signState}</h1>
         {signState === "Sign Up" ? (
           <>
-          Username
-          <input
-            type="text"
-            className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500"
-            autocomplete="off"
-            onChange={(e) => setUsername(e.target.value)}
-            value={username}
-            placeholder="Username"
-          />
+            Username
+            <input
+              type="text"
+              className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500"
+              autocomplete="off"
+              onChange={(e) => setUsername(e.target.value)}
+              value={username}
+              placeholder="Username"
+            />
           </>
         ) : null}
 
@@ -109,7 +109,7 @@ function Login() {
             value={email}
             placeholder="Type your Email"
           ></input>
-            {!emailError && <p className="text-red-600" >Invalid email address</p>}
+          {!emailError && <p className="text-red-600">Invalid email address</p>}
         </div>
 
         <div className="mb-4">
@@ -127,24 +127,6 @@ function Login() {
             value={password}
             placeholder="Type your Password"
           ></input>
-        </div>
-
-        <div className="mb-4 flex items-center">
-          <input
-            type="checkbox"
-            id="remember"
-            name="remember"
-            className="text-blue-500"
-          ></input>
-          <label for="remember" className="text-gray-600 ml-2">
-            Remember Me
-          </label>
-        </div>
-
-        <div className="mb-6 text-blue-500">
-          <a href="#" className="hover:underline">
-            Forgot Password?
-          </a>
         </div>
 
         <button
@@ -177,7 +159,9 @@ function Login() {
               </p>
             ) : (
               <p>
-                <span className="text-slate-950">Already have an account ?{" "}</span>
+                <span className="text-slate-950">
+                  Already have an account ?{" "}
+                </span>
                 <button
                   className="hover:underline"
                   onClick={() => setsignState("Sign In")}
