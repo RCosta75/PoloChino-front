@@ -51,7 +51,7 @@ export default function ProductPage() {
         <div className="flex w-full overflow-scroll no-scrollbar [&>div]:flex-shrink-0 border-b-8">
           <Review product={product} />
         </div>
-        <h1 className=" text-center text-3xl font-medium underline underline-offset-6 pt-4">Suggestion</h1>
+        <h1 className=" text-center text-3xl font-medium underline underline-offset-6 pt-4">Suggestions</h1>
         <div className="flex w-full overflow-scroll no-scrollbar [&>div]:flex-shrink-0">
           <Suggestions />
         </div>

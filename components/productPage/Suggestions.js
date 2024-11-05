@@ -136,7 +136,7 @@ export default function Suggestions() {
   return (
     <div className="flex-col gap-10 mx-8 relative my-12  ">
     
-      <div className="flex gap-10 mx-8 relative my-12  ">{poloProductSuggest}</div>
+      <div className="flex gap-10 mx-8 relative my-4  ">{poloProductSuggest}</div>
     </div>
   );
 }
