@@ -93,7 +93,7 @@ export default function Card({ polo, isLike }) {
       <img
         src={polo?.image}
         alt={polo?.description}
-        className="w-full h-[500px] object-cover transition duration-500 group-hover:scale-105 "
+        className="w-full h-[400px] object-cover transition duration-500 group-hover:scale-105 "
         onClick={handleImageClick}
       />
 

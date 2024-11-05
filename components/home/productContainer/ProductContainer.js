@@ -19,6 +19,7 @@ export default function ProductContainer({ searchTerm, reset }) {
   const [selectedMaterial, setSelectedMaterial] = useState(""); // État pour la matière sélectionnée
   const [selectedBrand, setSelectedBrand] = useState(""); // État pour la marque sélectionnée
   const [selectedCoupe, setSelectedCoupe] = useState(""); // État pour la coupe sélectionnée
+  const [isFilterOpen,setIsFilterOpen] = useState(false)
   const user = useSelector((state) => state.user.value);
   const render = useSelector((state) => state.cart.render);
 
@@ -123,8 +124,13 @@ export default function ProductContainer({ searchTerm, reset }) {
 
   return (
     <div>
-      <div className="flex justify-center mt-12 space-x-4 p-4 items-center overflow-y-scroll scrollbar-none">
-        <SortFilter sortOrder={sortOrder} handleSortChange={handleSortChange} />
+      <div className="flex justify-center mt-12 p-4 items-center overflow-y-scroll scrollbar-none">
+      <button className="bg-[#010203] w-40 rounded-lg h-8 flex justify-center items-center text-stone-100 hover:bg-white-600 font-bold  hover:text-white pr-50"
+       onClick={() => setIsFilterOpen(!isFilterOpen)}>Open Filters</button>
+        
+        
+     {  isFilterOpen ? (<div  className="flex justify-center p-4 h-8 items-center scrollbar-none">
+      <SortFilter sortOrder={sortOrder} handleSortChange={handleSortChange} />
         <MaterialFilter
           selectedMaterial={selectedMaterial}
           handleMaterialChange={handleMaterialChange}
@@ -138,6 +144,9 @@ export default function ProductContainer({ searchTerm, reset }) {
           handleCoupeChange={handleCoupeChange}
         />
         <ResetFilter handleResetFilters={handleResetFilters} />
+        </div>) : (<></>)
+      }
+        
       </div>
       {poloProduct.length > 0 ?  (
         <div className=" pt-20 px-11 grid md:grid-cols-4 sm:grid-cols-1 gap-8">

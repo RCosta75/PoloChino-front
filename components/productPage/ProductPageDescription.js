@@ -6,7 +6,7 @@ export default function ProductPageDescription({ product }) {
 
 
   return (
-    <div className="w-1/3 pl-20 gap-10 text-xl  flex flex-col justify-center  ">
+    <div className="w-1/2 pl-20 text-lg  flex flex-col justify-end  ">
       <ProductDetailsHeader product={product} />
     <SizeColorSelect product={product}/>
     </div>
