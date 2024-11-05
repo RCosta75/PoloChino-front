@@ -128,7 +128,7 @@ export default function ProductContainer({ searchTerm, reset }) {
     <div>
       <div className="flex justify-center mt-12 p-4 items-center overflow-y-scroll scrollbar-none">
       <button className="bg-[#010203] w-40 rounded-lg h-8 flex justify-center items-center text-stone-100 hover:bg-white-600 font-bold  hover:text-white pr-50"
-       onClick={() => setIsFilterOpen(!isFilterOpen)}>Open Filters</button>
+       onClick={() => setIsFilterOpen(!isFilterOpen)}>{ !isFilterOpen ? "Open Filters" : "Close Filters"}</button>
         
         
      {  isFilterOpen ? (<div  className="flex justify-center p-4 h-8 items-center scrollbar-none">
