@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useRouter } from "next/router";
-import { addToCart, reRender } from "../../../reducers/cart";
+import { reRender } from "../../../reducers/cart";
 import { Modal } from "antd";
 import { useState } from "react";
 import ModalProduct from "../../productPage/ModalProduct";
@@ -52,7 +52,7 @@ export default function Card({ polo, isLike }) {
       router.push("/login");
     }
   };
-  // Envoi les donnée du polo dans reducer + {quantity : 1}
+
 
   // Modal pour choisir sa taille et sa couleur plus rapidement
   const openProductModal = () => {

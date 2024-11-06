@@ -18,7 +18,7 @@ export default function CartIcon() {
   });
 
   const popoverContent = (
-    <div className="font-bold">
+    <div className="font-bold flex-wrap max-h-80 overflow-y-auto">
       {poloProduct}
       <p className="flex flex-row justify-between">
         <span> Quantité : {totalQuantity}</span>
@@ -27,7 +27,7 @@ export default function CartIcon() {
       <div className="flex justify-center">
         <button
           onClick={() => handleClick()}
-          className="w-full rounded mt-4  bg-[#001021] p-2 text-sm text-stone-100 transition hover:scale-105"
+          className="w-2/3 pb-4 rounded mt-4  bg-[#001021] p-2 text-sm text-stone-100 transition hover:scale-105"
         >
           Go To Cart
         </button>
@@ -45,7 +45,7 @@ export default function CartIcon() {
 
   return (
     <div>
-      <Popover placement="bottom" title="My Cart" content={popoverContent}>
+      <Popover placement="bottom" title="My Cart"  content={popoverContent}>
         <div className="relative inline-block cursor-pointer">
           <FontAwesomeIcon
             icon={faCartShopping}
