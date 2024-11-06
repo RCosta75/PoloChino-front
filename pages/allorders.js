@@ -10,7 +10,7 @@ export default function orderform() {
     const handleReset = () => { 
         setSearchTerm('');
         setReset(!reset);}
-         // Passage de handleReset au composant Header dans like.js :
+         // Passage de handleReset au composant Header dans allorder.js :
          // Le composant Header a maintenant accès à la fonction handleReset.
 
   return (

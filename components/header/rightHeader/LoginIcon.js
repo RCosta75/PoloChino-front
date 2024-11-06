@@ -55,6 +55,15 @@ export default function LoginIcon() {
 
       {showLogout && (
         <div className="absolute border border-gray rounded-md flex flex-col bg-white top-16 right-16">
+
+          <button
+            className="p-4 border-b-2 hover:bg-slate-200 hover:border-gray-100"
+            onClick={() => router.push("/informations")}
+          >
+           Mes informations
+          </button>
+
+
           <button
             className="p-4 border-b-2 hover:bg-slate-200 hover:border-gray-100"
             onClick={() => router.push("/allorders")}
