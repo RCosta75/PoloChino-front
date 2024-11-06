@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import { totalBasket, clearCart } from "../../reducers/cart";
 import { useDispatch } from "react-redux";
-
+import { toast } from "sonner";
 
 export default function OrderForm() {
   const userToken = useSelector((state) => state.user.value.token);
@@ -12,21 +12,17 @@ export default function OrderForm() {
   const router = useRouter();
   const dispatch = useDispatch();
 
-  
-  
-
   const [formData, setFormData] = useState({
-    email: '',
-    firstName: '',
-    lastName: '',
-    address: '',
-    city: '',
-    postalCode: '',
-    phoneNumber: '',
-    cardNumber: '',
-    expiryDate: '',
-    cvv: '',
-
+    email: "",
+    firstName: "",
+    lastName: "",
+    address: "",
+    city: "",
+    postalCode: "",
+    phoneNumber: "",
+    cardNumber: "",
+    expiryDate: "",
+    cvv: "",
   });
 
   const handleChange = (e) => {
@@ -38,73 +34,74 @@ export default function OrderForm() {
 
   const validateCreditCard = (number) => {
     const visaRegex = /^4[0-9]{12}(?:[0-9]{3})?$/;
-     return visaRegex.test(number);
- }
- const validateExpiryDate = (date) => {
-   const expiryRegex = /^(0[1-9]|1[0-2])\/?([0-9]{4}|[0-9]{2})$/;  // MM/YY or MM/YYYY
-   return expiryRegex.test(date);
- }
+    return visaRegex.test(number);
+  };
+  const validateExpiryDate = (date) => {
+    const expiryRegex = /^(0[1-9]|1[0-2])\/?([0-9]{4}|[0-9]{2})$/; // MM/YY or MM/YYYY
+    return expiryRegex.test(date);
+  };
 
-
- const validateCVV = (cvv) => {   // 3 or 4 digit CVV
-   const cvvRegex = /^[0-9]{3,4}$/; ;
-   return cvvRegex.test(cvv); 
-  }
-
+  const validateCVV = (cvv) => {
+    // 3 or 4 digit CVV
+    const cvvRegex = /^[0-9]{3,4}$/;
+    return cvvRegex.test(cvv);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Form Data Submitted:", formData);
 
     if (!validateCreditCard(formData.cardNumber)) {
-       alert("Veuillez entrer un numéro de carte Visa valide.");
-        return; }
+      toast.error("Veuillez entrer un numéro de carte Visa valide.");
+      return;
+    }
 
-     if (!validateExpiryDate(formData.expiryDate)) {
-           alert("Veuillez entrer une date d'expiration valide (MM/YY ou MM/YYYY)."); 
-           return;
-           }
- 
-     if (!validateCVV(formData.cvv)) {
-             alert("Veuillez entrer un CVV valide (3 ou 4 chiffres)."); 
-             return; 
-            }
+    if (!validateExpiryDate(formData.expiryDate)) {
+      toast.error(
+        "Veuillez entrer une date d'expiration valide (MM/YY ou MM/YYYY)."
+      );
+      return;
+    }
 
+    if (!validateCVV(formData.cvv)) {
+      toast.error("Veuillez entrer un CVV valide (3 ou 4 chiffres).");
+      return;
+    }
 
-    const orderData = { 
+    const orderData = {
       token: userToken, //pas sur de moi
-      polo: carto.map(item => item._id), 
+      polo: carto.map((item) => item._id),
       date: new Date().toISOString(),
-      status: 'Pending',
+      status: "Pending",
       fees: 0,
       total: totalPrice,
-       ...formData // on ajoute les infos du formulaire pas sur
+      ...formData, // on ajoute les infos du formulaire pas sur
     };
 
-    console.log('Order data being sent:', orderData); // On envoie la commande sur mongoose
-  
-    fetch('http://localhost:3000/orders', {
-      method: 'POST', 
-      headers: {
-        'Content-Type': 'application/json'
-      }, 
-      body: JSON.stringify(orderData), 
-    })
-      .then(response => response.json())
-      .then(data => { 
-        if(data.result) {
-          console.log(data)
-          dispatch(clearCart())
-          router.push('/allorders');
+    console.log("Order data being sent:", orderData); // On envoie la commande sur mongoose
 
-          alert('Votre commande est validée')
+    fetch("http://localhost:3000/orders", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(orderData),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.result) {
+          console.log(data);
+          dispatch(clearCart());
+          router.push("/allorders");
+
+          toast.success("Votre commande est validée");
         } else {
-          console.error('Order not created:');
+          toast.error("Order not created:");
         }
       })
-      .catch((error) => { 
-        console.error('Error:', error);
-      }); 
+      .catch((error) => {
+        toast.error("Error:", error);
+      });
   };
 
   return (
@@ -112,7 +109,9 @@ export default function OrderForm() {
       <h2 className="text-xl mb-4">Formulaire de Commande</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
-          <label htmlFor="email" className="block text-sm font-medium mb-1">Email :</label>
+          <label htmlFor="email" className="block text-sm font-medium mb-1">
+            Email :
+          </label>
           <input
             type="email"
             name="email"
@@ -124,7 +123,9 @@ export default function OrderForm() {
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="firstName" className="block text-sm font-medium mb-1">Prénom :</label>
+          <label htmlFor="firstName" className="block text-sm font-medium mb-1">
+            Prénom :
+          </label>
           <input
             type="text"
             name="firstName"
@@ -136,7 +137,9 @@ export default function OrderForm() {
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="lastName" className="block text-sm font-medium mb-1">Nom :</label>
+          <label htmlFor="lastName" className="block text-sm font-medium mb-1">
+            Nom :
+          </label>
           <input
             type="text"
             name="lastName"
@@ -148,7 +151,9 @@ export default function OrderForm() {
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="address" className="block text-sm font-medium mb-1">Adresse :</label>
+          <label htmlFor="address" className="block text-sm font-medium mb-1">
+            Adresse :
+          </label>
           <input
             type="text"
             name="address"
@@ -160,7 +165,9 @@ export default function OrderForm() {
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="city" className="block text-sm font-medium mb-1">Ville :</label>
+          <label htmlFor="city" className="block text-sm font-medium mb-1">
+            Ville :
+          </label>
           <input
             type="text"
             name="city"
@@ -172,7 +179,12 @@ export default function OrderForm() {
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="postalCode" className="block text-sm font-medium mb-1">Code Postal :</label>
+          <label
+            htmlFor="postalCode"
+            className="block text-sm font-medium mb-1"
+          >
+            Code Postal :
+          </label>
           <input
             type="text"
             name="postalCode"
@@ -184,7 +196,12 @@ export default function OrderForm() {
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="phoneNumber" className="block text-sm font-medium mb-1">Numéro de Téléphone :</label>
+          <label
+            htmlFor="phoneNumber"
+            className="block text-sm font-medium mb-1"
+          >
+            Numéro de Téléphone :
+          </label>
           <input
             type="text"
             name="phoneNumber"
@@ -196,39 +213,59 @@ export default function OrderForm() {
           />
         </div>
         <div className="mb-4">
-           <label htmlFor="cardNumber" className="block text-sm font-medium mb-1">Numéro de carte :</label>
-           <input
+          <label
+            htmlFor="cardNumber"
+            className="block text-sm font-medium mb-1"
+          >
+            Numéro de carte :
+          </label>
+          <input
             type="text"
             name="cardNumber"
-            id="cardNumber" 
-            value={formData.cardNumber} 
+            id="cardNumber"
+            value={formData.cardNumber}
             onChange={handleChange}
-             className="border p-2 w-full" required />
-            </div>
-            <div className="mb-4">
-             <label htmlFor="expiryDate" className="block text-sm font-medium mb-1"> Date d'expiration :</label>
-             <input type="text" 
-                    name="expiryDate" 
-                    id="expiryDate" 
-                    value={formData.expiryDate}
-                    onChange={handleChange}
-                    className="border p-2 w-full" required /> 
-              </div>
-              <div className="mb-4">
-                 <label htmlFor="cvv" className="block text-sm font-medium mb-1">CVV :</label>
-                 <input 
-                 type="text" 
-                 name="cvv"
-                 id="cvv" 
-                 value={formData.cvv}
-                 onChange={handleChange}
-                 className="border p-2 w-full" required />
-                  </div>
+            className="border p-2 w-full"
+            required
+          />
+        </div>
+        <div className="mb-4">
+          <label
+            htmlFor="expiryDate"
+            className="block text-sm font-medium mb-1"
+          >
+            {" "}
+            Date d'expiration :
+          </label>
+          <input
+            type="text"
+            name="expiryDate"
+            id="expiryDate"
+            value={formData.expiryDate}
+            onChange={handleChange}
+            className="border p-2 w-full"
+            required
+          />
+        </div>
+        <div className="mb-4">
+          <label htmlFor="cvv" className="block text-sm font-medium mb-1">
+            CVV :
+          </label>
+          <input
+            type="text"
+            name="cvv"
+            id="cvv"
+            value={formData.cvv}
+            onChange={handleChange}
+            className="border p-2 w-full"
+            required
+          />
+        </div>
 
-
-
-
-        <button type="submit" className="w-full bg-blue-500 text-white p-2 rounded">
+        <button
+          type="submit"
+          className="w-full bg-blue-500 text-white p-2 rounded"
+        >
           Valider la Commande
         </button>
       </form>
