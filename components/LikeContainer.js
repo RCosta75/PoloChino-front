@@ -3,10 +3,11 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import Card from "./home/productContainer/Card";
+import EmptyBasket from "./basket/EmptyBasket";
 
 export default function LikeContainer() {
   const [poloData, setPoloData] = useState([]);
-  const [likesData, setLikesData] = useState([])
+  const [likesData, setLikesData] = useState([]);
 
   const user = useSelector((state) => state.user.value);
   const render = useSelector((state) => state.cart.render);
@@ -24,24 +25,36 @@ export default function LikeContainer() {
     fetch(`http://localhost:3000/users/get/${user?.token}`)
       .then((response) => response.json())
       .then((data) => {
-        setLikesData(data.likes)
+        setLikesData(data.likes);
       });
   }, [render]);
-
-  
 
   const poloProduct = poloData.map((polo, i) => {
     return (
       <div>
-        <Card key={i} polo={polo} isLike={likesData.some((e) => e === polo._id)} />
+        <Card
+          key={i}
+          polo={polo}
+          isLike={likesData.some((e) => e === polo._id)}
+        />
       </div>
     );
   });
 
   return (
     <div>
-      <h1 className="pt-20 text-center text-3xl bg-stone-100 font-medium underline underline-offset-6" >Your Liked Product</h1>
-      <div className=" pt-20 px-11 grid grid-cols-4 gap-8 bg-stone-100 py-10">{poloProduct}</div>
+      {poloProduct.length === 0 ? (
+        <EmptyBasket />
+      ) : (
+        <div>
+          <h1 className="pt-20 text-center text-3xl bg-stone-100 font-medium underline underline-offset-6">
+            Your Liked Product
+          </h1>
+          <div className=" pt-20 px-11 grid grid-cols-4 gap-8 bg-stone-100 py-10">
+            {poloProduct}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
