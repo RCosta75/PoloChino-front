@@ -4,6 +4,7 @@ import { addToCart } from "../../reducers/cart";
 import { useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import clsx from "clsx";
+import { toast } from "sonner";
 
 // meme principe que productPage, sans la description, les review ni les suggestions etc ...
 export default function ModalProduct({ polo, setIsModalOpen, isModalOpen }) {
@@ -173,6 +174,7 @@ export default function ModalProduct({ polo, setIsModalOpen, isModalOpen }) {
             onClick={() => {
               handleCart();
               setButtonPressed(true);
+              toast.success("Added to cart");
             }}
           >
             Add to Cart

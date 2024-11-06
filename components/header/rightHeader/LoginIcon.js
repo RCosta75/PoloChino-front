@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faHeart } from "@fortawesome/free-solid-svg-icons";
-import styles from "../../../styles/Header.module.css";
 import { logout } from "../../../reducers/user";
+import { toast } from "sonner";
 
 export default function LoginIcon() {
   const dispatch = useDispatch();
@@ -21,6 +21,7 @@ export default function LoginIcon() {
     dispatch(logout());
     setShowLogout(false);
     router.push("/");
+    toast("See you soon");
   };
 
   const redirectToLogin = () => {
