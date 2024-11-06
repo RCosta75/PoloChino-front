@@ -63,6 +63,7 @@ function Login() {
         });
     } else {
       setEmailError(false);
+        toast.error(`Error try again`);
     }
   };
 
@@ -83,6 +84,9 @@ function Login() {
             })
           );
           toast.success(`Welcome Back ${data.username}`);
+        } else {
+          setEmailError(false);
+            toast.error(`Error try again`);
         }
       });
   };
