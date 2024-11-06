@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useRouter } from "next/router";
 import { login } from "../reducers/user";
 import { toast } from "sonner";
 
@@ -62,12 +61,12 @@ function UserProfile() {
         <img src="TestPolo (3).jpg" alt="Your Image Alt Text"/>
       </div>
       <div className="lg:p-36 md:p-52 sm:20 p-8 w-full lg:w-1/2">
-        <h1 className="text-2xl font-semibold mb-4">Mes informations</h1>
+        <h1 className="text-2xl font-semibold mb-4">Informations</h1>
   
         {error && <p className="text-red-600">{error}</p>}
   
         <div className="mb-4">
-          <label className="block">Nom d'utilisateur</label>
+          <label className="block">Username</label>
           <input
             type="text"
             value={username}
@@ -89,7 +88,7 @@ function UserProfile() {
         </div>
   
         <div className="mb-4">
-          <label className="block text-gray-700">Ancien mot de passe</label>
+          <label className="block text-gray-700">Actual Password</label>
           <input
             type="password"
             value={oldPassword}
@@ -100,7 +99,7 @@ function UserProfile() {
         </div>
   
         <div className="mb-4">
-          <label className="block text-gray-700">Nouveau mot de passe</label>
+          <label className="block text-gray-700">New Password</label>
           <input
             type="password"
             value={newPassword}
@@ -114,7 +113,7 @@ function UserProfile() {
           onClick={handleUpdate}
           className="bg-sky-500 hover:bg-blue-800 text-white font-semibold rounded-md py-2 px-4 w-full"
         >
-          Mettre à jour
+         Update
         </button>
       </div>
     </div>

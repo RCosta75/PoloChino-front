@@ -60,7 +60,7 @@ export default function LoginIcon() {
             className="p-4 border-b-2 hover:bg-slate-200 hover:border-gray-100"
             onClick={() => router.push("/informations")}
           >
-           Mes informations
+           Informations
           </button>
 
 
@@ -68,7 +68,7 @@ export default function LoginIcon() {
             className="p-4 border-b-2 hover:bg-slate-200 hover:border-gray-100"
             onClick={() => router.push("/allorders")}
           >
-            Suivi des commandes
+           Orders tracking
           </button>
 
           <button
