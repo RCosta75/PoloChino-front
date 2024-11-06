@@ -4,7 +4,7 @@ import { addToCart } from "../../reducers/cart";
 import { useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import clsx from "clsx";
-
+import { toast } from "sonner";
 
 // meme principe que productPage, sans la description, les review ni les suggestions etc ...
 export default function ModalProduct({ polo, setIsModalOpen, isModalOpen }) {
@@ -26,19 +26,18 @@ export default function ModalProduct({ polo, setIsModalOpen, isModalOpen }) {
   const [errorSize, setErrorSize] = useState(false);
   const [bothError, setBothError] = useState(false);
 
-
-  // permet de gerer que l'user a bien choisi une taille et une couleur avant d'envoyer le polo dans le panier 
+  // permet de gerer que l'user a bien choisi une taille et une couleur avant d'envoyer le polo dans le panier
   const handleCart = () => {
     if (taille.length < 1 && color.length < 1) {
-      setBothError(true)
+      setBothError(true);
     } else if (taille.length < 1) {
       setErrorSize(true);
       setErrorColor(false);
-      setBothError(false)
+      setBothError(false);
     } else if (color.length < 1) {
       setErrorColor(true);
       setErrorSize(false);
-      setBothError(false)
+      setBothError(false);
     } else {
       dispatch(addToCart({ ...polo, quantity: 1, size: taille, color: color }));
       setErrorColor(false);
@@ -57,7 +56,7 @@ export default function ModalProduct({ polo, setIsModalOpen, isModalOpen }) {
 
       <div className="flex flex-col w-1/2 h-full justify-center ml-6 gap-5">
         <h1 className="font-semibold text-5xl">{polo.name}</h1>
-        <h1 className="font-semibold text-3xl">{polo.marque}</h1>  
+        <h1 className="font-semibold text-3xl">{polo.marque}</h1>
         <h1 className="font-semibold text-2xl">Price: {polo.price}€</h1>
 
         {bothError ? (
@@ -174,6 +173,7 @@ export default function ModalProduct({ polo, setIsModalOpen, isModalOpen }) {
             onClick={() => {
               handleCart();
               setButtonPressed(true);
+              toast.success("Added to cart");
             }}
           >
             Add to Cart

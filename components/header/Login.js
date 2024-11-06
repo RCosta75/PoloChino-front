@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../reducers/user";
 import clsx from "clsx";
+import { toast } from "sonner";
 
 function Login() {
   const user = useSelector((state) => state.user.value);
@@ -28,6 +29,16 @@ function Login() {
   // nous ne saurons pas quand l'utilisateur s'est connecté,
   // et nous ne pourrons pas effectuer la redirection en conséquence.
 
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      if (signState === "Sign In") {
+        handleSignIn();
+      } else {
+        handleSignUp();
+      }
+    }
+  };
+
   useEffect(() => {
     if (buttonPressed) {
       setTimeout(() => {
@@ -47,6 +58,7 @@ function Login() {
         .then((data) => {
           if (data.result) {
             dispatch(login({ token: data.token, username, email }));
+            toast.success(`Welcome ${username}`);
           }
         });
     } else {
@@ -70,6 +82,7 @@ function Login() {
               username: data.username,
             })
           );
+          toast.success(`Welcome Back ${data.username}`);
         }
       });
   };
@@ -87,10 +100,11 @@ function Login() {
             <input
               type="text"
               className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500"
-              autocomplete="off"
+              autoComplete="off"
               onChange={(e) => setUsername(e.target.value)}
               value={username}
               placeholder="Username"
+              onKeyDown={handleKeyDown}
             />
           </>
         ) : null}
@@ -104,11 +118,12 @@ function Login() {
             id="email"
             name="email"
             className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500"
-            autocomplete="off"
+            autoComplete="off"
             onChange={(e) => setemail(e.target.value)}
             value={email}
             placeholder="Type your Email"
-          ></input>
+            onKeyDown={handleKeyDown}
+          />
           {!emailError && <p className="text-red-600">Invalid email address</p>}
         </div>
 
@@ -122,10 +137,11 @@ function Login() {
             id="password"
             name="password"
             className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500"
-            autocomplete="off"
+            autoComplete="off"
             onChange={(e) => setPassword(e.target.value)}
             value={password}
             placeholder="Type your Password"
+            onKeyDown={handleKeyDown}
           ></input>
         </div>
 
@@ -146,13 +162,14 @@ function Login() {
 
         <div className="mt-6 text-blue-500 text-center">
           <div>
-            {" "}
             {signState === "Sign In" ? (
               <p className="text-[#010203]">
                 New member?{" "}
                 <button
                   className="hover:underline text-blue-600"
-                  onClick={() => setsignState("Sign Up")}
+                  onClick={() => {
+                    setsignState("Sign Up");
+                  }}
                 >
                   Sign Up now
                 </button>
@@ -164,7 +181,9 @@ function Login() {
                 </span>
                 <button
                   className="hover:underline"
-                  onClick={() => setsignState("Sign In")}
+                  onClick={() => {
+                    setsignState("Sign In");
+                  }}
                 >
                   Sign In now
                 </button>
