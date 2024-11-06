@@ -1,14 +1,58 @@
 const testimonials = [
   {
-    body: "Laborum quis quam. Dolorum et ut quod quia. Voluptas numquam delectus nihil. Aut enim doloremque et ipsam.",
+    body: "Innovative solutions have the power to change the world. Let's embrace progress with purpose.",
     author: {
-      name: "Leslie Alexander",
-      handle: "lesliealexander",
+      name: "Jordan Smith",
+      handle: "jordansmith",
       imageUrl:
-        "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+        "https://images.unsplash.com/photo-1502685104226-ee32379fefbe?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
     },
   },
-  // More testimonials...
+  {
+    body: "Creativity thrives when we push beyond our boundaries. Dare to dream bigger.",
+    author: {
+      name: "Taylor Lee",
+      handle: "taylorlee",
+      imageUrl:
+        "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+    },
+  },
+  {
+    body: "Success isn’t just about hard work. It’s also about passion, resilience, and learning from every setback. Each challenge brings growth, moving us closer to our true goals.",
+    author: {
+      name: "Morgan Rivera",
+      handle: "morganrivera",
+      imageUrl:
+        "https://images.unsplash.com/photo-1544723795-3fb6469f5b39?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+    },
+  },
+  {
+    body: "Empowering others is the first step toward true leadership.",
+    author: {
+      name: "Avery Kim",
+      handle: "averykim",
+      imageUrl:
+        "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+    },
+  },
+  {
+    body: "Embrace the journey, not just the destination. Every step counts.",
+    author: {
+      name: "Jamie Patel",
+      handle: "jamiepatel",
+      imageUrl:
+        "https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+    },
+  },
+  {
+    body: "Greatness is achieved by those who are not afraid to fail.",
+    author: {
+      name: "Riley Chen",
+      handle: "rileychen",
+      imageUrl:
+        "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+    },
+  },
 ];
 
 export default function AboutTestimonials() {
