@@ -9,9 +9,11 @@ export default function LeftHeader() {
         <span
           className="cursor-pointer text-xl"
           onClick={() =>
+            router.pathname === "/" ?
             document
               .getElementById("products")
               .scrollIntoView({ behavior: "smooth" })
+              : router.push("/")
           }
         >
           Shop
