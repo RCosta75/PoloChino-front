@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { addToCart } from "../../reducers/cart";
 import clsx from "clsx";
 import { useDispatch } from "react-redux";
+import { toast } from "sonner";
 
 export default function SizeColorSelect({ product }) {
   const [buttonPressed, setButtonPressed] = useState(false);
@@ -37,6 +38,7 @@ export default function SizeColorSelect({ product }) {
       setErrorSize(false);
       setBothError(false);
     } else {
+      toast.success("Added to cart");
       dispatch(
         addToCart({ ...product, quantity: 1, size: taille, color: color })
       );
