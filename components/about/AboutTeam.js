@@ -46,10 +46,7 @@ export default function AboutTeam() {
               <img
                 alt=""
                 src={person.imageUrl}
-                className="mx-auto h-56 w-56 rounded-full"
-                npm
-                install
-                sonner
+                className="mx-auto object-cover h-56 w-56 rounded-full"
               />
               <h3 className="mt-6 text-base/7 font-semibold tracking-tight text-gray-900">
                 {person.name}

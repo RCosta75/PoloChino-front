@@ -21,7 +21,7 @@ export default function LoginIcon() {
     dispatch(logout());
     setShowLogout(false);
     router.push("/");
-    toast("See you soon");
+    toast.success("See you soon");
   };
 
   const redirectToLogin = () => {
@@ -43,7 +43,7 @@ export default function LoginIcon() {
       </div>
 
       {user.token && (
-        <div className="relative inline-block pl-4 cursor-pointer">
+        <div className="relative inline-block pl-8  cursor-pointer">
           <FontAwesomeIcon
             icon={faHeart}
             onClick={() => router.push("/likes")}
@@ -55,20 +55,18 @@ export default function LoginIcon() {
 
       {showLogout && (
         <div className="absolute border border-gray rounded-md flex flex-col bg-white top-16 right-16">
-
           <button
             className="p-4 border-b-2 hover:bg-slate-200 hover:border-gray-100"
             onClick={() => router.push("/informations")}
           >
-           Informations
+            Informations
           </button>
-
 
           <button
             className="p-4 border-b-2 hover:bg-slate-200 hover:border-gray-100"
             onClick={() => router.push("/allorders")}
           >
-           Orders tracking
+            Orders tracking
           </button>
 
           <button

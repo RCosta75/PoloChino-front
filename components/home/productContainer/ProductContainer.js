@@ -6,7 +6,8 @@ import SortFilter from "./SortFilter";
 import MaterialFilter from "./MaterielFilter";
 import BrandFilter from "./BrandFilter";
 import CoupeFilter from "./CoupeFilter";
-import ResetFilter from "./ResetFilter"
+import ResetFilter from "./ResetFilter";
+import { useRouter } from "next/router";
 // Les composants de filtre sont appelés dans le composant parent et passent les états et fonctions appropriés.
 
 export default function ProductContainer({ searchTerm, reset }) {
@@ -19,9 +20,10 @@ export default function ProductContainer({ searchTerm, reset }) {
   const [selectedMaterial, setSelectedMaterial] = useState(""); // État pour la matière sélectionnée
   const [selectedBrand, setSelectedBrand] = useState(""); // État pour la marque sélectionnée
   const [selectedCoupe, setSelectedCoupe] = useState(""); // État pour la coupe sélectionnée
-  const [isFilterOpen,setIsFilterOpen] = useState(false)
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
   const user = useSelector((state) => state.user.value);
   const render = useSelector((state) => state.cart.render);
+  const router = useRouter();
 
   useEffect(() => {
     // récupérer les données des produits au montage du composant.
@@ -31,7 +33,6 @@ export default function ProductContainer({ searchTerm, reset }) {
         setPoloData(data.polos);
       });
   }, []);
-
 
   // recupere les like et met a jour le coeur selon user.likes
   // envoi en props
@@ -43,16 +44,12 @@ export default function ProductContainer({ searchTerm, reset }) {
       });
   }, [render]);
 
-
   useEffect(() => {
-     setSortOrder("");
-     setSelectedMaterial("");
-     setSelectedBrand("");
-     setSelectedCoupe("");
-     }, [reset]);// s'assurer que chaque fois que la variable reset change, l'état des filtres et de l'ordre de tri est réinitialisé.
-
-
-
+    setSortOrder("");
+    setSelectedMaterial("");
+    setSelectedBrand("");
+    setSelectedCoupe("");
+  }, [reset]); // s'assurer que chaque fois que la variable reset change, l'état des filtres et de l'ordre de tri est réinitialisé.
 
   const handleSortChange = (order) => {
     setSortOrder(order); //Met à jour l'état de l'ordre de tri lorsqu'on sélectionne un nouveau type de tri
@@ -70,13 +67,12 @@ export default function ProductContainer({ searchTerm, reset }) {
     setSelectedCoupe(coupe);
   }; // Met à jour l'état de l'ordre de tri lorsqu'on sélectionne une nouvelle coupe
 
-
-
   const handleResetFilters = () => {
-     setSortOrder("");
-     setSelectedMaterial("");
-     setSelectedBrand("");
-     setSelectedCoupe(""); };
+    setSortOrder("");
+    setSelectedMaterial("");
+    setSelectedBrand("");
+    setSelectedCoupe("");
+  };
 
   const sortedPolos = [...poloData].sort((a, b) => {
     if (sortOrder === "croissant") {
@@ -95,8 +91,9 @@ export default function ProductContainer({ searchTerm, reset }) {
   const filteredPolos = sortedPolos.filter((polo) => {
     //Filtrage des articles en fonction du terme de recherche et affichage des résultats filtrés.
     // (polo.name && polo.name) pour vérifier l'existence du produit
-    const matchesSearchTerm = 
-    polo.name ? polo.name.toLowerCase().includes(searchTerm.toLowerCase()) : true;
+    const matchesSearchTerm = polo.name
+      ? polo.name.toLowerCase().includes(searchTerm.toLowerCase())
+      : true;
     // Filtrage des articles en fonction du terme de recherche et des filtres sélectionnés
     // Filtrer par matière si sélectionnée
     const matchesMaterial = selectedMaterial
@@ -126,39 +123,60 @@ export default function ProductContainer({ searchTerm, reset }) {
   return (
     <div>
       <div className="flex justify-center mt-12 p-4 items-center overflow-y-scroll scrollbar-none">
-      <button className="bg-[#010203] w-40 rounded-lg h-8 flex justify-center items-center text-stone-100 hover:bg-white-600 font-bold  hover:text-white pr-50"
-       onClick={() => setIsFilterOpen(!isFilterOpen)}>{ !isFilterOpen ? "Open Filters" : "Close Filters"}</button>
-        
-        
-     {  isFilterOpen ? (<div  className="flex justify-center p-4 h-8 items-center scrollbar-none">
-      <SortFilter sortOrder={sortOrder} handleSortChange={handleSortChange} />
-        <MaterialFilter
-          selectedMaterial={selectedMaterial}
-          handleMaterialChange={handleMaterialChange}
-        />
-        <BrandFilter
-          selectedBrand={selectedBrand}
-          handleBrandChange={handleBrandChange}
-        />
-        <CoupeFilter
-          selectedCoupe={selectedCoupe}
-          handleCoupeChange={handleCoupeChange}
-        />
-        <ResetFilter handleResetFilters={handleResetFilters} />
-        </div>) : (<></>)
-      }
-        
+        <button
+          className="bg-[#010203] w-40 rounded-lg h-8 flex justify-center items-center text-stone-100 hover:bg-white-600 font-bold  hover:text-white pr-50"
+          onClick={() => setIsFilterOpen(!isFilterOpen)}
+        >
+          {!isFilterOpen ? "Open Filters" : "Close Filters"}
+        </button>
+
+        {isFilterOpen ? (
+          <div className="flex justify-center p-4 h-8 items-center scrollbar-none">
+            <SortFilter
+              sortOrder={sortOrder}
+              handleSortChange={handleSortChange}
+            />
+            <MaterialFilter
+              selectedMaterial={selectedMaterial}
+              handleMaterialChange={handleMaterialChange}
+            />
+            <BrandFilter
+              selectedBrand={selectedBrand}
+              handleBrandChange={handleBrandChange}
+            />
+            <CoupeFilter
+              selectedCoupe={selectedCoupe}
+              handleCoupeChange={handleCoupeChange}
+            />
+            <ResetFilter handleResetFilters={handleResetFilters} />
+          </div>
+        ) : (
+          <></>
+        )}
       </div>
-      {poloProduct.length > 0 ?  (
+      {poloProduct.length > 0 ? (
         <div className=" pt-20 px-11 grid md:grid-cols-4 sm:grid-cols-1 gap-8">
           {poloProduct}
         </div>
       ) : (
-        <div>
-          <p className=" text-center items-center text-xl">
-            Aucun produit trouvé.
-          </p>
-        </div>
+        <main className="relative isolate min-h-full">
+          <div className="mx-auto max-w-7xl px-6 py-32 text-center sm:py-44 lg:px-8">
+            <h1 className="mt-4 text-balance text-5xl font-semibold tracking-tight  sm:text-7xl">
+              Articles not found
+            </h1>
+
+            <div className="mt-20 flex justify-center">
+              <button
+                onClick={() => {
+                  router.push("/");
+                }}
+                className="bg-gray-950 p-4  motion-translate-x-in-[0%] motion-ease-out-cubic motion-duration-[1.50s] motion-translate-y-in-[100%] absolute hover:py-1px-2 text-white font-bold top-[55%] z-10  text-lg block  rounded   px-3 py-2   transition hover:scale-105"
+              >
+                Poursuivre vos achats
+              </button>
+            </div>
+          </div>
+        </main>
       )}
     </div>
   );

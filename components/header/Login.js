@@ -63,7 +63,7 @@ function Login() {
         });
     } else {
       setEmailError(false);
-        toast.error(`Error try again`);
+      toast.error(`Error try again`);
     }
   };
 
@@ -86,7 +86,7 @@ function Login() {
           toast.success(`Welcome Back ${data.username}`);
         } else {
           setEmailError(false);
-            toast.error(`Error try again`);
+          toast.error(`Error try again`);
         }
       });
   };
@@ -198,8 +198,8 @@ function Login() {
       </div>
       <div className="w-1/2 h-screen hidden lg:block">
         <img
-          src="/TestPolo (1).jpg"
-          alt="logo"
+          src="/ReidaPolo.jpeg"
+          alt="ReidaPolo"
           onClick={() => router.push("/")}
           className="object-cover w-full h-full"
         />

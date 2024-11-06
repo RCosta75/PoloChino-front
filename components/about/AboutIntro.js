@@ -17,12 +17,14 @@ export default function AboutIntro() {
             <h2 className="text-3xl font-bold sm:text-4xl">FEEL THE POLO</h2>
 
             <p className="mt-4 text-gray-600">
-              Welcome to our site dedicated to polo, the sport where elegance,
-              strategy, and passion meet. Discover the latest news,
-              competitions, and our best tips for players and enthusiasts. Dive
-              into the unique world of polo and share our passion for this
-              exceptional sport. 
-  
+              Welcome to the world of luxury polo shirts, where sophistication
+              and refinement meet. Our polos are more than just clothing—they
+              embody timeless elegance for those who seek both quality and
+              style. Crafted from premium materials and designed for perfect
+              comfort, our polos effortlessly adapt to any occasion, from casual
+              chic to elevated looks. Discover the essence of style with pieces
+              that will elevate your wardrobe and enhance your presence with
+              finesse.
             </p>
           </div>
         </div>

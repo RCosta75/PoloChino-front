@@ -40,6 +40,7 @@ export default function ModalProduct({ polo, setIsModalOpen, isModalOpen }) {
       setErrorSize(false);
       setBothError(false);
     } else {
+      toast.success("Added to cart");
       dispatch(addToCart({ ...polo, quantity: 1, size: taille, color: color }));
       setErrorColor(false);
       setErrorSize(false);
@@ -174,7 +175,6 @@ export default function ModalProduct({ polo, setIsModalOpen, isModalOpen }) {
             onClick={() => {
               handleCart();
               setButtonPressed(true);
-              toast.success("Added to cart");
             }}
           >
             Add to Cart
