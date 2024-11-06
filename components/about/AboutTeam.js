@@ -18,8 +18,8 @@ export default function AboutTeam() {
     },
     {
       name: "TOURE Lassana",
-      role: "Ambianceur",
-      imageUrl: "/lasstech.jpg",
+      role: "King of Regex",
+      imageUrl: "/lassphoto.jpg",
       xUrl: "#",
       linkedinUrl: "#",
     },

@@ -53,7 +53,6 @@ export default function Card({ polo, isLike }) {
     }
   };
 
-
   // Modal pour choisir sa taille et sa couleur plus rapidement
   const openProductModal = () => {
     setIsModalOpen(true);
@@ -64,7 +63,7 @@ export default function Card({ polo, isLike }) {
   };
 
   return (
-    <div className="group relative block overflow-hidden rounded">
+    <div className="group relative block overflow-hidden rounded cursor-pointer">
       <button
         className="absolute end-4 top-4 z-10 rounded-full bg-[#bfdbf7] p-1.5 text-gray-900 transition hover:text-gray-900/75"
         onClick={() => handleLikes()}

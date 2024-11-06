@@ -1,4 +1,5 @@
 import React from "react";
+import { useEffect } from "react";
 
 import Suggestions from "./Suggestions";
 import Review from "./Review";
@@ -36,7 +37,7 @@ export default function ProductPage() {
     matiere,
     comments,
   };
-  console.log(product.comments, comments);
+
   return (
     <div className="w-full h-full">
       <div className="flex ">
@@ -51,7 +52,9 @@ export default function ProductPage() {
         <div className="flex w-full overflow-scroll no-scrollbar [&>div]:flex-shrink-0 border-b-8">
           <Review product={product} />
         </div>
-        <h1 className=" text-center text-3xl font-medium underline underline-offset-6 pt-4 bg-stone-100">Suggestions</h1>
+        <h1 className=" text-center text-3xl font-medium underline underline-offset-6 pt-4 bg-stone-100">
+          Suggestions
+        </h1>
         <div className="flex w-full overflow-scroll no-scrollbar [&>div]:flex-shrink-0 bg-stone-100 ">
           <Suggestions />
         </div>

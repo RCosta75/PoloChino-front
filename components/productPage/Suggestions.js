@@ -39,7 +39,7 @@ export default function Suggestions({ poloSuggest }) {
     router.push({
       pathname: "/productpage",
       query: {
-        id: suggestData.id,
+        _id: suggestData._id,
         name: suggestData.name,
         description: suggestData.description,
         price: suggestData.price,
@@ -55,7 +55,6 @@ export default function Suggestions({ poloSuggest }) {
 
   // Modal pour choisir sa taille et sa couleur plus rapidement
   const openProductModal = (data) => {
-    console.log("poloData :", data);
     setCurrentPolo(data);
     setIsModalOpen(true);
   };
@@ -88,34 +87,34 @@ export default function Suggestions({ poloSuggest }) {
       <div className="group bg-white cursor-pointer rounded-br-md rounded-bl-md  relative block overflow-hidden">
         {/* LIKE BUTTON */}
         <div>
-        <button
-          className="absolute end-4 top-4 z-10 rounded-full bg-[#bfdbf7] p-1.5 text-gray-900 transition hover:text-gray-900/75"
-          onClick={() => handleLikes()}
-        >
-          <span className="sr-only">Wishlist</span>
-
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill={isLike ? "#010203" : "whitesmoke"}
-            viewBox="0 0 24 24"
-            strokeWidth="1.5"
-            stroke="currentColor"
-            className="size-5 "
+          <button
+            className="absolute end-4 top-4 z-10 rounded-full bg-[#bfdbf7] p-1.5 text-gray-900 transition hover:text-gray-900/75"
+            onClick={() => handleLikes()}
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"
-            />
-          </svg>
-        </button>
-        <button
+            <span className="sr-only">Wishlist</span>
+
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill={isLike ? "#010203" : "whitesmoke"}
+              viewBox="0 0 24 24"
+              strokeWidth="1.5"
+              stroke="currentColor"
+              className="size-5 "
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"
+              />
+            </svg>
+          </button>
+          <button
             className="absolute end-4 top-14 z-10 rounded-full bg-[#bfdbf7] p-1.5 text-gray-900 transition hover:text-gray-900/75"
             onClick={() => openProductModal(poloSuggest)}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              fill="whitesmoke" 
+              fill="whitesmoke"
               viewBox="0 0 24 24"
               strokeWidth={1.5}
               stroke="currentColor"
@@ -128,7 +127,7 @@ export default function Suggestions({ poloSuggest }) {
               />
             </svg>
           </button>
-          </div>
+        </div>
         <img
           onClick={() => handleImageClick(poloSuggest)}
           src={poloSuggest.image}
@@ -146,8 +145,10 @@ export default function Suggestions({ poloSuggest }) {
             <h3 className="font-medium text-gray-900 group-hover:underline group-hover:underline-offset-4">
               {poloSuggest.name}
             </h3>
-            </div>
-            <p className="mt-3 pr-4 text-base font-semibold pb-5 text-gray-700">{poloSuggest.price}€ </p>
+          </div>
+          <p className="mt-3 pr-4 text-base font-semibold pb-5 text-gray-700">
+            {poloSuggest.price}€{" "}
+          </p>
         </div>
       </div>
     );
