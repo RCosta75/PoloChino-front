@@ -63,7 +63,7 @@ export default function Card({ polo, isLike }) {
   };
 
   return (
-    <div className="group relative block overflow-hidden rounded cursor-pointer">
+    <div className="group relative block overflow-hidden rounded cursor-pointer bg-white">
       <button
         className="absolute end-4 top-4 z-10 rounded-full bg-[#bfdbf7] p-1.5 text-gray-900 transition hover:text-gray-900/75"
         onClick={() => handleLikes()}
@@ -85,6 +85,25 @@ export default function Card({ polo, isLike }) {
           />
         </svg>
       </button>
+      <button
+            className="absolute end-4 top-14 z-10 rounded-full bg-[#bfdbf7] p-1.5 text-gray-900 transition hover:text-gray-900/75"
+            onClick={() => openProductModal()}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="whitesmoke"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="size-5"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z"
+              />
+            </svg>
+          </button>
       <img
         src={polo?.image}
         alt={polo?.description}
@@ -92,38 +111,22 @@ export default function Card({ polo, isLike }) {
         onClick={handleImageClick}
       />
 
-      <div className="relative border border-gray-100 bg-white h-52 p-6 rounded-bl-lg rounded-br-lg">
-        <div className="text-gray-700 flex justify-between">
-          {polo?.price} €
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill={carto ? "#bfdbf7" : "none"}
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="size-5"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z"
-            />
-          </svg>
+      <div className="mt-3 flex justify-between pl-4  ">
+          <div>
+            <h1 className="font-bold text-gray-900 group-hover:underline group-hover:underline-offset-4">
+              {polo?.marque}
+            </h1>
+            <h3 className="font-medium text-gray-900 group-hover:underline group-hover:underline-offset-4">
+              {polo?.name}
+            </h3>
+          </div>
+          <p className="mt-3 pr-4 text-base font-semibold pb-5 text-gray-700">
+            {polo?.price}€{" "}
+          </p>
         </div>
 
-        <h3 className="mt-1.5 text-lg font-bold text-gray-900">
-          {polo?.marque}
-        </h3>
-
-        <p className="h-10 line-clamp-3 text-gray-700">{polo?.name}</p>
-
         <div className="mt-4 flex gap-4 ">
-          <button
-            className="block w-full rounded   bg-[#001021] px-3 py-2 text-sm font-medium text-stone-100 transition hover:scale-105"
-            onClick={() => openProductModal()}
-          >
-            Add to Cart
-          </button>
+
           <Modal
             open={isModalOpen}
             footer={null}
@@ -137,6 +140,5 @@ export default function Card({ polo, isLike }) {
           </Modal>
         </div>
       </div>
-    </div>
   );
 }

@@ -6,7 +6,6 @@ export default function LeftHeader() {
 
   return (
     <div>
-      {router.pathname === "/" && (
         <span
           className="cursor-pointer text-xl"
           onClick={() =>
@@ -17,7 +16,6 @@ export default function LeftHeader() {
         >
           Shop
         </span>
-      )}
       <button
         onClick={() => router.push("/about")}
         className="ml-4 cursor-pointer text-xl"
