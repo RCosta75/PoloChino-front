@@ -30,7 +30,7 @@ export default function ProductContainer({ searchTerm, reset }) {
       .then((data) => {
         setPoloData(data.polos);
       });
-  }, []);
+  }, [render]);
 
 
   // recupere les like et met a jour le coeur selon user.likes
