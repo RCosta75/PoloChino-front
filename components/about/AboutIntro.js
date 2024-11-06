@@ -21,7 +21,8 @@ export default function AboutIntro() {
               strategy, and passion meet. Discover the latest news,
               competitions, and our best tips for players and enthusiasts. Dive
               into the unique world of polo and share our passion for this
-              exceptional sport.
+              exceptional sport. 
+  
             </p>
           </div>
         </div>

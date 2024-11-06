@@ -33,17 +33,21 @@ export default function LeftBasketDetails({ polo }) {
   };
 
   const handleImageClick = () => {
-    router.push({ pathname: '/productpage',
-     query: { _id: polo._id,
-     name: polo.name,
-     description: polo.description,
-     price: polo.price,
-     image: polo.image,
-     marque: polo.marque,
-     coupe : polo.coupe,
-     matiere : polo.matiere
-          },});
-          };
+    router.push({
+      pathname: "/productpage",
+      query: {
+        _id: polo._id,
+        name: polo.name,
+        description: polo.description,
+        price: polo.price,
+        image: polo.image,
+        marque: polo.marque,
+        coupe: polo.coupe,
+        matiere: polo.matiere,
+        comments: JSON.stringify(polo.comments), // Obj to String le tableau
+      },
+    });
+  };
 
 
   return (
