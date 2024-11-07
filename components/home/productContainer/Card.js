@@ -91,7 +91,7 @@ export default function Card({ polo, isLike }) {
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          fill="whitesmoke"
+          fill={carto ? "#010203" : "whitesmoke"}
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"

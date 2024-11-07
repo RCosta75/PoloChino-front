@@ -1,10 +1,10 @@
 import React from "react";
 
 const stats = [
-  { name: "Number of deploys", value: "1.048.789" },
-  { name: "Average deploy time", value: "3.65", unit: "mins" },
-  { name: "Number of servers", value: "3" },
-  { name: "Success rate", value: "98.5%" },
+  { name: "Number of Polo sold", value: "1.048.789" },
+  { name: "Polo sold each", value: "3.65", unit: "mins" },
+  { name: "Number of delivered country", value: "+30" },
+  { name: "Satisfaction rate", value: "98.5%" },
 ];
 
 export default function AboutStats() {
