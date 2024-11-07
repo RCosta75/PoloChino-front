@@ -46,7 +46,7 @@ export default function CartIcon() {
   return (
     <div>
       <Popover placement="bottom" title="My Cart" content={popoverContent}>
-        <div className="relative inline-block cursor-pointer">
+        <div className="relative  inline-block cursor-pointer">
           <FontAwesomeIcon
             icon={faCartShopping}
             onClick={() => handleClick()}

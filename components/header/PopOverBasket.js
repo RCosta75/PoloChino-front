@@ -15,10 +15,12 @@ export default function PopOverBasket({ polo }) {
           </h1>
           <div className="flex justify-between">
             <h4>{polo.name}</h4>
-            <span>{(polo.price * polo.quantity).toFixed(2)} €</span>
           </div>
           {polo.size && <p>Size : {polo.size}</p>}
+          <div className="flex justify-between">
           {polo.color && <p>Color : {polo.color}</p>}
+          <p>{(polo.price * polo.quantity).toFixed(2)} €</p>
+          </div>
           <div>
             <div>
               {/* INCREASE & DECREASE BUTTON */}
