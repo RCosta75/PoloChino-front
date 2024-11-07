@@ -39,6 +39,7 @@ export const Capsule = ({ images, className }) => {
                 height="400"
                 width="400"
                 alt="thumbnail"
+                loading="lazy" // Lazy load the images
               />
             </motion.div>
           ))}
@@ -52,6 +53,7 @@ export const Capsule = ({ images, className }) => {
                 height="400"
                 width="400"
                 alt="thumbnail"
+                loading="lazy" // Lazy load the images
               />
             </motion.div>
           ))}
@@ -65,6 +67,7 @@ export const Capsule = ({ images, className }) => {
                 height="400"
                 width="400"
                 alt="thumbnail"
+                loading="lazy" // Lazy load the images
               />
             </motion.div>
           ))}
