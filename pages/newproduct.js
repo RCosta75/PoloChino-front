@@ -1,11 +1,12 @@
-import React from "react";
-import { useState, useEffect } from "react";
-import Footer from "../components/Footer";
-import Header from "../components/header/Header";
-import Card from "../components/home/productContainer/Card";
+import React, { useState, useEffect, Suspense, lazy } from "react";
 import { useSelector } from "react-redux";
 
-export default function newproduct() {
+// Dynamically import components using React.lazy
+const Footer = lazy(() => import("../components/Footer"));
+const Header = lazy(() => import("../components/header/Header"));
+const Card = lazy(() => import("../components/home/productContainer/Card"));
+
+export default function NewProduct() {
   const [poloData, setPoloData] = useState([]);
   const [likesData, setLikesData] = useState([]);
 
@@ -13,7 +14,7 @@ export default function newproduct() {
   const render = useSelector((state) => state.cart.render);
 
   useEffect(() => {
-    // récupérer les données des produits au montage du composant.
+    // Fetch product data on component mount.
     fetch("http://localhost:3000/polos/get")
       .then((response) => response.json())
       .then((data) => {
@@ -22,6 +23,7 @@ export default function newproduct() {
   }, []);
 
   useEffect(() => {
+    // Fetch user likes data when render state changes
     fetch(`http://localhost:3000/users/get/${user?.token}`)
       .then((response) => response.json())
       .then((data) => {
@@ -29,31 +31,28 @@ export default function newproduct() {
       });
   }, [render]);
 
-  const newProduct = poloData.filter((e) => e.product === "NEW" && e);
+  const newProduct = poloData.filter((e) => e.product === "NEW");
 
   const poloProduct = newProduct.map((polo, i) => {
     return (
-      <div>
-        <Card
-          key={i}
-          polo={polo}
-          isLike={likesData?.some((e) => e === polo._id)}
-        />
+      <div key={i}>
+        <Card polo={polo} isLike={likesData?.some((e) => e === polo._id)} />
       </div>
     );
   });
 
   return (
     <div>
-      <Header />
+      <Suspense fallback={<div>Loading Header...</div>}>
+        <Header />
+      </Suspense>
 
       <div>
-        <div className="w-full flex  bg-stone-100 justify-center">
-          <div className="max-w-5xl pt-36 pb-10  text-center">
-            <h1 className=" text-center text-3xl  font-medium underline underline-offset-6">
+        <div className="w-full flex bg-stone-100 justify-center">
+          <div className="max-w-5xl pt-36 pb-10 text-center">
+            <h1 className="text-3xl font-medium underline underline-offset-6">
               NEW PRODUCT
             </h1>
-
             <p className="mt-20 text-xl">
               We’re excited to introduce our latest collection! Each item has
               been carefully selected to meet your needs and elevate your
@@ -64,12 +63,17 @@ export default function newproduct() {
             </p>
           </div>
         </div>
-        <div className=" pt-20 px-11 grid grid-cols-4 gap-8 bg-stone-100 py-10">
-          {poloProduct}
+
+        <div className="pt-20 px-11 grid grid-cols-4 gap-8 bg-stone-100 py-10">
+          <Suspense fallback={<div>Loading products...</div>}>
+            {poloProduct}
+          </Suspense>
         </div>
       </div>
 
-      <Footer />
+      <Suspense fallback={<div>Loading Footer...</div>}>
+        <Footer />
+      </Suspense>
     </div>
   );
 }
