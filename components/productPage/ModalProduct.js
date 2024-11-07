@@ -11,7 +11,6 @@ export default function ModalProduct({ polo, setIsModalOpen, isModalOpen }) {
   const dispatch = useDispatch();
   const [buttonPressed, setButtonPressed] = useState(false);
   //Récupère les données du produit depuis query
-  console.log("polo :", polo);
 
   useEffect(() => {
     if (buttonPressed) {
