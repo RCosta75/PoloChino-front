@@ -1,10 +1,12 @@
-import LeftBasket from "../components/basket/LeftBasket";
-import RightBasket from "../components/basket/RightBasket";
-import { useState } from "react";
-import Header from "../components/header/Header";
+import React, { useState, Suspense, lazy } from "react";
 import { useSelector } from "react-redux";
-import EmptyBasket from "../components/basket/EmptyBasket";
 import { totalQuantityBasket } from "../reducers/cart";
+
+// Lazy-load the components
+const Header = lazy(() => import("../components/header/Header"));
+const LeftBasket = lazy(() => import("../components/basket/LeftBasket"));
+const RightBasket = lazy(() => import("../components/basket/RightBasket"));
+const EmptyBasket = lazy(() => import("../components/basket/EmptyBasket"));
 
 function Basket() {
   const totalBasketItem = useSelector(totalQuantityBasket);
@@ -12,26 +14,36 @@ function Basket() {
 
   const [searchTerm, setSearchTerm] = useState("");
   const [reset, setReset] = useState(false);
+
   const handleReset = () => {
     setSearchTerm("");
     setReset(!reset);
   };
-  // Passage de handleReset au composant Header dans Basket.js :
-  // Le composant Header a maintenant accès à la fonction handleReset.
 
   return (
     <>
-      <Header setSearchTerm={setSearchTerm} handleReset={handleReset} />
+      {/* Suspense wrapper with fallback for Header */}
+      <Suspense fallback={<div>Loading header...</div>}>
+        <Header setSearchTerm={setSearchTerm} handleReset={handleReset} />
+      </Suspense>
 
+      {/* Conditionally render EmptyBasket or LeftBasket and RightBasket, each wrapped in Suspense */}
       {totalBasketItem === 0 ? (
-        <EmptyBasket />
+        <Suspense fallback={<div>Loading empty basket...</div>}>
+          <EmptyBasket />
+        </Suspense>
       ) : (
-        <div className="w-full h-screen flex  ">
-          <LeftBasket />
-          <RightBasket />
+        <div className="w-full h-screen flex">
+          <Suspense fallback={<div>Loading basket...</div>}>
+            <LeftBasket />
+          </Suspense>
+          <Suspense fallback={<div>Loading basket...</div>}>
+            <RightBasket />
+          </Suspense>
         </div>
       )}
     </>
   );
 }
+
 export default Basket;

@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 function UserInfo() {
   const user = useSelector((state) => state.user.value);
   const router = useRouter();
-  
+
   const [userInfo, setUserInfo] = useState({
     username: "",
     email: "",
@@ -22,43 +22,51 @@ function UserInfo() {
             setUserInfo({
               username: data.username,
               email: data.email,
-            
             });
           } else {
             setError(data.error);
           }
         })
         .catch((error) => {
-          setError("Erreur lors de la récupération des informations utilisateur");
+          setError(
+            "Erreur lors de la récupération des informations utilisateur"
+          );
         });
     }
   }, [user.token]);
 
-  const handleEdit = () => { router.push('/updateinformation'); 
+  const handleEdit = () => {
+    router.push("/updateinformation");
     // Assurez-vous que ce chemin correspond à la page de modification des informations
-     }
-
-
-
-
+  };
 
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-2xl font-semibold mb-4">Informations Utilisateur</h1>
 
       {error && <p className="text-red-600">{error}</p>}
-      
+
       <div className="mb-4">
         <label className="block text-gray-700">Nom d'utilisateur</label>
-        <p className="border border-gray-300 rounded-md py-2 px-3">{user.username}</p>
+        <p className="border border-gray-300 rounded-md py-2 px-3">
+          {user.username}
+        </p>
       </div>
 
       <div className="mb-4">
         <label className="block text-gray-700">Email</label>
-        <p className="border border-gray-300 rounded-md py-2 px-3">{user.email}</p>
+        <p className="border border-gray-300 rounded-md py-2 px-3">
+          {user.email}
+        </p>
       </div>
 
-      <button onClick={handleEdit} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" > Modifier les informations </button>
+      <button
+        onClick={handleEdit}
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+      >
+        {" "}
+        Modifier les informations{" "}
+      </button>
     </div>
   );
 }

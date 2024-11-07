@@ -1,24 +1,28 @@
-import React from 'react'
-import OrderForm from '../components/order/orderForm'
-import Header from '../components/header/Header';
-import { useState } from 'react';
+import React, { Suspense, useState } from "react";
+import Header from "../components/header/Header";
 
-export default function orderform() {
+// Lazily import the OrderForm component
+const OrderForm = React.lazy(() => import("../components/order/orderForm"));
 
-    const [searchTerm, setSearchTerm] = useState('');
-    const [reset, setReset] = useState(false);
-    const handleReset = () => { 
-        setSearchTerm('');
-        setReset(!reset);}
-         // Passage de handleReset au composant Header dans like.js :
-         // Le composant Header a maintenant accès à la fonction handleReset.
+export default function OrderFormPage() {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [reset, setReset] = useState(false);
+
+  const handleReset = () => {
+    setSearchTerm("");
+    setReset(!reset);
+  };
 
   return (
     <>
-    <Header setSearchTerm={setSearchTerm} handleReset={handleReset}/>
-    <div className="flex justify-center items-center min-h-screen bg-gray-100">
-    <OrderForm  className="w-full h-full "/>
-    </div>
-  </>
-  )
+      <Header setSearchTerm={setSearchTerm} handleReset={handleReset} />
+
+      <div className="flex justify-center items-center min-h-screen bg-gray-100">
+        {/* Suspense wrapper with fallback loading state */}
+        <Suspense fallback={<div>Loading...</div>}>
+          <OrderForm className="w-full h-full" />
+        </Suspense>
+      </div>
+    </>
+  );
 }
