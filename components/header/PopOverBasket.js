@@ -6,7 +6,7 @@ export default function PopOverBasket({ polo }) {
   const dispatch = useDispatch();
 
   return (
-    <div className="mx-auto max-w-2xl px-4">
+    <div className="mx-auto max-w-2xl px-4 h-full ">
       <div className="flex items-center py-6">
         <img className="h-28 w-28 object-cover rounded-md " src={polo.image} />
         <div className="ml-4 flex-auto">

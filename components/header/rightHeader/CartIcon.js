@@ -18,7 +18,7 @@ export default function CartIcon() {
   });
 
   const popoverContent = (
-    <div className="font-bold flex-wrap max-h-80 overflow-y-auto">
+    <div className="font-bold flex-wrap max-h-80 overflow-y-auto no-scrollbar">
       {poloProduct}
       <p className="flex flex-row justify-between">
         <span> Quantité : {totalQuantity}</span>
@@ -45,7 +45,7 @@ export default function CartIcon() {
 
   return (
     <div>
-      <Popover placement="bottom" title="My Cart"  content={popoverContent}>
+      <Popover placement="bottom" title="My Cart" content={popoverContent}>
         <div className="relative inline-block cursor-pointer">
           <FontAwesomeIcon
             icon={faCartShopping}
