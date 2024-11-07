@@ -25,11 +25,11 @@ export default function ProductContainer({ searchTerm, reset }) {
   const render = useSelector((state) => state.cart.render);
   const router = useRouter();
 
-  const [index,setIndex] = useState(16)
+  const [index, setIndex] = useState(16);
 
   useEffect(() => {
     // récupérer les données des produits au montage du composant.
-    fetch("http://localhost:3000/polos/get")
+    fetch("https://polo-chino-back.vercel.app/polos/get")
       .then((response) => response.json())
       .then((data) => {
         setPoloData(data.polos);
@@ -39,7 +39,7 @@ export default function ProductContainer({ searchTerm, reset }) {
   // recupere les like et met a jour le coeur selon user.likes
   // envoi en props
   useEffect(() => {
-    fetch(`http://localhost:3000/users/get/${user?.token}`)
+    fetch(`https://polo-chino-back.vercel.app/users/get/${user?.token}`)
       .then((response) => response.json())
       .then((data) => {
         setLikesData(data.likes);
@@ -111,16 +111,17 @@ export default function ProductContainer({ searchTerm, reset }) {
   });
 
   const poloProduct = filteredPolos.map((polo, i) => {
-    while (i < index)
-  {  return (
-      <div>
-        <Card
-          key={i}
-          polo={polo}
-          isLike={likesData?.some((e) => e === polo._id)} // props pour les likes
-        />
-      </div>
-    )}
+    while (i < index) {
+      return (
+        <div>
+          <Card
+            key={i}
+            polo={polo}
+            isLike={likesData?.some((e) => e === polo._id)} // props pour les likes
+          />
+        </div>
+      );
+    }
   });
 
   return (
@@ -182,11 +183,12 @@ export default function ProductContainer({ searchTerm, reset }) {
         </main>
       )}
       <div className="flex justify-center pt-10">
-      <button 
-      className="bg-[#010203] text-stone-100 rounded-md py-2 px-4 w-64 mt-5 "
-      onClick={() => setIndex(index+16)}>
-        SHOW MORE
-      </button>
+        <button
+          className="bg-[#010203] text-stone-100 rounded-md py-2 px-4 w-64 mt-5 "
+          onClick={() => setIndex(index + 16)}
+        >
+          SHOW MORE
+        </button>
       </div>
     </div>
   );

@@ -49,7 +49,7 @@ function Login() {
 
   const handleSignUp = () => {
     if (EMAIL_REGEX.test(email)) {
-      fetch("http://localhost:3000/users/signup", {
+      fetch("https://polo-chino-back.vercel.app/users/signup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, username, password }),
@@ -68,7 +68,7 @@ function Login() {
   };
 
   const handleSignIn = () => {
-    fetch("http://localhost:3000/users/signin", {
+    fetch("https://polo-chino-back.vercel.app/users/signin", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }),

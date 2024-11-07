@@ -15,7 +15,7 @@ function UserInfo() {
   useEffect(() => {
     if (user.token) {
       // Récupérer les informations utilisateur
-      fetch(`http://localhost:3000/users/get/${user.token}`)
+      fetch(`https://polo-chino-back.vercel.app/users/get/${user.token}`)
         .then((response) => response.json())
         .then((data) => {
           if (data.result) {

@@ -20,25 +20,24 @@ export default function Suggestions({ poloSuggest }) {
   // etat pour dire si modal ouvert ou nom, props.open
 
   useEffect(() => {
-    fetch("http://localhost:3000/polos/get")
+    fetch("https://polo-chino-back.vercel.app/polos/get")
       .then((response) => response.json())
       .then((data) => {
-        shuffle(data.polos)
+        shuffle(data.polos);
         let splicedRandomSuggestion = data.polos.slice(0, 10);
         setPolo(splicedRandomSuggestion);
       });
   }, []);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/users/get/${user?.token}`)
+    fetch(`https://polo-chino-back.vercel.app/users/get/${user?.token}`)
       .then((response) => response.json())
       .then((data) => {
         setLikesData(data.likes);
       });
   }, [render, cart]);
 
-
-  // fonction pour mélanger les polo 
+  // fonction pour mélanger les polo
   function shuffle(array) {
     let currentIndex = array.length;
 
@@ -86,7 +85,7 @@ export default function Suggestions({ poloSuggest }) {
   const poloProductSuggest = polo.map((poloSuggest, i) => {
     const handleLikes = () => {
       if (user.token) {
-        fetch(`http://localhost:3000/likes/update`, {
+        fetch(`https://polo-chino-back.vercel.app/likes/update`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({

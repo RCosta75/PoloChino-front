@@ -80,7 +80,7 @@ export default function OrderForm() {
 
     console.log("Order data being sent:", orderData); // On envoie la commande sur mongoose
 
-    fetch("http://localhost:3000/orders", {
+    fetch("https://polo-chino-back.vercel.app/orders", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
