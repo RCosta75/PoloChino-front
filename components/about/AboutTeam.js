@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 
 export default function AboutTeam() {
+  const [hoveredImage, setHoveredImage] = useState("/lassphoto.jpg");
+
   const people = [
     {
       name: "COSTA Raphael",
@@ -19,7 +21,8 @@ export default function AboutTeam() {
     {
       name: "TOURE Lassana",
       role: "King of Regex",
-      imageUrl: "/lassphoto.jpg",
+      imageUrl: hoveredImage,
+      hoverImageUrl: "/lasstech.jpg", 
       xUrl: "#",
       linkedinUrl: "#",
     },
@@ -41,12 +44,18 @@ export default function AboutTeam() {
           role="list"
           className="mx-auto mt-20 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3"
         >
-          {people.map((person) => (
+          {people.map((person, index) => (
             <li key={person.name}>
               <img
                 alt=""
                 src={person.imageUrl}
                 className="mx-auto object-cover h-56 w-56 rounded-full"
+                onMouseEnter={() => {
+                  if (index === 2) setHoveredImage(person.hoverImageUrl);
+                }}
+                onMouseLeave={() => {
+                  if (index === 2) setHoveredImage("/lassphoto.jpg");
+                }}
               />
               <h3 className="mt-6 text-base/7 font-semibold tracking-tight text-gray-900">
                 {person.name}

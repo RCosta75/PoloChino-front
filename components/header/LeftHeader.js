@@ -6,23 +6,29 @@ export default function LeftHeader() {
 
   return (
     <div>
-        <span
-          className="cursor-pointer text-xl"
-          onClick={() =>
-            router.pathname === "/" ?
-            document
-              .getElementById("products")
-              .scrollIntoView({ behavior: "smooth" })
-              : router.push("/")
-          }
-        >
-          Shop
-        </span>
+      <span
+        className="cursor-pointer text-xl"
+        onClick={() =>
+          router.pathname === "/"
+            ? document
+                .getElementById("products")
+                .scrollIntoView({ behavior: "smooth" })
+            : router.push("/")
+        }
+      >
+        Shop
+      </span>
       <button
         onClick={() => router.push("/about")}
         className="ml-4 cursor-pointer text-xl"
       >
         About
+      </button>
+      <button
+        onClick={() => router.push("/capsule")}
+        className="ml-4 cursor-pointer text-xl"
+      >
+        Capsule
       </button>
     </div>
   );
