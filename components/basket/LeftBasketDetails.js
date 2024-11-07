@@ -3,8 +3,7 @@ import { useDispatch } from 'react-redux';
 import { addQuantity, removeCart, suppQuantity } from '../../reducers/cart';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
-import { Modal } from 'antd';
-import ModalProduct from '../productPage/ModalProduct';
+
 
 // FORM POUR DEFILER DIFFERENT CHOIX DE COULEUR ET DE SIZE ET CHANGER LA VALUE OU
 // MODAL QUAND ON CLICK SUR SIZE OU COLOR ?? INVERSE DATA FLOW POUR RENVOYER LE CHANGEMENT DE COULEUR OU DE SIZE A LELEMENT PARENT ET POUR METTRE A JOUR LE PANIER ???
@@ -23,14 +22,6 @@ export default function LeftBasketDetails({ polo }) {
       setSelectedColor(color.target.value); }
   //utilise target.value pour obtenir la couleur sélectionnée
 
-
-  const openProductModal = () => {
-    setIsModalOpen(true);
-  }
-
-  const handleCancel = () => {
-    setIsModalOpen(false);
-  };
 
   const handleImageClick = () => {
     router.push({
