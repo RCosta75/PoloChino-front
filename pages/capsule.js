@@ -1,6 +1,7 @@
 import React from "react";
-import { Capsule } from "../components/header/rightHeader/Capsule";
+
 import { useRouter } from "next/router";
+import { Capsule } from "../components/header/Capsule";
 
 export default function capsule() {
   const images = [
