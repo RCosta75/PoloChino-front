@@ -25,6 +25,8 @@ export default function ProductContainer({ searchTerm, reset }) {
   const render = useSelector((state) => state.cart.render);
   const router = useRouter();
 
+  const [index,setIndex] = useState(16)
+
   useEffect(() => {
     // récupérer les données des produits au montage du composant.
     fetch("http://localhost:3000/polos/get")
@@ -109,7 +111,8 @@ export default function ProductContainer({ searchTerm, reset }) {
   });
 
   const poloProduct = filteredPolos.map((polo, i) => {
-    return (
+    while (i < index)
+  {  return (
       <div>
         <Card
           key={i}
@@ -117,11 +120,11 @@ export default function ProductContainer({ searchTerm, reset }) {
           isLike={likesData?.some((e) => e === polo._id)} // props pour les likes
         />
       </div>
-    );
+    )}
   });
 
   return (
-    <div>
+    <div className="mb-20">
       <div className="flex justify-center mt-12 p-4 items-center overflow-y-scroll scrollbar-none">
         <button
           className="bg-[#010203] w-40 rounded-lg h-8 flex justify-center items-center text-stone-100 hover:bg-white-600 font-bold  hover:text-white pr-50"
@@ -178,6 +181,13 @@ export default function ProductContainer({ searchTerm, reset }) {
           </div>
         </main>
       )}
+      <div className="flex justify-center pt-10">
+      <button 
+      className="bg-[#010203] text-stone-100 rounded-md py-2 px-4 w-64 mt-5 "
+      onClick={() => setIndex(index+16)}>
+        SHOW MORE
+      </button>
+      </div>
     </div>
   );
 }
