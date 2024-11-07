@@ -5,6 +5,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   value: [],
   render: true,
+  color : ""
 };
 
 export const trendSlice = createSlice({
@@ -55,6 +56,10 @@ export const trendSlice = createSlice({
     reRender: (state) => {
       state.render = !state.render;
     },
+    chooseColor: (state,action) => {
+      state.color = action.payload
+      console.log(action.payload)
+    }
   },
 });
 
@@ -76,5 +81,6 @@ export const {
   addQuantity,
   suppQuantity,
   reRender,
+  chooseColor
 } = trendSlice.actions;
 export default trendSlice.reducer;

@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "../../styles/ProductPage.module.css";
 import { useEffect, useState } from "react";
-import { addToCart } from "../../reducers/cart";
+import { addToCart, chooseColor } from "../../reducers/cart";
 import clsx from "clsx";
 import { useDispatch } from "react-redux";
 import { toast } from "sonner";
@@ -75,7 +75,7 @@ export default function SizeColorSelect({ product }) {
       <h4>Colors :</h4>
       <div className={styles.colors}>
         <button
-          onClick={() => setColor("Red")}
+          onClick={() => {setColor("Red"), dispatch(chooseColor("Red"))}}
           className={
             color !== "Red"
               ? styles.colorrectanglerouge
@@ -83,7 +83,7 @@ export default function SizeColorSelect({ product }) {
           }
         ></button>
         <button
-          onClick={() => setColor("Green")}
+          onClick={() => {setColor("Green"), dispatch(chooseColor("Green"))}}
           className={
             color !== "Green"
               ? styles.colorrectanglevert
@@ -91,7 +91,7 @@ export default function SizeColorSelect({ product }) {
           }
         ></button>
         <button
-          onClick={() => setColor("Yellow")}
+          onClick={() => {setColor("Yellow"), dispatch(chooseColor("Yellow"))}}
           className={
             color !== "Yellow"
               ? styles.colorrectanglejaune
@@ -99,7 +99,7 @@ export default function SizeColorSelect({ product }) {
           }
         ></button>
         <button
-          onClick={() => setColor("Blue")}
+          onClick={() => {setColor("Blue"), dispatch(chooseColor("Blue"))}}
           className={
             color !== "Blue"
               ? styles.colorrectanglebleu
@@ -107,7 +107,7 @@ export default function SizeColorSelect({ product }) {
           }
         ></button>
         <button
-          onClick={() => setColor("Brown")}
+          onClick={() => {setColor("Brown"), dispatch(chooseColor("Brown"))}}
           className={
             color !== "Brown"
               ? styles.colorrectanglemarron
@@ -115,7 +115,7 @@ export default function SizeColorSelect({ product }) {
           }
         ></button>
                 <button
-          onClick={() => setColor("White")}
+          onClick={() => {setColor("White") , dispatch(chooseColor("White"))}}
           className={
             color !== "White"
               ? styles.colorrectangleblanc
