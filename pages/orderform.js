@@ -2,7 +2,7 @@ import React, { Suspense, useState } from "react";
 import Header from "../components/header/Header";
 
 // Lazily import the OrderForm component
-const OrderForm = React.lazy(() => import("../components/order/orderForm"));
+const OrderForm = React.lazy(() => import("../components/order/OrderForm"));
 
 export default function OrderFormPage() {
   const [searchTerm, setSearchTerm] = useState("");
