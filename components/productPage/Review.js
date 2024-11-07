@@ -113,7 +113,7 @@ export default function Review({ product }) {
             </div>
 
             <p className="mt-0.5 text-lg font-bold text-gray-900">
-              @{review?.user?.username || "Anonyme"}
+              @{review?.user || "Anonyme"}
             </p>
           </div>
         </div>

@@ -61,17 +61,14 @@ export default function LeftBasketDetails({ polo }) {
             <span>{(polo.price * polo.quantity).toFixed(2)} €</span>
           </div>
 
-          <span onClick={() => openProductModal()} className="py-2 text-sky-600 cursor-pointer">Size :   </span>
-          <Modal open={isModalOpen} footer={null} closeIcon={null} maskClosable={true} onCancel={handleCancel} width={600} height={500}> 
-            <ModalProduct polo={polo} setIsModalOpen={setIsModalOpen} />
-          </Modal>
+          <span className="py-2 ">Size :   </span>
           {!polo.size ? (
               <select value={selectedSize} onChange={handleSizeChange}
                className="px-4 py-2 border border-gray-200"> {['XS', 'S', 'M', 'L', 'XL', 'XXL'].map(
                 size => ( <option key={size} value={size}>{size}</option>))}
                  </select>) : <span>{polo.size}</span>}
         
-            <p ><span onClick={() => openProductModal()} className="py-2 text-sky-600 cursor-pointer">Color :</span>
+            <p ><span className="py-2 ">Color :</span>
               {/* select = Élément conteneur pour le menu déroulant. */}
               {!polo.color ? (
             <select value={selectedColor} onChange={handleColorChange} 
