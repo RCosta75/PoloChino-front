@@ -11,11 +11,31 @@ export const Capsule = ({ images, className }) => {
     offset: ["start start", "end start"],
   });
 
+  function shuffle(array) {
+    let currentIndex = array.length;
+
+    // Si tableau n'est pas vide
+    while (currentIndex != 0) {
+      // choisi dans les elements dans le tableau et randomise l'ordre
+      let randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+
+      [array[currentIndex], array[randomIndex]] = [
+        array[randomIndex],
+        array[currentIndex],
+      ];
+    }
+  }
+
+  let shuffleImage = shuffle(images)
+
+  console.log(shuffleImage)
+
   const translateFirst = useTransform(scrollYProgress, [0, 1], [0, -200]);
   const translateSecond = useTransform(scrollYProgress, [0, 1], [0, 200]);
   const translateThird = useTransform(scrollYProgress, [0, 1], [0, -200]);
 
-  const third = Math.ceil(images.length / 3);
+ const third = Math.ceil(images.length / 3);
 
   const firstPart = images.slice(0, third);
   const secondPart = images.slice(third, 2 * third);
