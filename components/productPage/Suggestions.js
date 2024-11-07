@@ -23,7 +23,9 @@ export default function Suggestions({ poloSuggest }) {
     fetch("http://localhost:3000/polos/get")
       .then((response) => response.json())
       .then((data) => {
-        setPolo(data.polos);
+        shuffle(data.polos)
+        let splicedRandomSuggestion = data.polos.slice(0, 10);
+        setPolo(splicedRandomSuggestion);
       });
   }, []);
 
@@ -34,6 +36,24 @@ export default function Suggestions({ poloSuggest }) {
         setLikesData(data.likes);
       });
   }, [render, cart]);
+
+
+  // fonction pour mélanger les polo 
+  function shuffle(array) {
+    let currentIndex = array.length;
+
+    // Si tableau n'est pas vide
+    while (currentIndex != 0) {
+      // choisi dans les elements dans le tableau et randomise l'ordre
+      let randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+
+      [array[currentIndex], array[randomIndex]] = [
+        array[randomIndex],
+        array[currentIndex],
+      ];
+    }
+  }
 
   const handleImageClick = (suggestData) => {
     router.push({

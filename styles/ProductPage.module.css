@@ -66,6 +66,7 @@
 }
 
 .colorrectanglerouge {
+  border: #001021 1px solid;
   width: 5vh;
   height: 5vh;
   display: flex;
@@ -107,6 +108,7 @@
 }
 
 .colorrectanglevert {
+  border: #001021 1px solid;
   width: 5vh;
   height: 5vh;
   display: flex;
@@ -120,6 +122,7 @@
 }
 
 .colorrectanglejaune {
+  border: #001021 1px solid;
   width: 5vh;
   height: 5vh;
   display: flex;
@@ -147,6 +150,7 @@
 }
 
 .colorrectanglemarron {
+  border: #001021 1px solid;
   width: 5vh;
   height: 5vh;
   display: flex;
@@ -173,7 +177,36 @@
   border: 4px #001021 solid;
 }
 
+.colorrectangleblanc {
+  border: #001021 1px solid;
+  width: 5vh;
+  height: 5vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  border-radius: 5px;
+  text-transform: uppercase;
+  font-weight: bold;
+  background-color: whitesmoke;
+}
+
+.colorrectangleblancfocus {
+  width: 5vh;
+  height: 5vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  border-radius: 5px;
+  text-transform: uppercase;
+  font-weight: bold;
+  background-color: whitesmoke;
+  border: 4px #001021 solid;
+}
+
 .colorrectanglebleu {
+  border: #001021 1px solid;
   width: 5vh;
   height: 5vh;
   display: flex;

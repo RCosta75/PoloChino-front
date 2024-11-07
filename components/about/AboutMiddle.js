@@ -3,7 +3,7 @@ export default function AboutMiddle() {
     <div className="bg-white px-6  lg:px-8">
       <div className="mx-auto max-w-7xl text-center">
         <h2 className=" pt-52 text-5xl font-semibold tracking-tight text-gray-900 sm:text-7xl">
-          Support center
+          Team Pol-Ho
         </h2>
         <p className="mt-8 text-pretty text-2xl font-medium">
           Our technical team brings expertise in equestrian care, event

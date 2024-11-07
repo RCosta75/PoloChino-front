@@ -114,6 +114,14 @@ export default function SizeColorSelect({ product }) {
               : styles.colorrectanglemarronfocus
           }
         ></button>
+                <button
+          onClick={() => setColor("White")}
+          className={
+            color !== "White"
+              ? styles.colorrectangleblanc
+              : styles.colorrectangleblancfocus
+          }
+        ></button>
       </div>
 
       <div>
