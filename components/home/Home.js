@@ -24,7 +24,7 @@ function Home() {
   }; // on donne cette fonction à ProductContainer
 
   return (
-    <div className="bg-stone-100 no-scrollbar overflow-y-auto">
+    <div className="bg-stone-100 no-scrollbar overflow-hidden overflow-y-auto">
       <Head>
         <title>POL-HO - Home</title>
       </Head>
