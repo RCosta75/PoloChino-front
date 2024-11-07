@@ -1,6 +1,6 @@
 const testimonials = [
   {
-    body: "Innovative solutions have the power to change the world. Let's embrace progress with purpose.",
+    body: "This super polo shirt combines style and comfort, making it perfect for any occasion. It’s a wardrobe essential!",
     author: {
       name: "Jordan Smith",
       handle: "jordansmith",
@@ -9,7 +9,7 @@ const testimonials = [
     },
   },
   {
-    body: "Creativity thrives when we push beyond our boundaries. Dare to dream bigger.",
+    body: "The fit and fabric of this polo are unmatched! I feel confident wearing it all day, whether at work or out with friends.",
     author: {
       name: "Taylor Lee",
       handle: "taylorlee",
@@ -18,7 +18,7 @@ const testimonials = [
     },
   },
   {
-    body: "Success isn’t just about hard work. It’s also about passion, resilience, and learning from every setback. Each challenge brings growth, moving us closer to our true goals.",
+    body: "A polo shirt that’s both stylish and durable! Every time I wear it, I get compliments. Definitely worth the investment.",
     author: {
       name: "Morgan Rivera",
       handle: "morganrivera",
@@ -27,7 +27,7 @@ const testimonials = [
     },
   },
   {
-    body: "Empowering others is the first step toward true leadership.",
+    body: "This super polo shirt is incredibly versatile. It pairs well with anything, and I love how comfortable it feels!",
     author: {
       name: "Avery Kim",
       handle: "averykim",
@@ -36,7 +36,7 @@ const testimonials = [
     },
   },
   {
-    body: "Embrace the journey, not just the destination. Every step counts.",
+    body: "I’m amazed by the quality and design of this polo. It looks great and feels even better – my go-to choice every time.",
     author: {
       name: "Jamie Patel",
       handle: "jamiepatel",
@@ -45,7 +45,7 @@ const testimonials = [
     },
   },
   {
-    body: "Greatness is achieved by those who are not afraid to fail.",
+    body: "Perfect blend of elegance and comfort! This polo shirt adds a touch of class to any outfit. I couldn’t be happier with it.",
     author: {
       name: "Riley Chen",
       handle: "rileychen",

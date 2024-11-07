@@ -11,10 +11,10 @@ function emptybasket() {
   };
 
   return (
-    <>
+    <div className="w-full h-screen">
       <Header setSearchTerm={setSearchTerm} handleReset={handleReset} />
       <EmptyBasket />
-    </>
+    </div>
   );
 }
 

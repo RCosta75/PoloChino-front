@@ -2,11 +2,10 @@ import React from "react";
 import { useRouter } from "next/router";
 
 export default function ProductHeader() {
-
   const router = useRouter();
 
   return (
-    <div className="w-full flex">
+    <div className="w-full h-screen flex">
       <div className=" relative w-1/2 ">
         <img
           src="/TestPolo (1).jpg"

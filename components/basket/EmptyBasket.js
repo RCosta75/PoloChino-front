@@ -23,7 +23,7 @@ export default function EmptyBasket() {
         loop
         muted
         controls={false}
-        className="absolute -z-10 w-auto min-w-full min-h-full max-w-none"
+        className="absolute w-full h-screen object-cover -z-10"
       >
         <source src="/polovideo.mp4" type="video/mp4" />
         Your browser does not support the video tag.

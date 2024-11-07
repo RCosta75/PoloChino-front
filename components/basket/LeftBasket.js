@@ -13,15 +13,17 @@ export default function LeftBasket() {
   });
 
   return (
-    <div className="w-1/2 pt-10">
-      <div className="flex items-center justify-between mx-36 py-20 text-xl">
-        <h1> CART ARTICLES</h1>
-        <button
-          className=" block  rounded bg-gray-900 px-4 py-3 font-medium text-white transition hover:scale-105"
-          onClick={() => dispatch(clearCart())}
-        >
-          CLEAR CART
-        </button>
+    <div className="w-1/2 pt-10  ">
+      <div className="flex border-b-2 ml-20  mt-20 pb-14 text-xl">
+        <div className="flex items-center w-full ml-4 mr-28 justify-between">
+          <h1> CART ARTICLES</h1>
+          <button
+            className=" block  rounded bg-gray-900 px-4 py-3 font-medium text-white transition hover:scale-105"
+            onClick={() => dispatch(clearCart())}
+          >
+            CLEAR CART
+          </button>
+        </div>
       </div>
       <div>{poloProduct}</div>
     </div>
