@@ -64,6 +64,7 @@ export default function AllOrders() {
       ) : (
         <p>Aucune commande trouvée.</p>
       )}
+      <div className="flex justify-center">
        <button
         onClick={() => {
           router.push("/");
@@ -72,6 +73,7 @@ export default function AllOrders() {
       >
         Back to home
       </button>
+      </div>
     </div>
   );
 }
