@@ -53,9 +53,7 @@ function UserProfile() {
           setError("");
           setOldPassword("");
           setNewPassword("");
-          toast.success(
-            `Informations mises à jour avec succès ${data.username} `
-          );
+          toast.success(`Informations updated ${data.username} `);
         } else {
           setError(data.error);
         }
@@ -65,7 +63,11 @@ function UserProfile() {
   return (
     <div className="flex justify-center items-center h-screen">
       <div className="w-1/2 h-screen hidden lg:block">
-        <img src="/jojo1.jpg" alt="jojo" className="h-screen w-full" />
+        <img
+          src="/jojo1.jpg"
+          alt="jojo"
+          className="h-screen w-full object-cover"
+        />
       </div>
       <div className="lg:p-36 md:p-52 sm:20 p-8 w-full lg:w-1/2">
         <h1 className="text-2xl font-semibold mb-4">Informations</h1>
