@@ -38,7 +38,7 @@ export default function Card({ polo, isLike }) {
   // fonction pour gerer les likes dans User.[likes]
   const handleLikes = () => {
     if (user.token) {
-      fetch(`http://localhost:3000/likes/update`, {
+      fetch(`https://polo-chino-back.vercel.app/likes/update`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -91,7 +91,7 @@ export default function Card({ polo, isLike }) {
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          fill="whitesmoke"
+          fill={carto ? "#010203" : "whitesmoke"}
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"

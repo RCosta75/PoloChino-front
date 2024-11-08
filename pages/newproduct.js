@@ -15,7 +15,7 @@ export default function NewProduct() {
 
   useEffect(() => {
     // Fetch product data on component mount.
-    fetch("http://localhost:3000/polos/get")
+    fetch("https://polo-chino-back.vercel.app/polos/get")
       .then((response) => response.json())
       .then((data) => {
         setPoloData(data.polos);
@@ -24,7 +24,7 @@ export default function NewProduct() {
 
   useEffect(() => {
     // Fetch user likes data when render state changes
-    fetch(`http://localhost:3000/users/get/${user?.token}`)
+    fetch(`https://polo-chino-back.vercel.app/users/get/${user?.token}`)
       .then((response) => response.json())
       .then((data) => {
         setLikesData(data.likes);

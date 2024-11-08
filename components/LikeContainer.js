@@ -13,7 +13,7 @@ export default function LikeContainer() {
   const render = useSelector((state) => state.cart.render);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/likes/display/${user.token}`)
+    fetch(`https://polo-chino-back.vercel.app/likes/display/${user.token}`)
       .then((response) => response.json())
       .then((data) => {
         setPoloData(data.likes);
@@ -21,7 +21,7 @@ export default function LikeContainer() {
   }, [render, user.token]);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/users/get/${user?.token}`)
+    fetch(`https://polo-chino-back.vercel.app/users/get/${user?.token}`)
       .then((response) => response.json())
       .then((data) => {
         setLikesData(data.likes);

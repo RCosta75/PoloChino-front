@@ -16,7 +16,7 @@ function UserProfile() {
   useEffect(() => {
     if (user.token) {
       // Récupérer les informations utilisateur
-      fetch(`http://localhost:3000/users/get/${user.token}`)
+      fetch(`https://polo-chino-back.vercel.app/users/get/${user.token}`)
         .then((response) => response.json())
         .then((data) => {
           if (data.result) {
@@ -28,7 +28,7 @@ function UserProfile() {
   }, [user.token]);
 
   const handleUpdate = () => {
-    fetch("http://localhost:3000/users/update", {
+    fetch("https://polo-chino-back.vercel.app/users/update", {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

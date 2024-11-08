@@ -1,4 +1,5 @@
 import React from "react";
+import { useRouter } from "next/router";
 
 export default function Footer() {
   return (
@@ -114,7 +115,7 @@ export default function Footer() {
               <ul className="mt-6 space-y-4 text-lg">
                 <li>
                   <a
-                    href="#"
+                    href="about"
                     className="text-gray-700 transition hover:opacity-75"
                   >
                     {" "}
@@ -124,7 +125,7 @@ export default function Footer() {
 
                 <li>
                   <a
-                    href="#"
+                    href="about"
                     className="text-gray-700 transition hover:opacity-75"
                   >
                     {" "}

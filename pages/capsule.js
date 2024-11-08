@@ -4,6 +4,8 @@ import { useRouter } from "next/router";
 import { Capsule } from "../components/header/Capsule";
 
 export default function capsule() {
+
+
   const images = [
     "/juju (1).jpg",
     "/juju (2).jpg",
