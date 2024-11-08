@@ -53,6 +53,12 @@ export default function capsule() {
     "/Capsule (28).jpg",
     "/Capsule (29).jpg",
     "/Capsule (30).jpg",
+
+    "/cedric (1).jpg",
+    "/cedric (2).jpg",
+    "/cedric (3).jpg",
+    "/cedric (4).jpg",
+    "/cedric (5).jpg",
   ];
 
   const router = useRouter();

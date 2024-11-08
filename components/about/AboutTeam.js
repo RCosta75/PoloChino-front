@@ -48,6 +48,27 @@ export default function AboutTeam() {
       xUrl: "#",
       linkedinUrl: "#",
     },
+    {
+      name: "TRINITE Clement",
+      role: "Debbuger de l'ombre",
+      imageUrl: "/clement.jpg",
+      xUrl: "#",
+      linkedinUrl: "#",
+    },
+    {
+      name: "KEMSSU Bryan",
+      role: "EmbrouilleurPro",
+      imageUrl: "/bryan.jpg",
+      xUrl: "#",
+      linkedinUrl: "#",
+    },
+    {
+      name: "BATTELLO Clovis",
+      role: "Golden Bell",
+      imageUrl: "/Capsule (23).jpg",
+      xUrl: "#",
+      linkedinUrl: "#",
+    },
   ];
 
   return (
