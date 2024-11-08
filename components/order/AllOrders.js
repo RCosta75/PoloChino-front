@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { useRouter } from "next/router";
 
 export default function AllOrders() {
   const userToken = useSelector((state) => state.user.value.token);
   const [orders, setOrders] = useState([]);
+  const router = useRouter();
 
   useEffect(() => {
     if (userToken) {
@@ -62,6 +64,16 @@ export default function AllOrders() {
       ) : (
         <p>Aucune commande trouvée.</p>
       )}
+      <div className="flex justify-center">
+       <button
+        onClick={() => {
+          router.push("/");
+        }}
+        className="bg-gray-950  hover:py-1px-2 text-white font-bold top-[55%] z-10  text-lg block  rounded   px-3 py-2   transition hover:scale-105"
+      >
+        Back to home
+      </button>
+      </div>
     </div>
   );
 }

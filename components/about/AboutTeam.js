@@ -22,7 +22,7 @@ export default function AboutTeam() {
       name: "TOURE Lassana",
       role: "King of Regex",
       imageUrl: hoveredImage,
-      hoverImageUrl: "/lassphoto2.jpg",
+      hoverImageUrl: "/lasstech.jpg",
       xUrl: "#",
       linkedinUrl: "#",
     },

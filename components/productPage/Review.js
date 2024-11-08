@@ -83,7 +83,7 @@ export default function Review({ product }) {
     }
   }
 
-  const commentaire = avis?.map((review, i) => {
+  const commentaire = avis.map((review, i) => {
     // note des reviews
     const stars = [];
     for (let i = 0; i < 5; i++) {
@@ -119,7 +119,7 @@ export default function Review({ product }) {
         <div className="flex items-center gap-4">
           <img
             alt=""
-            src="https://images.unsplash.com/photo-1595152772835-219674b2a8a6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80"
+            src="TwitterUser.jpg"
             className="size-14 rounded-full object-cover"
           />
 
